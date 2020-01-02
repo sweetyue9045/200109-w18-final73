@@ -36,41 +36,44 @@
     <h1>title</h1>
     <h1 id="title1" style="outline: 1px solid #000;"></h1>
     <form>
-    所在：<select name="area" id="area" required>
-        <option value="">-請選擇-</option>
-        <option value="northern">北部</option>
-        <option value="central">中部</option>
-        <option value="southern">南部</option>
-        <option value="eastern">東部</option>
-        <option value="islands">離島</option>
-    </select><select name="county" id="county" required>
-        <option value="">-請選擇-</option>
+        <input type="text" id="none" required style="display: none;">
+        所在：<select name="area" id="area" required>
+            <option value="">-請選擇-</option>
+            <option value="northern">北部</option>
+            <option value="central">中部</option>
+            <option value="southern">南部</option>
+            <option value="eastern">東部</option>
+            <option value="islands">離島</option>
+        </select><select name="county" id="county" required>
+            <option value="">-請選擇-</option>
 
-    </select><br>
-    行程名稱：<input type="text" name="title" id="title" autocomplete="off" required><br>
-    行程途經：<input name="route" id="route" autocomplete="off" required> (兩地請用" > "分隔)<br>
-    介紹此行程：<br><textarea name="intro" id="intro" required></textarea><br>
-    <div class="place0">
-        第 1 站<br>
-        地名：<input type="text" class="location" id="location0" autocomplete="off" required><br>
-        地址：<input type="text" class="address" id="address0" autocomplete="off" required><br>
-        介紹：<br><textarea type="text" class="contents" id="contents0" autocomplete="off" required></textarea><br>
-        開放時間：<br>
-        星期一：<input type="text" name="datetimes" id="mon0" required><br>
-        星期二：<input type="text" name="datetimes" id="tue0" required><br>
-        星期三：<input type="text" name="datetimes" id="wed0" required><br>
-        星期四：<input type="text" name="datetimes" id="thu0" required><br>
-        星期五：<input type="text" name="datetimes" id="fri0" required><br>
-        星期六：<input type="text" name="datetimes" id="sat0" required><br>
-        星期天：<input type="text" name="datetimes" id="sun0" required><br>
-    </div>
-    <div id="showBlock"></div>
-    <input type="button" id="btn" value="addItem" />
-    <button type="submit" id="submit">送出</button>
-</form>
+        </select><br>
+        行程名稱：<input type="text" name="title" id="title" autocomplete="off" required><br>
+        行程途經：<input name="route" id="route" autocomplete="off" required> (兩地請用" > "分隔)<br>
+        介紹此行程：<br><textarea name="intro" id="intro" required></textarea><br>
+        <div class="place0">
+            第 1 站<br>
+            地名：<input type="text" class="location" id="location0" autocomplete="off" required><br>
+            地址：<input type="text" class="address" id="address0" autocomplete="off" required><br>
+            介紹：<br><textarea type="text" class="contents" id="contents0" autocomplete="off" required></textarea><br>
+            開放時間：<br>
+            星期一：<input type="text" name="datetimes" id="mon0" required><br>
+            星期二：<input type="text" name="datetimes" id="tue0" required><br>
+            星期三：<input type="text" name="datetimes" id="wed0" required><br>
+            星期四：<input type="text" name="datetimes" id="thu0" required><br>
+            星期五：<input type="text" name="datetimes" id="fri0" required><br>
+            星期六：<input type="text" name="datetimes" id="sat0" required><br>
+            星期天：<input type="text" name="datetimes" id="sun0" required><br>
+        </div>
+        <div id="showBlock"></div>
+        <input type="button" value="刪除一個地點" id="del">
+        <input type="button" id="btn" value="addItem" />
+        <button type="submit" id="submit">送出</button>
+    </form>
     <h1 id="text_title" style="outline: 1px solid #000;"></h1>
     <h1 id="text_place" style="outline: 1px solid #000;">
-    <h1 id="text_time" style="outline: 1px solid #000;"></h1></h1>
+        <h1 id="text_time" style="outline: 1px solid #000;"></h1>
+    </h1>
 
 </body>
 

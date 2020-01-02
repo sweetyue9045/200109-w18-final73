@@ -19,43 +19,39 @@ $(document).ready(function () {
     //送出表單
     $("#submit").click(function () {
         $("#submit").html(`<span class= "spinner-border spinner-border-sm"></span>`)
-        if ($("#area").val() == "") {
-            $("#submit").html(`送出`);
-            eval("document.form['area'].focus()");
-        } else if ($("#county").val() == "") {
-            $("#submit").html(`送出`);
-            eval("document.form['county'].focus()");
-        } else if ($("#title").val() == "") {
-            $("#submit").html(`送出`);
-            eval("document.form['title'].focus()");
-        } else if ($("#route").val() == "") {
-            $("#submit").html(`送出`);
-            eval("document.form['route'].focus()");
-        } else if ($("#intro").val() == "") {
-            $("#submit").html(`送出`);
-            eval("document.form['intro'].focus()");
-        } else if ($(".location").val() == "") {
-            $("#submit").html(`送出`);
-            eval("document.form['location'].focus()");
-        } else if ($(".address").val() == "") {
-            $("#submit").html(`送出`);
-            eval("document.form['address'].focus()");
-        } else if ($(".contents").val() == "") {
-            $("#submit").html(`送出`);
-            eval("document.form['contents'].focus()");
-        }
-        else {
-            place()
-            db.ref('/' + $("#area").val() + '/' + $("#title").val() + '/').set(
-                {
-                    "title": $("#title").val(),
-                    "route": $("#route").val(),
-                    "intro": $("#intro").val(),
-                    "place":
-                        places,
-                    "county": $("#county").val()
-                })
-            window.location.href = "./route.html"
+        console.log(places)
+        place()
+        submit()
+
+        function submit() {
+            if ($("#area").val() == "") {
+                $("#submit").html(`送出`);
+                eval("document.form['area'].focus()");
+            } else if ($("#county").val() == "") {
+                $("#submit").html(`送出`);
+                eval("document.form['county'].focus()");
+            } else if ($("#title").val() == "") {
+                $("#submit").html(`送出`);
+                eval("document.form['title'].focus()");
+            } else if ($("#route").val() == "") {
+                $("#submit").html(`送出`);
+                eval("document.form['route'].focus()");
+            } else if ($("#intro").val() == "") {
+                $("#submit").html(`送出`);
+                eval("document.form['intro'].focus()");
+            } else {
+                db.ref('/' + $("#area").val() + '/' + $("#title").val() + '/').set(
+                    {
+                        "title": $("#title").val(),
+                        "route": $("#route").val(),
+                        "intro": $("#intro").val(),
+                        "place":
+                            places,
+                        "county": $("#county").val()
+                    })
+                window.location.href = "../html/route.html"
+
+            }
         }
     })
     //選擇地點
@@ -114,21 +110,36 @@ $(document).ready(function () {
     var places = []; //存取多個地點
     function place() {
         for (i = 0; i <= txtId; i++) {
-            places.push({
-                "location": $("#location" + i).val(),
-                "address": $("#address" + i).val(),
-                "contents": $("#contents" + i).val(),
-                "time": [
-                    { "week": $("#mon" + i).val() },
-                    { "week": $("#tue" + i).val() },
-                    { "week": $("#wed" + i).val() },
-                    { "week": $("#thu" + i).val() },
-                    { "week": $("#fri" + i).val() },
-                    { "week": $("#sat" + i).val() },
-                    { "week": $("#sun" + i).val() }
-                ]
-            })
-        }
+            if ($("#location" + i).val() == "") {
+                places = []
+                $("#submit").html(`送出`);
+                eval("document.form['location+i'].focus()")
+            } else if ($("#address" + i).val() == "") {
+                places = []
+                $("#submit").html(`送出`);
+                eval("document.form['address'].focus()")
+            } else if ($("#contents" + i).val() == "") {
+                places = []
+                $("#submit").html(`送出`);
+                eval("document.form['contents'].focus()")
+            } else {
+                places.push({
+                    "location": $("#location" + i).val(),
+                    "address": $("#address" + i).val(),
+                    "contents": $("#contents" + i).val(),
+                    "time": [
+                        { "week": $("#mon" + i).val() },
+                        { "week": $("#tue" + i).val() },
+                        { "week": $("#wed" + i).val() },
+                        { "week": $("#thu" + i).val() },
+                        { "week": $("#fri" + i).val() },
+                        { "week": $("#sat" + i).val() },
+                        { "week": $("#sun" + i).val() }
+                    ]
+                })
+            }
+        } console.log(places)
+
     }
     //渲染地點
     var route = firebase.database().ref().orderByKey();
@@ -146,9 +157,15 @@ $(document).ready(function () {
                         第${i + 1}個地點${TData.place[i].location}
                         地址${TData.place[i].address}`
                     )
+                    if (i < TData.place.length - 1) {
+                        $("#text_place").append(`
+                        路線<a href="https://www.google.com/maps/dir/${TData.place[i].address}/${TData.place[i + 1].address}">路線</a>`
+                        )
+                    }
                     for (x = 0; x < 7; x++) {
+                        var week = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"]
                         $("#text_time").append(
-                            `星期${x + 1}　${TData.place[i].time[x].week}`
+                            `${week[x]}：${TData.place[i].time[x].week}`
                         )
                     }
                 }
@@ -171,10 +188,9 @@ $(document).ready(function () {
             星期五：<input type="text" name="datetimes" id="fri${txtId}" required><br>
             星期六：<input type="text" name="datetimes" id="sat${txtId}" required><br>
             星期天：<input type="text" name="datetimes" id="sun${txtId}" required><br>
-            <input type="button" value="del" onclick="deltxt(${txtId})">
         </div>`
         $("#showBlock").append(div);
-
+        $("#del").attr("style", "display:block")
         $('input[name="datetimes"]').daterangepicker({
             timePicker: true,
             timePickerIncrement: 1, // 以 30 分鐘為一個選取單位
@@ -184,6 +200,11 @@ $(document).ready(function () {
             }
         });
     });
+    //remove 最新加入的input
+    $("#del").click(function () {
+        $(".place" + txtId).remove();
+        txtId--
+    })
     $('input[name="datetimes"]').daterangepicker({
         timePicker: true,
         timePickerIncrement: 1, // 以 30 分鐘為一個選取單位
@@ -193,13 +214,6 @@ $(document).ready(function () {
         }
     });
 });
-
-//remove 加入的input
-function deltxt(id) {
-    txtId--
-    $(".place" + id).remove();
-}
-
 
 //remove函式
 Array.prototype.remove = function () {
