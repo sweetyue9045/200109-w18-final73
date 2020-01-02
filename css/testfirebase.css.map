@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,UAAU,CAAV,cAAU;EACN,EAAE;IACE,SAAS,EAAE,cAAc;;;;AAEjC,AAAA,eAAe,CAAC;EACZ,OAAO,EAAE,YAAY;EACrB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,cAAc,EAAE,WAAW;EAC3B,MAAM,EAAE,wBAAwB;EAChC,kBAAkB,EAAE,WAAW;EAC/B,aAAa,EAAE,GAAG;EAClB,SAAS,EAAE,mCAAmC;CAAG;;AAErD,AAAA,kBAAkB,CAAC;EACf,MAAM,EAAE,MAAM;EACd,KAAK,EAAE,MAAM;EACb,YAAY,EAAE,IAAI;CAAG",
+    "sources": [
+        "../sass/testfirebase.sass"
+    ],
+    "names": [],
+    "file": "testfirebase.css"
+}

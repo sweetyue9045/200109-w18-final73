@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/jquery-3.4.1.js"></script>
+    <script src="../js/testfirebase.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> -->
+    <script src="../js/daterangepicker.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="../css/testfirebase.css" />
+
+</head>
+
+<body>
+    <h1>title</h1>
+    <h1 id="title1" style="outline: 1px solid #000;"></h1>
+    <form>
+    所在：<select name="area" id="area" required>
+        <option value="">-請選擇-</option>
+        <option value="northern">北部</option>
+        <option value="central">中部</option>
+        <option value="southern">南部</option>
+        <option value="eastern">東部</option>
+        <option value="islands">離島</option>
+    </select><select name="county" id="county" required>
+        <option value="">-請選擇-</option>
+
+    </select><br>
+    行程名稱：<input type="text" name="title" id="title" autocomplete="off" required><br>
+    行程途經：<input name="route" id="route" autocomplete="off" required> (兩地請用" > "分隔)<br>
+    介紹此行程：<br><textarea name="intro" id="intro" required></textarea><br>
+    <div class="place0">
+        第 1 站<br>
+        地名：<input type="text" class="location" id="location0" autocomplete="off" required><br>
+        地址：<input type="text" class="address" id="address0" autocomplete="off" required><br>
+        介紹：<br><textarea type="text" class="contents" id="contents0" autocomplete="off" required></textarea><br>
+        開放時間：<br>
+        星期一：<input type="text" name="datetimes" id="mon0" required><br>
+        星期二：<input type="text" name="datetimes" id="tue0" required><br>
+        星期三：<input type="text" name="datetimes" id="wed0" required><br>
+        星期四：<input type="text" name="datetimes" id="thu0" required><br>
+        星期五：<input type="text" name="datetimes" id="fri0" required><br>
+        星期六：<input type="text" name="datetimes" id="sat0" required><br>
+        星期天：<input type="text" name="datetimes" id="sun0" required><br>
+    </div>
+    <div id="showBlock"></div>
+    <input type="button" id="btn" value="addItem" />
+    <button type="submit" id="submit">送出</button>
+</form>
+    <h1 id="text_title" style="outline: 1px solid #000;"></h1>
+    <h1 id="text_place" style="outline: 1px solid #000;">
+    <h1 id="text_time" style="outline: 1px solid #000;"></h1></h1>
+
+</body>
+
+</html>
