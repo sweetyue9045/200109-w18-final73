@@ -1,6 +1,6 @@
 var txtId = 0; //新增表單
+
 $(document).ready(function () {
-    // alert("進來了!!!");
     // 引入 Firebase
     var firebaseConfig = {
         apiKey: "AIzaSyAScJw62d8pXsaIsKfOZCEgEulba3zEM4A",
@@ -15,42 +15,39 @@ $(document).ready(function () {
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
     let db = firebase.database();
-
+    let storageRef = firebase.storage().ref();
     //送出表單
     $("#submit").click(function () {
         $("#submit").html(`<span class= "spinner-border spinner-border-sm"></span>`)
-        console.log(places)
         place()
         submit()
-
         function submit() {
-            if ($("#area").val() == "") {
+            if ($("#area").val().replace(/\s+/g, "") == "") {
                 $("#submit").html(`送出`);
                 eval("document.form['area'].focus()");
-            } else if ($("#county").val() == "") {
+            } else if ($("#county").val().replace(/\s+/g, "") == "") {
                 $("#submit").html(`送出`);
                 eval("document.form['county'].focus()");
-            } else if ($("#title").val() == "") {
+            } else if ($("#title").val().replace(/\s+/g, "") == "") {
                 $("#submit").html(`送出`);
                 eval("document.form['title'].focus()");
-            } else if ($("#route").val() == "") {
+            } else if ($("#route").val().replace(/\s+/g, "") == "") {
                 $("#submit").html(`送出`);
                 eval("document.form['route'].focus()");
-            } else if ($("#intro").val() == "") {
+            } else if ($("#intro").val().replace(/\s+/g, "") == "") {
                 $("#submit").html(`送出`);
                 eval("document.form['intro'].focus()");
             } else {
-                db.ref('/' + $("#area").val() + '/' + $("#title").val() + '/').set(
-                    {
+                db.ref('/' + $("#area").val() + '/' + $("#title").val().replace(/\//g, "\\") + '/').set(
+                    { 
                         "title": $("#title").val(),
                         "route": $("#route").val(),
-                        "intro": $("#intro").val(),
+                        "intro": $("#intro").val().replace(/\r\n|\n/g, "</br>"),
                         "place":
                             places,
                         "county": $("#county").val()
                     })
                 window.location.href = "../html/route.html"
-
             }
         }
     })
@@ -107,26 +104,37 @@ $(document).ready(function () {
                 break;
         }
     });
-    var places = []; //存取多個地點
+    //存取地點
+    var places = [];
     function place() {
         for (i = 0; i <= txtId; i++) {
-            if ($("#location" + i).val() == "") {
+            if ($("#location" + i).val().replace(/\s+/g, "") == "") {
                 places = []
                 $("#submit").html(`送出`);
                 eval("document.form['location+i'].focus()")
-            } else if ($("#address" + i).val() == "") {
+            } else if ($("#address" + i).val().replace(/\s+/g, "") == "") {
                 places = []
                 $("#submit").html(`送出`);
                 eval("document.form['address'].focus()")
-            } else if ($("#contents" + i).val() == "") {
+            } else if ($("#contents" + i).val().replace(/\s+/g, "") == "") {
                 places = []
                 $("#submit").html(`送出`);
                 eval("document.form['contents'].focus()")
-            } else {
+            } else if ($('#input-file'+ i).val()=="") {
+                places = []
+                $("#submit").html(`送出`);
+                eval("document.form['input-file'].focus()")
+            } else if (img[i]=="") {
+                places = []
+                $("#submit").html(`送出`);
+                eval(function(){
+                    eval("document.form['btnUpload'].focus()")
+                    alert("未成功上傳")})
+            }else {
                 places.push({
                     "location": $("#location" + i).val(),
                     "address": $("#address" + i).val(),
-                    "contents": $("#contents" + i).val(),
+                    "contents": $("#contents" + i).val().replace(/\r\n|\n/g, "</br>"),
                     "time": [
                         { "week": $("#mon" + i).val() },
                         { "week": $("#tue" + i).val() },
@@ -135,45 +143,14 @@ $(document).ready(function () {
                         { "week": $("#fri" + i).val() },
                         { "week": $("#sat" + i).val() },
                         { "week": $("#sun" + i).val() }
-                    ]
+                    ],
+                    "img": img[i]
                 })
             }
-        } console.log(places)
-
+        }
     }
-    //渲染地點
-    var route = firebase.database().ref().orderByKey();
-    route.on("value", function (area) {
-        area.forEach(function (myroute) {
-            myroute.forEach(function (title) {
-                var TData = title.val();
-                $("#text_title").append(
-                    `
-                    route-title=${TData.title}
-                    route-intro=${TData.intro}`
-                )
-                for (i = 0; i < TData.place.length; i++) {
-                    $("#text_place").append(`
-                        第${i + 1}個地點${TData.place[i].location}
-                        地址${TData.place[i].address}`
-                    )
-                    if (i < TData.place.length - 1) {
-                        $("#text_place").append(`
-                        路線<a href="https://www.google.com/maps/dir/${TData.place[i].address}/${TData.place[i + 1].address}">路線</a>`
-                        )
-                    }
-                    for (x = 0; x < 7; x++) {
-                        var week = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"]
-                        $("#text_time").append(
-                            `${week[x]}：${TData.place[i].time[x].week}`
-                        )
-                    }
-                }
-            })
-        });
-    });
     //新增地點
-    $("#btn").click(function () {
+    $("#addItem").click(function () {
         txtId++;
         let div = `<div class="place${txtId}">
         第 ${txtId + 1} 站<br>
@@ -188,9 +165,14 @@ $(document).ready(function () {
             星期五：<input type="text" name="datetimes" id="fri${txtId}" required><br>
             星期六：<input type="text" name="datetimes" id="sat${txtId}" required><br>
             星期天：<input type="text" name="datetimes" id="sun${txtId}" required><br>
+            <label class="btn btn-info">
+                <input class="input-file" type="file" id="input-file${txtId}" name="${txtId}" accept="image/*" required />
+                <i class="fa fa-photo" id="i${txtId}"> 選擇圖片</i>
+            </label>
         </div>`
         $("#showBlock").append(div);
         $("#del").attr("style", "display:block")
+        //時間外掛
         $('input[name="datetimes"]').daterangepicker({
             timePicker: true,
             timePickerIncrement: 1, // 以 30 分鐘為一個選取單位
@@ -199,12 +181,15 @@ $(document).ready(function () {
                 format: 'HH:mm'
             }
         });
+        imgload()
     });
     //remove 最新加入的input
     $("#del").click(function () {
         $(".place" + txtId).remove();
         txtId--
+        imgload()
     })
+    //時間外掛
     $('input[name="datetimes"]').daterangepicker({
         timePicker: true,
         timePickerIncrement: 1, // 以 30 分鐘為一個選取單位
@@ -213,6 +198,33 @@ $(document).ready(function () {
             format: 'HH:mm'
         }
     });
+    //圖片上傳
+    let filePath = [] //存取圖檔
+    let img = [] //存取上傳網址
+    function imgload() {
+        for (i = 0; i <= txtId; i++) {
+            console.log(i)
+            $("#input-file" + i).change(function () {
+                var imgname = this.name
+                filePath[imgname] = this.files[0]
+                $("#i" + imgname).html(`<span class= "spinner-border spinner-border-ss"></span>`)
+                let fileRef = storageRef.child(`${$("#title").val().replace(/\//g, "\\")}/${filePath[imgname].name}`)
+                fileRef.put(filePath[imgname])
+                    .then(function (snapshot) {
+                        $("#i" + imgname).html(`<span class= "sptext">上傳成功</span>`)
+                        return snapshot.ref.getDownloadURL()
+                    }).then(function (downloadURL) {
+                        $("#i" + imgname).html(`<span class= "sptext">上傳成功</span>`)
+                        img[imgname] = downloadURL
+                        console.log(img)
+                    }).catch(function (error) {
+                        $("#i" + imgname).html(`<span class= "sptext">上傳失敗</span>`)
+                        console.log(`failed`)
+                    })
+            })
+        }
+    }
+    imgload()
 });
 
 //remove函式

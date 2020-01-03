@@ -20,6 +20,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+    <script src=" https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
 
 
 
@@ -29,6 +30,8 @@
     <script src="../js/daterangepicker.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="../css/testfirebase.css" />
+    <script src="https://kit.fontawesome.com/cd8e6a98a4.js" crossorigin="anonymous"></script>
+
 
 </head>
 
@@ -64,16 +67,16 @@
             星期五：<input type="text" name="datetimes" id="fri0" required><br>
             星期六：<input type="text" name="datetimes" id="sat0" required><br>
             星期天：<input type="text" name="datetimes" id="sun0" required><br>
+            <label class="btn btn-info">
+                <input class="input-file" type="file" id="input-file0" name="0" accept="image/*" required />
+                <i class="fa fa-image" id="i0"><span class= "sptext">選擇圖片</span></i>
+            </label>
         </div>
         <div id="showBlock"></div>
         <input type="button" value="刪除一個地點" id="del">
-        <input type="button" id="btn" value="addItem" />
-        <button type="submit" id="submit">送出</button>
+        <input type="button" class="btn" id="addItem" value="addItem" />
+        <button type="submit" class="btn" id="submit">送出</button>
     </form>
-    <h1 id="text_title" style="outline: 1px solid #000;"></h1>
-    <h1 id="text_place" style="outline: 1px solid #000;">
-        <h1 id="text_time" style="outline: 1px solid #000;"></h1>
-    </h1>
 
 </body>
 
