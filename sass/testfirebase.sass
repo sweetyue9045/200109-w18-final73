@@ -1,7 +1,29 @@
-@keyframes spinner-border
-    to
-        transform: rotate(360deg)
+\:root
+	--Dark: #679298
+	--Back: #ECF4F7
+	--Font: #264D52
+	--NAV_F: #ECF4F7
+	--UPBA: rgba(255, 255, 255, 0.5)
+*
+	margin: auto
+	padding: 0
+	box-sizing: border-box
+	position: relative
+	\::-webkit-scrollbar
+		width: 5px
+	\::-webkit-scrollbar-track
+		border-radius: 10px
+	\::-webkit-scrollbar-thumb
+		border-radius: 4px
+		background: #779ea3
 
+html,body
+	width: 100%
+	height: 100%
+	background-color: #fff
+	font-family: "微軟正黑體"
+
+//loading    
 .spinner-border
     display: inline-block
     width: 2rem
@@ -21,6 +43,9 @@
     width: 0.6rem
     border-width: .15em
     margin-left: .4rem
+@keyframes spinner-border
+    to
+        transform: rotate(360deg)
 
 #del
     display: none
@@ -36,9 +61,10 @@
 
 .btn
     display: inline-block
-    padding: 6px 12px
-    margin-bottom: 0
-    font-size: 14px
+    padding: .4vw .8vw
+    margin-top: auto
+    margin-left: 0
+    font-size: 1vw
     font-weight: 400
     line-height: 1.42857143
     text-align: center
@@ -47,7 +73,7 @@
     touch-action: manipulation
     cursor: pointer
     border: 1px solid transparent
-    border-radius: 4px
+    border-radius: .4vw
     outline: none
 
 input[type=file]
@@ -57,5 +83,61 @@ input[type=file]
 .btnUpload
     display: none
 .sptext
-    font-size: 1rem
+    font-size: 1.1vw
+    line-height: 1.1vw 
     margin-left: .4rem
+
+select,input,textarea
+    font-family: "微軟正黑體"
+    outline: none
+    padding: .4vw .6vw
+    border: 1px solid #ccc
+    border-radius: .4vw
+    box-shadow: none
+    background-color: #fff
+    background-image: none
+    font-size: 1.1vw
+    line-height: inherit
+textarea
+    height: 8vw
+    resize: none
+input[name="datetimes"]
+    display: none
+
+.place
+    padding: 2vw 3vw
+    border: 1px solid #ccc
+    border-radius: 2vw
+    margin: 1vw auto
+    display: grid
+    justify-content: start
+    align-content: flex-start
+    grid-template-columns: 20% 20%
+    grid-row-gap: 0.8vw
+    grid-column-gap: 0.5vw
+    background-color: #f2f2f2
+    text-align: left
+.placetop
+    grid-template-rows: repeat(5,4.5vw)
+.place0
+    grid-template-columns: 50% 50%
+    grid-column-gap: 0vw
+.place_
+    margin: 0
+    display: grid
+    justify-content: start
+    align-content: flex-start
+    grid-template-columns: 20% 60%
+    grid-template-rows: repeat(7,4.5vw)
+    grid-column-gap: 0.5vw
+
+.input_main
+    font-size: 1.3vw
+    margin: 1vw 0
+    align-self: center
+    font-weight: 500
+    
+.input
+    text-align: left
+    flex-direction: start
+    margin: 1vw 0 

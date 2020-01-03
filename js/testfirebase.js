@@ -23,23 +23,18 @@ $(document).ready(function () {
         submit()
         function submit() {
             if ($("#area").val().replace(/\s+/g, "") == "") {
-                $("#submit").html(`送出`);
-                eval("document.form['area'].focus()");
+                eval($("#submit").html(`送出`));
             } else if ($("#county").val().replace(/\s+/g, "") == "") {
-                $("#submit").html(`送出`);
-                eval("document.form['county'].focus()");
+                eval($("#submit").html(`送出`));
             } else if ($("#title").val().replace(/\s+/g, "") == "") {
-                $("#submit").html(`送出`);
-                eval("document.form['title'].focus()");
+                eval($("#submit").html(`送出`));
             } else if ($("#route").val().replace(/\s+/g, "") == "") {
-                $("#submit").html(`送出`);
-                eval("document.form['route'].focus()");
+                eval($("#submit").html(`送出`));
             } else if ($("#intro").val().replace(/\s+/g, "") == "") {
-                $("#submit").html(`送出`);
-                eval("document.form['intro'].focus()");
+                eval($("#submit").html(`送出`));
             } else {
                 db.ref('/' + $("#area").val() + '/' + $("#title").val().replace(/\//g, "\\") + '/').set(
-                    { 
+                    {
                         "title": $("#title").val(),
                         "route": $("#route").val(),
                         "intro": $("#intro").val().replace(/\r\n|\n/g, "</br>"),
@@ -57,14 +52,14 @@ $(document).ready(function () {
             default:
             case "":
                 $("#county option").remove();
-                var array = ["-請選擇-"];
+                var array = ["縣市"];
                 $.each(array, function (i, val) {
                     $("#county").append($("<option value=''>" + array[i] + "</option>"));
                 });
                 break;
             case "northern":
                 $("#county option").remove();
-                var array = ["-請選擇-", "台北", "新北", "基隆", "宜蘭", "桃園", "新竹"];
+                var array = ["縣市", "台北", "新北", "基隆", "宜蘭", "桃園", "新竹"];
                 $.each(array, function (i, val) {
                     if (i == 0) $("#county").append($("<option value=''>" + array[i] + "</option>"));
                     else $("#county").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
@@ -72,7 +67,7 @@ $(document).ready(function () {
                 break;
             case "central":
                 $("#county option").remove();
-                var array = ["-請選擇-", "苗栗", "台中", "彰化", "南投", "雲林"];
+                var array = ["縣市", "苗栗", "台中", "彰化", "南投", "雲林"];
                 $.each(array, function (i, val) {
                     if (i == 0) $("#county").append($("<option value=''>" + array[i] + "</option>"));
                     else $("#county").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
@@ -80,7 +75,7 @@ $(document).ready(function () {
                 break;
             case "southern":
                 $("#county option").remove();
-                var array = ["-請選擇-", "嘉義", "台南", "高雄", "屏東"];
+                var array = ["縣市", "嘉義", "台南", "高雄", "屏東"];
                 $.each(array, function (i, val) {
                     if (i == 0) $("#county").append($("<option value=''>" + array[i] + "</option>"));
                     else $("#county").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
@@ -88,7 +83,7 @@ $(document).ready(function () {
                 break;
             case "eastern":
                 $("#county option").remove();
-                var array = ["-請選擇-", "花蓮", "台東"];
+                var array = ["縣市", "花蓮", "台東"];
                 $.each(array, function (i, val) {
                     if (i == 0) $("#county").append($("<option value=''>" + array[i] + "</option>"));
                     else $("#county").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
@@ -96,7 +91,7 @@ $(document).ready(function () {
                 break;
             case "islands":
                 $("#county option").remove();
-                var array = ["-請選擇-", "澎湖", "金門", " 馬祖"];
+                var array = ["縣市", "澎湖", "金門", " 馬祖"];
                 $.each(array, function (i, val) {
                     if (i == 0) $("#county").append($("<option value=''>" + array[i] + "</option>"));
                     else $("#county").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
@@ -110,27 +105,33 @@ $(document).ready(function () {
         for (i = 0; i <= txtId; i++) {
             if ($("#location" + i).val().replace(/\s+/g, "") == "") {
                 places = []
-                $("#submit").html(`送出`);
-                eval("document.form['location+i'].focus()")
+                eval($("#submit").html(`送出`))
             } else if ($("#address" + i).val().replace(/\s+/g, "") == "") {
                 places = []
-                $("#submit").html(`送出`);
-                eval("document.form['address'].focus()")
+                eval($("#submit").html(`送出`))
             } else if ($("#contents" + i).val().replace(/\s+/g, "") == "") {
                 places = []
-                $("#submit").html(`送出`);
-                eval("document.form['contents'].focus()")
-            } else if ($('#input-file'+ i).val()=="") {
+                eval($("#submit").html(`送出`))
+            } else if ($('#input-file' + i).val() == "") {
                 places = []
                 $("#submit").html(`送出`);
+                $(".btn-info" + i).attr("style","background-color: #F08080; border-color: #F08080")
                 eval("document.form['input-file'].focus()")
-            } else if (img[i]=="") {
-                places = []
-                $("#submit").html(`送出`);
-                eval(function(){
-                    eval("document.form['btnUpload'].focus()")
-                    alert("未成功上傳")})
-            }else {
+            } else if ($("#mon" + i).val().replace(/\s+/g, "") == "") {
+                eval($("#submit").html(`送出`));
+            } else if ($("#tue" + i).val().replace(/\s+/g, "") == "") {
+                eval($("#submit").html(`送出`));
+            } else if ($("#wed" + i).val().replace(/\s+/g, "") == "") {
+                eval($("#submit").html(`送出`));
+            } else if ($("#thu" + i).val().replace(/\s+/g, "") == "") {
+                eval($("#submit").html(`送出`));
+            } else if ($("#fri" + i).val().replace(/\s+/g, "") == "") {
+                eval($("#submit").html(`送出`));
+            } else if ($("#sat" + i).val().replace(/\s+/g, "") == "") {
+                eval($("#submit").html(`送出`));
+            } else if ($("#sun" + i).val().replace(/\s+/g, "") == "") {
+                eval($("#submit").html(`送出`));
+            } else {
                 places.push({
                     "location": $("#location" + i).val(),
                     "address": $("#address" + i).val(),
@@ -152,22 +153,57 @@ $(document).ready(function () {
     //新增地點
     $("#addItem").click(function () {
         txtId++;
-        let div = `<div class="place${txtId}">
+        let div = `<div class="place place${txtId}">
         第 ${txtId + 1} 站<br>
             地名：<input type="text" class="location" id="location${txtId}" autocomplete="off" required><br>
             地址：<input type="text" class="address" id="address${txtId}" autocomplete="off" required><br>
             介紹：<br><textarea type="text" class="contents" id="contents${txtId}" autocomplete="off" required></textarea><br>
             開放時間：<br>
-            星期一：<input type="text" name="datetimes" id="mon${txtId}" required><br>
-            星期二：<input type="text" name="datetimes" id="tue${txtId}" required><br>
-            星期三：<input type="text" name="datetimes" id="wed${txtId}" required><br>
-            星期四：<input type="text" name="datetimes" id="thu${txtId}" required><br>
-            星期五：<input type="text" name="datetimes" id="fri${txtId}" required><br>
-            星期六：<input type="text" name="datetimes" id="sat${txtId}" required><br>
-            星期天：<input type="text" name="datetimes" id="sun${txtId}" required><br>
-            <label class="btn btn-info">
+            星期一：<select name="mon${txtId}" id="time${txtId}0" required>
+            <option value="">開放時間</option>
+            <option value="24小時營業">24小時營業</option>
+            <option value="休館">休館</option>
+            <option value="自訂">自訂</option>
+        </select><input type="text" name="datetimes" id="mon${txtId}" required autocomplete="off"><br>
+            星期二：<select name="tue${txtId}" id="time${txtId}1" required>
+            <option value="">開放時間</option>
+            <option value="24小時營業">24小時營業</option>
+            <option value="休館">休館</option>
+            <option value="自訂">自訂</option>
+        </select><input type="text" name="datetimes" id="tue${txtId}" required autocomplete="off"><br>
+            星期三：<select name="wed${txtId}" id="time${txtId}2" required>
+            <option value="">開放時間</option>
+            <option value="24小時營業">24小時營業</option>
+            <option value="休館">休館</option>
+            <option value="自訂">自訂</option>
+        </select><input type="text" name="datetimes" id="wed${txtId}" required autocomplete="off"><br>
+            星期四：<select name="thu${txtId}" id="time${txtId}3" required>
+            <option value="">開放時間</option>
+            <option value="24小時營業">24小時營業</option>
+            <option value="休館">休館</option>
+            <option value="自訂">自訂</option>
+        </select><input type="text" name="datetimes" id="thu${txtId}" required autocomplete="off"><br>
+            星期五：<select name="fri${txtId}" id="time${txtId}4" required>
+            <option value="">開放時間</option>
+            <option value="24小時營業">24小時營業</option>
+            <option value="休館">休館</option>
+            <option value="自訂">自訂</option>
+        </select><input type="text" name="datetimes" id="fri${txtId}" required autocomplete="off"><br>
+            星期六：<select name="sat${txtId}" id="time${txtId}5" required>
+            <option value="">開放時間</option>
+            <option value="24小時營業">24小時營業</option>
+            <option value="休館">休館</option>
+            <option value="自訂">自訂</option>
+        </select><input type="text" name="datetimes" id="sat${txtId}" required autocomplete="off"><br>
+            星期日：<select name="sun${txtId}" id="time${txtId}6" required>
+            <option value="">開放時間</option>
+            <option value="24小時營業">24小時營業</option>
+            <option value="休館">休館</option>
+            <option value="自訂">自訂</option>
+        </select><input type="text" name="datetimes" id="sun${txtId}" required autocomplete="off"><br>
+            <label class="btn btn-info bun-info${txtId}">
                 <input class="input-file" type="file" id="input-file${txtId}" name="${txtId}" accept="image/*" required />
-                <i class="fa fa-photo" id="i${txtId}"> 選擇圖片</i>
+                <i class="fa fa-photo" id="i${txtId}"><span class= "sptext"> 選擇圖片</span></i>
             </label>
         </div>`
         $("#showBlock").append(div);
@@ -182,12 +218,54 @@ $(document).ready(function () {
             }
         });
         imgload()
+        time()
     });
+    //時間
+    function time() {
+        for (i = 0; i < 7; i++) {
+            for (a = 0; a <= txtId; a++) {
+                console.log($("#time" + a + i))
+
+                $("#time" + a + i).change(function () {
+                    console.log($("#time" + a + i))
+                    var timename = this.name
+                    switch ($(this).val()) {
+                        default:
+                        case "":
+                            document.getElementById(this.name).value = " "
+                            $("#" + timename).attr("style", "display:none")
+                            $("#" + timename).attr("disabled", true)
+                            break;
+                        case "24小時營業":
+                            document.getElementById(this.name).value = "24小時營業"
+                            $("#" + timename).attr("style", "display:inline-block")
+                            $("#" + timename).attr("disabled", true)
+                            break;
+                        case "休館":
+                            document.getElementById(this.name).value = "休館"
+                            $("#" + timename).attr("style", "display:inline-block")
+                            $("#" + timename).attr("disabled", true)
+
+                            break;
+                        case "自訂":
+                            document.getElementById(this.name).value = ""
+                            $("#" + timename).attr("placeholder", "點擊選擇時間")
+                            $("#" + timename).attr("style", "display:inline-block")
+                            $("#" + timename).attr("disabled", false)
+
+                            break;
+                    }
+                });
+            }
+        }
+    }
+    time()
     //remove 最新加入的input
     $("#del").click(function () {
         $(".place" + txtId).remove();
         txtId--
         imgload()
+        time()
     })
     //時間外掛
     $('input[name="datetimes"]').daterangepicker({
@@ -203,7 +281,6 @@ $(document).ready(function () {
     let img = [] //存取上傳網址
     function imgload() {
         for (i = 0; i <= txtId; i++) {
-            console.log(i)
             $("#input-file" + i).change(function () {
                 var imgname = this.name
                 filePath[imgname] = this.files[0]
