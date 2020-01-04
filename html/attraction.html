@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>景點丨Dtrip</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/attraction.css" />
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/" />
+    <script src="../js/jquery-3.4.1.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/cd8e6a98a4.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body onload="attraction()">
+    <header>
+        <div class="H_title"><a href="../index.html"><img src="../im/LOGO-Dtrip-2.png" alt=""></a></div>
+        <nav>
+            <ul class="nav_bar">
+                <li><a href="../index.html">首頁</a></li>
+                <li><a href="attraction.html">景點</a></li>
+                <li><a href="route.html">推薦行程</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="Carousel">
+        <div class="topbox">
+            <img src="../im/雲.png" class="bigcloud" />
+            <img src="../im/雲.png" class="smallcloud" />
+            <img src="../im/山.png" class="mountain" />
+            <div class="boy"></div>
+        </div>
+        <div class="input-group" id="input-group">
+            <div class="dropdown-btn" id="dropdown-btn">
+                <button type="button" class="btn dropdown-toggle" id="dropdown-toggle"
+                    style="	border-right: 0px transparent ; outline: none">
+                    <i class="fas fa-chevron-down" id="dropdown-toggle" style="display:block"></i>
+                    <i class="fas fa-chevron-up" id="dropdown-toggle" style="display:none"></i>
+                </button>
+                <ul class="dropdown-menu" id="dropdown-menu">
+                    <li><a href="#" onclick="area(this)">全部</a></li>
+                    <li><a href="#" onclick="area(this)">台北</a></li>
+                    <li><a href="#" onclick="area(this)">新北</a></li>
+                    <li><a href="#" onclick="area(this)">台中</a></li>
+                </ul>
+            </div>
+            <input type="text" class="form-control" id="form-control" placeholder="搜尋..." autofocus autocomplete="off">
+            <style id="c-search"></style>
+            <button type="button" class="btn search" style="outline: none" id="searchitem">
+                <i class="fas fa-search" style="margin: 2px;"></i>
+            </button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-center">
+            <div class="loader" id="load"></div>
+            <div id="attraction_hot">
+                <div class="site_title">熱門景點</div>
+                <div class="site_content">
+                    <div class="carousel slide" id="HOT" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="d-block w-100" src="" alt="First slide">
+                                    <div class="hot_phoint">
+                                        <div class="hot_img">
+                                            <img src="../im/藝術廣場.jpg" /></div>
+                                        <div class="hot_intbox">
+                                            <div class="int">
+                                                <div class="int_title">Dali Art藝術廣場</div>
+                                                <div class="int_text">
+                                                    地址：台中市大里區科技路1號<br>
+                                                    電話：04-37002003<br>
+                                                    開放時間：平日 11:00-21:00<br>
+                                                    　　　　　假日 09:30-22:00<br>
+                                                    #IG打卡景點 #沉思者 #台中
+                                                </div>
+                                                <img src="../im/椰子樹.png" alt="" class="int_img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100" src="" alt="Third slide">
+                                    <div class="hot_phoint">
+                                        <div class="hot_img">
+                                            <img src="../im/松山文創園區.jpg" /></div>
+                                        <div class="hot_intbox">
+                                            <div class="int">
+                                                <div class="int_title">松山文創園區</div>
+                                                <div class="int_text">
+
+                                                    地址：台北市信義區光復南路133號<br>
+                                                    電話：02-27651388<br>
+                                                    開放時間：平日 09:00–18:00<br>
+                                                    　　　　　假日 09:00–18:00<br>
+                                                    #文青必去景點 #松山 #台北
+                                                </div>
+                                                <img src="../im/椰子樹.png" alt="" class="int_img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100" src="" alt="Second slide">
+                                    <div class="hot_phoint">
+                                        <div class="hot_img">
+                                            <img src="../im/義大遊樂世界.jpg" /></div>
+                                        <div class="hot_intbox">
+                                            <div class="int">
+                                                <div class="int_title">義大遊樂世界</div>
+                                                <div class="int_text">
+                                                    地址：高雄市大樹區學城路一段10號<br>
+                                                    電話：07-6568080(付費)<br>
+                                                    開放時間：平日 09:00–17:30<br>
+                                                    　　　　　假日 09:00–17:30<br>
+                                                    #大人小孩都愛 #遊樂園 #高雄
+                                                </div>
+                                                <img src="../im/椰子樹.png" alt="" class="int_img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100" src="" alt="Second slide">
+                                    <div class="hot_phoint">
+                                        <div class="hot_img">
+                                            <img src="../im/風禾公園.jpg" /></div>
+                                        <div class="hot_intbox">
+                                            <div class="int">
+                                                <div class="int_title">風禾公園</div>
+                                                <div class="int_text">
+                                                    地址：桃園市桃園區慈文路688號<br>
+                                                    電話：-<br>
+                                                    開放時間：平日 08:00–22:00<br>
+                                                    　　　　　假日 08:00–22:00<br>
+                                                    #最長溜滑梯 #踏青 #桃園<br>
+                                                </div>
+                                                <img src="../im/椰子樹.png" alt="" class="int_img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ol class="carousel-indicators">
+                            <li class="active" data-target="#HOT" data-slide-to="0"></li>
+                            <li data-target="#HOT" data-slide-to="1"></li>
+                            <li data-target="#HOT" data-slide-to="2"></li>
+                            <li data-target="#HOT" data-slide-to="3"></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="attraction_content" id="attraction_content" style="display: none;">
+                <div class="site_title">景點介紹</div>
+                <div class="site_content attraction_site" id="attraction_site">
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <footer>
+        <div class="F_left">注意事項 > 隱私權政策<br>
+            關於我們 ‧ 服務條款/政策 ‧ 交易安全 ‧ 使用條款 ‧ 客戶中心 ‧ 聯絡我們<br>
+            Copyright © 2019 Dtrip. All Rights Reserved.
+        </div>
+        <div class="F_title"><img src="../im/LOGO-Dtrip.png" alt=""></div>
+    </footer>
+    <!-- <a id="backtotop" href="#HOME" title="返回頂部"><i class="fas fa-chevron-circle-up fa-3x" alt="Back to Top"></i></a> -->
+
+</body>
+
+</html>
