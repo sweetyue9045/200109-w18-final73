@@ -28,7 +28,7 @@ $(function () {
 			$("#plusroute").attr("style", "display:none")
 			$("#btnSignOut").attr("style", "display:none")
 			$("#members").attr("style", "display:none")
-			$("login").attr("style", "display:block")
+			$("#login").attr("style", "display:block")
 
 		}
 	})

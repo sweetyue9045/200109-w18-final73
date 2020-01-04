@@ -102,7 +102,7 @@ nav {
   color: var(--NAV_F);
 }
 
-#plusroute {
+#plusroute, #login, #members, #btnSignOut {
   display: none;
 }
 
