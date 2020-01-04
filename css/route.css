@@ -141,32 +141,18 @@ html, body {
   color: var(--Dark);
 }
 
-.btn {
-  display: inline-block;
-  padding: 0.65vw 1vw;
+.route_search {
+  color: var(--Dark);
+  border: 0.1vw solid var(--Dark);
+  padding: 0.6vw 1vw;
   height: 2.7vw;
-  margin-bottom: 0;
-  font-size: 1.1vw;
-  font-weight: 400;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-      touch-action: manipulation;
-  cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  border: 0.1vw solid var(--Dark);
   border-left: none;
   border-radius: 0 0.3vw 0.3vw 0;
-  outline: none;
-  background-color: transparent;
-}
-
-.route_search {
-  color: var(--Dark);
+  background: transparent;
 }
 
 .route_search:active, .open > .route_search {

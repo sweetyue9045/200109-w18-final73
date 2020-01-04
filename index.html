@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/" />
     <script src="js/jquery-3.4.1.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/testlogin.js"></script>
+
     <!-- <script src="js/firebase.js"></script> -->
     <script src="https://kit.fontawesome.com/cd8e6a98a4.js" crossorigin="anonymous"></script>
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -40,7 +42,6 @@
                 <div class="tourtitle">
                     <span>遊程路線</span>
                     </br>
-
                 </div>
                 <div class="tourArticle">
                     <div class="tourline">
@@ -50,16 +51,20 @@
             </div>
         </div>
     </div>
+    <div class="showlogin">
+        <div class="loginback"></div>
+		<div class="LOGIN"></div>
+    </div>
     <header class="home_header">
         <div class="H_title"><a href="index.html"><img src="im/LOGO-Dtrip-2.png" alt=""></a></div>
         <nav>
             <ul class="nav_bar">
-                <li><a href="index.html">首頁</a></li>
                 <li><a href="html/attraction.html">景點</a></li>
                 <li><a href="html/route.html">推薦行程</a></li>
                 <li id="plusroute"><a href="html/testfirebase.html">新增行程</a></li>
-                <li id="login"><a href="html/testlogin.html">登入</a></li>
-
+                <li id="login"><a onclick="showlogin()">登入</a></li>
+                <li id="members"><a href="">我的專區</a></li>
+                <li id="btnSignOut"><a onclick="logout()">登出</a></li>
             </ul>
         </nav>
     </header>
@@ -71,7 +76,6 @@
                 <div class="second_text"><img src="im/探訪.png" alt=""></div>
             </div>
         </div>
-
     </div>
     <div class="container">
         <div class="route">

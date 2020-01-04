@@ -67,6 +67,7 @@ html, body {
   background-color: rgba(0, 0, 0, 0);
   border: 0.1vw solid var(--Dark);
   border-left: 0px transparent;
+  border-radius: 0vw;
   -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
@@ -82,27 +83,15 @@ html, body {
   color: var(--Dark);
 }
 
-.btn {
-  display: inline-block;
-  padding: 0.65vw 0.9vw;
+.search {
   height: 2.6vw;
-  font-size: 1.1vw;
-  font-weight: 400;
-  text-align: center;
-  white-space: nowrap;
-  -ms-touch-action: manipulation;
-      touch-action: manipulation;
-  cursor: pointer;
   border: 0.1vw solid var(--Dark);
   border-radius: 0.3vw;
   color: #4c777c;
   background-color: rgba(0, 0, 0, 0);
-  outline: none;
-}
-
-.search {
   background-color: var(--Dark);
   color: #fff;
+  padding: 0.55vw 0.9vw;
 }
 
 .search:active, .open > .search {
@@ -112,6 +101,12 @@ html, body {
 }
 
 .dropdown-toggle {
+  padding: 0.7vw 0.9vw;
+  height: 2.6vw;
+  border: 0.1vw solid var(--Dark);
+  border-radius: 0.3vw;
+  color: #4c777c;
+  background-color: rgba(0, 0, 0, 0);
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right: 0px transparent;

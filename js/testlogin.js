@@ -16,19 +16,19 @@ $(document).ready(function () {
 
     auth.onAuthStateChanged(function (user) {
         if (user) {
-            $("#sign-info").html(`${user.email} is login...`)
+            console.log(`${user.email} is login...`)
         }
     })
     $("#btnSignIn").click(function (e) {
-        $("#btnSignIn").html(`<span class= "spinner-border spinner-border-sm"></span>`)
+        $("#btnSignIn").html(`<span class= "spinner-border spinner-border-sl"></span>`)
         auth.signInWithEmailAndPassword($("#email").val(), $("#password").val())
             .then(function (e) {
-                $("#btnSignIn").html(`Sign In`)
+                $("#btnSignIn").html(`登入`)
                 window.location.reload()
             })
             .catch(function (e) {
-                $("#btnSignIn").html(`Sign In`)
                 if (confirm("查無此帳號，是否以此帳密直接註冊") == true) {
+                    $("#btnSignIn").html(`登入`)
                     auth.createUserWithEmailAndPassword($("#email").val(), $("#password").val())
                         .then(function (e) {
                             // 儲存成功後顯示訊息
@@ -44,7 +44,7 @@ $(document).ready(function () {
         $("#email").val('')
         $("#password").val('')
         $("#sign-info").html("No one login...")
-        window.location.href = "../index.html"
+        window.location.reload()
     })
     // //google
     // const $btnGoogle = $("#btnGoogleSingIn")

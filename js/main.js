@@ -14,66 +14,29 @@ $(function () {
 	};
 	firebase.initializeApp(firebaseConfig);
 	firebase.analytics();
-	// let db = firebase.database();
-	// let storageRef = firebase.storage().ref();
-	//--登入--
 	const auth = firebase.auth()
 	auth.onAuthStateChanged(function (user) {
 		if (user) {
-			$("#sign-info").html(`${user.email} is login...`)
-			$("#plusroute").attr("style","display:block")
-		}else{
-			$("#plusroute").attr("style","display:none")
+			console.log(`${user.email} is login...`)
+			$("#plusroute").attr("style", "display:block")
+			$("#btnSignOut").attr("style", "display:block")
+			$("#members").attr("style", "display:block")
+			$("#login").attr("style", "display:none")
+			
+		} else {
+			console.log(`no one is login...`)
+			$("#plusroute").attr("style", "display:none")
+			$("#btnSignOut").attr("style", "display:none")
+			$("#members").attr("style", "display:none")
+			$("login").attr("style", "display:block")
+
 		}
 	})
-	$("#btnSignIn").click(function (e) {
-		$("#btnSignIn").html(`<span class= "spinner-border spinner-border-sm"></span>`)
-		auth.signInWithEmailAndPassword($("#email").val(), $("#password").val())
-			.then(function (e) {
-				$("#btnSignIn").html(`Sign In`)
-				window.location.reload()
-			})
-			.catch(function (e) {
-				$("#btnSignIn").html(`Sign In`)
-				if (confirm("查無此帳號，是否以此帳密直接註冊") == true) {
-					auth.createUserWithEmailAndPassword($("#email").val(), $("#password").val())
-						.then(function (e) {
-							// 儲存成功後顯示訊息
-							message.innerHTML = 'User created successfully';
-						}).catch(function (e) {
-							$("#sign-info").html(e.message)
-						})
-				} else { window.location.href = "../index.html" }
-			})
-	})
-	$("#btnSignOut").click(function (e) {
-		auth.signOut()
-		$("#email").val('')
-		$("#password").val('')
-		$("#sign-info").html("No one login...")
-		window.location.href = "../index.html"
-	})
-	// //google
-	// const $btnGoogle = $("#btnGoogleSingIn")
+	$('.loginback').click(function (event) {
+		$('.showlogin').fadeOut();
+	});
 
-	// var provider = new firebase.auth.GoogleAuthProvider()
-	// $btnGoogle.click(function () {
-	//     $btnGoogle.html(`<span class= "spinner-border spinner-border-sm"></span>`)
-	//     firebase.auth().signInWithPopup(provider).then(function (result) {
-	//         var token = result.credential.accessToken;
-	//         var user = result.user;      // 使用者資訊
-	//     }).catch(function (error) {
-	//         // 處理錯誤
-	//         $btnGoogle.html(`google`)
-	//         alert("error")
-	//         var errorCode = error.code;
-	//         var errorMessage = error.message;
-	//         var email = error.email;      // 使用者所使用的 Email
-	//         var credential = error.credential;
-	//         console.log(error.message)
-	//     });
-	// })
-
+	//----------各種scroll----------
 	var top = $('.container').offset().top - 55
 	var down = $('footer').offset().top
 	$(window).scroll(function () {
@@ -385,36 +348,99 @@ function showin(id) {
 		})
 	})
 	$('.showintro').fadeIn();
+};
+function showlogin() {
+	$(".LOGIN").empty()
+	$(".LOGIN").append(
+		`
+		<h1>LOGO</h1>
+		<div class="login_or">
+			<div class="l">
+				<hr>
+			</div>
+			<div class="or">快速登入</div>
+			<div class="l">
+				<hr>
+			</div>
+		</div>
+		<div class="login_btn">
+			<button type="button" class="btn btnL btnF" id="facebookSingIn"><i class="fab fa-facebook btnfa"></i>
+				<span>Facebook登入</span></button>
+			<button type="button" class="btn btnL btnG" id="btnGoogleSingIn"><i class="fab fa-google-plus btnfa"></i>
+				<span>Google+登入</span></button>
+		</div>
+		<div class="login_or">
+			<div class="l">
+				<hr>
+			</div>
+			<div class="or">一般登入</div class="or">
+			<div class="l">
+				<hr>
+			</div>
+		</div>
+		<div class="form-group">
+			<button class="btn btni"><i class="fas fa-user"></i></button>
+			<input type="text" class="login_input" id="email" placeholder="Exampe@mail.com">
+		</div>
+		<div class="form-group">
+			<button class="btn btni"><i class="fas fa-unlock-alt"></i></button>
+			<input type="password" class="login_input" id="password" placeholder="">
+		</div>
+		<div class="forgot">忘記帳號 / 密碼 ?</div>
+		<div class="button-row">
+			<button type="button" class="btn btnSignIn" id="btnSignIn" onclick="login()">登入</button>
+		</div>`
+	)
+	$('.showlogin').fadeIn();
 }
-function showin2(id) {
-	$(".tourline").empty()
-	$(".intro_intro").empty()
-	var route = firebase.database().ref().orderByKey();
-	route.on("value", function (only) {
-		only.forEach(function (area) {
-			area.forEach(function (myroute) {
-				myroute.forEach(function (title) {
-					var TData = title.val();
-					if (TData.title == id) {
-						var b = TData.place.length
-						$(".intro_intro").append('<div class="tourline_title">' + TData.title + '</div><div class="tourline_intro">' + TData.intro + '</div>')
-						for (x = 0; x < b; x++) {
-							$(".tourline").append('<div class="tourlineBox"><img src="' + TData.place[x].img + '"><div class="tourlineSpots_Right"><div class="tourlineSpots_title">' + TData.place[x].location + '</div>' + TData.place[x].contents + '</br>地址：' + TData.place[x].address + '<div id="tour_time' + x + '">開放時間：</br></div></div></div>')
-							for (i = 0; i < 7; i++) {
-								var week = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"]
-								$("#tour_time" + x).append(
-									`${week[i]}：${TData.place[x].time[i].week}</br>`
-								)
-							}
-							if (x < b - 1) {
-								$(".tourline").append('<div class="tourlineBox_distance"><div class="distancebtn"><i class="fas fa-map-marker-alt"></i><a href="https://www.google.com/maps/dir/' + TData.place[x].address + '/' + TData.place[x + 1].address + '" target="_blank">　點擊觀看路線　</a><i class="fas fa-map-marker-alt"></i></div></div>')
-							}
 
-						}
-					}
-				})
-			})
+function login() {
+	const auth = firebase.auth()
+	$("#btnSignIn").html(`<span class= "spinner-border spinner-border-sl"></span>`)
+	auth.signInWithEmailAndPassword($("#email").val(), $("#password").val())
+		.then(function (e) {
+			$("#btnSignIn").html(`登入`)
+			window.location.reload()
 		})
-	})
-	$('.showintro').fadeIn();
+		.catch(function (e) {
+			if (confirm("查無此帳號，是否以此帳密直接註冊") == true) {
+				$("#btnSignIn").html(`登入`)
+				auth.createUserWithEmailAndPassword($("#email").val(), $("#password").val())
+					.then(function (e) {
+						// 儲存成功後顯示訊息
+						message.innerHTML = 'User created successfully';
+					}).catch(function (e) {
+						$("#sign-info").html(e.message)
+					})
+			} else { window.location.href = "../index.html" }
+		})
+
+	// //google
+	// const $btnGoogle = $("#btnGoogleSingIn")
+
+	// var provider = new firebase.auth.GoogleAuthProvider()
+	// $btnGoogle.click(function () {
+	//     $btnGoogle.html(`<span class= "spinner-border spinner-border-sm"></span>`)
+	//     firebase.auth().signInWithPopup(provider).then(function (result) {
+	//         var token = result.credential.accessToken;
+	//         var user = result.user;      // 使用者資訊
+	//     }).catch(function (error) {
+	//         // 處理錯誤
+	//         $btnGoogle.html(`google`)
+	//         alert("error")
+	//         var errorCode = error.code;
+	//         var errorMessage = error.message;
+	//         var email = error.email;      // 使用者所使用的 Email
+	//         var credential = error.credential;
+	//         console.log(error.message)
+	//     });
+	// })
+}
+function logout() {
+	const auth = firebase.auth()
+	auth.signOut()
+	$("#email").val('')
+	$("#password").val('')
+	$("#sign-info").html("No one login...")
+	window.location.href = "../index.html"
 }

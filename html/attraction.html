@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="../css/attraction.css" />
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/" />
     <script src="../js/jquery-3.4.1.js"></script>
-    <script src="../js/main.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/main.js"></script>
+
     <script src="https://kit.fontawesome.com/cd8e6a98a4.js" crossorigin="anonymous"></script>
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -30,15 +31,21 @@
 </head>
 
 <body onload="attraction()">
+    <div class="showlogin">
+        <div class="loginback"></div>
+		<div class="LOGIN"></div>
+    </div>
     <header>
         <div class="H_title"><a href="../index.html"><img src="../im/LOGO-Dtrip-2.png" alt=""></a></div>
         <nav>
             <ul class="nav_bar">
-                <li><a href="../index.html">首頁</a></li>
                 <li><a href="attraction.html">景點</a></li>
                 <li><a href="route.html">推薦行程</a></li>
                 <li id="plusroute"><a href="testfirebase.html">新增行程</a></li>
-                <li id="login"><a href="testlogin.html">登入</a></li>
+                <li id="login"><a onclick="showlogin()">登入</a></li>
+                <li id="members"><a href="">我的專區</a></li>
+                <li id="btnSignOut"><a onclick="logout()">登出</a></li>
+
             </ul>
         </nav>
     </header>
@@ -50,18 +57,16 @@
             <div class="boy"></div>
         </div>
         <div class="input-group" id="input-group">
-            <!-- <div class="dropdown-btn" id="dropdown-btn"> -->
-                <button type="button" class="btn dropdown-toggle" id="dropdown-toggle">
-                    <i class="fas fa-chevron-down" id="dropdown-toggle" style="display:block"></i>
-                    <i class="fas fa-chevron-up" id="dropdown-toggle" style="display:none"></i>
-                </button>
-                <ul class="dropdown-menu" id="dropdown-menu">
-                    <li><a href="#" onclick="area(this)">全部</a></li>
-                    <li><a href="#" onclick="area(this)">台北</a></li>
-                    <li><a href="#" onclick="area(this)">新北</a></li>
-                    <li><a href="#" onclick="area(this)">台中</a></li>
-                </ul>
-            <!-- </div> -->
+            <button type="button" class="btn dropdown-toggle" id="dropdown-toggle">
+                <i class="fas fa-chevron-down" id="dropdown-toggle" style="display:block"></i>
+                <i class="fas fa-chevron-up" id="dropdown-toggle" style="display:none"></i>
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu">
+                <li><a href="#" onclick="area(this)">全部</a></li>
+                <li><a href="#" onclick="area(this)">台北</a></li>
+                <li><a href="#" onclick="area(this)">新北</a></li>
+                <li><a href="#" onclick="area(this)">台中</a></li>
+            </ul>
             <input type="text" class="form-control" id="form-control" placeholder="搜尋..." autofocus autocomplete="off">
             <style id="c-search"></style>
             <button type="button" class="btn search" style="outline: none" id="searchitem">
