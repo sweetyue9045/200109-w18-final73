@@ -1,0 +1,282 @@
+\:root
+	--Dark: #679298
+	--Back: #ECF4F7
+	--Font: #264D52
+	--NAV_F: #ECF4F7
+	--UPBA: rgba(255, 255, 255, 0.5)
+*
+	margin: auto
+	padding: 0
+	box-sizing: border-box
+	position: relative
+	\::-webkit-scrollbar
+		width: 5px
+	\::-webkit-scrollbar-track
+		border-radius: 10px
+	\::-webkit-scrollbar-thumb
+		border-radius: 4px
+		background: #779ea3
+
+html,body
+	width: 100%
+	height: 100%
+	background-color: #fff
+	overflow-x: hidden
+	font-family: "微軟正黑體"
+
+.Carousel
+	width: 100%
+	height: 35vw
+	background-color: var(--Back)
+	overflow: hidden
+
+//----------Search CSS----------
+
+.input-group 
+	position: absolute
+	display: flex
+	align-items: flex-start 
+	border-collapse: separate 
+	width: 0px
+	top: 5vw
+	left: 5vw
+	margin: 0
+.form-control 
+	display: none
+	width: 100% 
+	height: 2.6vw 
+	// padding: 10px 0px
+	font-size: 1.1vw
+	color: #2c5155
+	background-color: rgba(0, 0, 0, 0)
+	border: 0.1vw solid var(--Dark)
+	border-left: 0px transparent 
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s 
+	outline: none
+	// margin-bottom: 0
+.form-control ::-webkit-input-placeholder
+	color: #4c777c
+.form-control:focus 
+	color: var(--Dark)
+	
+.btn 
+	display: inline-block 
+	padding: 0.65vw 0.9vw
+	height: 2.6vw 
+	font-size: 1.1vw
+	font-weight: 400 
+	text-align: center 
+	white-space: nowrap 
+	touch-action: manipulation 
+	cursor: pointer 
+	border: 0.1vw solid var(--Dark)
+	border-radius: 0.3vw
+	color: #4c777c
+	background-color: rgba(0, 0, 0, 0)
+	outline: none
+.search
+	background-color: var(--Dark)
+	color: #fff 
+
+.search:active, .open >.search
+	background-image: none 
+	background-color: #4c777c
+	border-color: #4c777c
+.dropdown-toggle
+	border-top-right-radius: 0 
+	border-bottom-right-radius: 0 
+	border-right: 0px transparent
+
+#dropdown-toggle
+	display: none
+
+.dropdown-menu 
+	position: absolute 
+	z-index: 1000 
+	display: none 
+	min-width: 4.5vw
+	padding: 0.4vw 0 
+	top: 3vw
+	font-size: 1.1vw
+	text-align: left 
+	list-style: none 
+	background-color: #ffffff91 
+	background-clip: padding-box 
+	border: 0.1vw solid var(--Dark)
+	border-radius: 0.3vw 
+	box-shadow: 0 6px 12px rgba(0,0,0,.175) 
+	a
+		display: block 
+		width: calc( 100% - 2px )
+		text-align: center
+		padding: 3px 5px 
+		clear: both 
+		font-weight: 400 
+		color: var(--Dark)
+		white-space: nowrap 
+		text-decoration: none 
+		background-color: transparent 
+	a:hover
+		background-color: #ffffffda 
+
+.topbox
+	width: 100%
+	height: 100%
+	background-color: #bcdce6
+	border-radius: 4px
+.bigcloud
+	position: absolute
+	width: 20%
+	top: 12%
+	right: -40%
+	animation: run 16s 8s linear infinite
+.smallcloud
+	position: absolute
+	width: 17%
+	top: 30%
+	right: -40%
+	animation: run2 16s linear infinite
+	z-index: 2
+.mountain
+	position: absolute
+	width: 88vw
+	height: 28vw
+	bottom: 0px
+	left: 50%
+	filter: contrast(90%)
+	transform: translateX(-50%) 
+.boy
+	position: absolute
+	width: 17%
+	bottom: -1px
+	right: 15%
+	height: 50%
+	z-index: 3
+	background-image: url("../im/小男孩-1.png") 
+	background-size: contain
+	background-repeat: no-repeat
+.Carousel:hover .boy
+	background-image: url("../im/小男孩-2.png") 
+
+.site_title
+	font-size: 1.55vw
+	color: var(--Font)
+	text-align: left
+	margin-left: 80px
+.site_content
+	margin-top: 40px
+
+@keyframes run
+		0%
+			right: -20%
+			top: 12%
+		10%
+			top: 17%
+		20%
+			top: 12%
+		30%
+			top: 7%
+		40%
+			top: 12%
+		50%
+			top: 17%
+		60%
+			top: 12%
+		70%
+			top: 7%
+		80%
+			top: 12%
+		90%
+			top: 17%
+		100%
+			right: 120%
+			top: 12%
+
+@keyframes run2
+		0%
+			right: -20%
+			top: 30%
+		10%
+			top: 25%
+		20%
+			top: 30%
+		30%
+			top: 35%
+		40%
+			top: 30%
+		50%
+			top: 25%
+		60%
+			top: 30%
+		70%
+			top: 35%
+		80%
+			top: 30%
+		90%
+			top: 25%
+		100%
+			right: 120%
+			top: 30%
+
+//----------content CSS----------
+.attraction_site
+	width: 85%
+	display: grid
+	grid-template-columns: 32% 32% 32%
+	grid-column-gap: 2%
+	grid-row-gap: 1.5vw
+.attraction_intbox
+	width: 100%
+	height: 18vw
+	overflow: hidden
+.attraction_hover
+	position: relative
+.attraction_hover img
+	height: 18vw
+	filter: contrast(110%)
+	left: 50%
+	transform: translateX(-50%)
+.intbox_mask
+	position: absolute
+	opacity: 0
+	width: 100%
+	height: 100%
+	background: rgba(8, 8, 8, 0.6)
+	color: rgba(247, 255, 252, 0.9)
+	font-size: 1.1vw
+	text-align: center
+	top: 0
+	line-height: 2.2vw
+	transition: all .4s
+.intbox_mask_text
+	top: 50%
+	left: 50%
+	transform: translate(-50%,-50%)
+
+.attraction_text
+	position: absolute
+	width: 100%
+	height: 4.7vw
+	bottom: 0px
+	background-color: rgba(0, 0, 0, 0.5)
+	transition: all .3s
+
+.intbox_title
+	font-size: 1.3vw
+	color: rgba(247, 255, 252, 0.9)
+	text-align: left
+	margin-left: 15px
+	padding-top: 1.3vw
+	display: inline-block
+
+.intbox_address
+	position: absolute
+	font-size: 1.3vw
+	color: rgba(247, 255, 252, 0.9)
+	right: 15px
+	padding-top: 1.3vw
+	display: inline-block
+.attraction_hover:hover>.intbox_mask
+	opacity: 1
+.attraction_hover:hover>.attraction_text
+	bottom: -100px

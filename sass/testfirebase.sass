@@ -22,7 +22,8 @@ html,body
 	height: 100%
 	background-color: #fff
 	font-family: "微軟正黑體"
-
+.site_title
+    margin-left: 2vw
 //loading    
 .spinner-border
     display: inline-block
@@ -98,6 +99,7 @@ select,input,textarea
     background-image: none
     font-size: 1.1vw
     line-height: inherit
+    height: 2.7vw
 textarea
     height: 8vw
     resize: none
@@ -107,21 +109,21 @@ input[name="datetimes"]
 .place
     padding: 2vw 3vw
     border: 1px solid #ccc
-    border-radius: 2vw
+    border-radius: 1.5vw
     margin: 1vw auto
     display: grid
     justify-content: start
     align-content: flex-start
-    grid-template-columns: 20% 20%
-    grid-row-gap: 0.8vw
     grid-column-gap: 0.5vw
     background-color: #f2f2f2
     text-align: left
-.placetop
-    grid-template-rows: repeat(5,4.5vw)
-.place0
     grid-template-columns: 50% 50%
     grid-column-gap: 0vw
+.placetop
+    grid-template-rows: repeat(5,4.5vw)
+    grid-template-columns: 10% 30%
+    grid-row-gap: 0.8vw
+    
 .place_
     margin: 0
     display: grid
@@ -129,6 +131,8 @@ input[name="datetimes"]
     align-content: flex-start
     grid-template-columns: 20% 60%
     grid-template-rows: repeat(7,4.5vw)
+    grid-row-gap: 0.8vw
+
     grid-column-gap: 0.5vw
 
 .input_main
@@ -141,3 +145,14 @@ input[name="datetimes"]
     text-align: left
     flex-direction: start
     margin: 1vw 0 
+
+.btnn
+    display: -webkit-box
+    -webkit-box-pack: end
+    padding: 0 1vw
+
+.btnn>.btn
+    margin-left: 1vw
+
+#submit
+    border: 1px solid #ccc

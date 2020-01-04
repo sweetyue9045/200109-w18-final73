@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/jquery-3.4.1.js"></script>
+    <script src="../js/testlogin.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+    <script src=" https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
+
+   
+
+    <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+    <script src="../js/daterangepicker.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="../css/testlogin.css" />
+
+</head>
+
+<body>
+    <h1>登入</h1>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="email" class="form-control-label">Email:</label>
+            <input type="text" class="form-control" id="email" placeholder="Exampe@mail.com">
+        </div>
+        <div class="form-group">
+            <label for="password" class="form-control-label">Email:</label>
+            <input type="password" class="form-control" id="password" placeholder="">
+        </div>
+        <div class="button-row">
+            <button type="button" class="btn" id="btnSignIn">登入</button>
+            <button type="button" class="btn" id="btnSignOut">登出</button>
+            <button type="button" class="btn" id="btnGoogleSingIn">google</button>
+            <button type="button" class="btn" id="facebookSingIn">facebook</button>
+        </div>
+        <div class="card-text" id="sign-info"></div>
+    </div>
+</body>
+
+</html>

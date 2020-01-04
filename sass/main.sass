@@ -1,0 +1,251 @@
+\:root
+  --Dark: #679298
+  --Back: #ECF4F7
+  --Font: #264D52
+  --NAV_F: #ECF4F7
+  --UPBA: rgba(255, 255, 255, 0.5)
+*
+	margin: auto
+	padding: 0
+	box-sizing: border-box
+	position: relative
+	\::-webkit-scrollbar
+		width: 5px
+	\::-webkit-scrollbar-track
+		border-radius: 10px
+	\::-webkit-scrollbar-thumb
+		border-radius: 4px
+		background: #779ea3
+
+html,body
+	width: 100%
+	height: 100%
+	background-color: #fff
+	font-family: "微軟正黑體"
+
+
+//----------header CSS----------
+header
+	display: flex
+	align-items: center
+	justify-content: space-between
+	width: 100%
+	background-color: var(--Dark)
+	padding: 0.6vw 7.5vw 0.4vw
+	a
+		margin: 0
+		text-decoration: none
+		height: 2vw
+.H_title
+	width: 10%
+	padding: 0
+.H_title a
+	text-decoration: none
+	color: var(--NAV_F)
+.H_title img
+	margin: 0.4vw 0 0 0 
+	height: 2.35vw
+nav
+	width: 90%
+.nav_bar
+	display: flex
+	align-items: center
+	justify-content: flex-end
+	width: 100%
+	margin-top: 1.5px
+.nav_bar li
+	margin: 0 1.55vw
+	font-size: 1.1vw
+	font-weight: bold
+	list-style-type: none
+.nav_bar a 
+	text-decoration: none
+	color: var(--NAV_F)
+#plusroute
+	display: none
+//----------container CSS----------
+.container
+	width: 100%
+	background-color: var(--Back)
+	padding: 4vw 8vw
+	min-height: calc(100vh - 12.35vw)
+	font-family: "微軟正黑體"
+.site_title
+	font-size: 1.55vw
+	color: var(--Font)
+	text-align: left
+    
+//----------footer CSS----------
+footer
+	width: 100%
+	background-color: var(--Dark)
+	padding: 1.8vw  7.5vw
+	display: flex
+	align-items: center
+	justify-content: space-between
+.F_left
+	width: 100%
+	font-size: 0.95vw
+	color: var(--NAV_F)
+.F_title
+	margin: 10px 0 0 0 
+.F_title img
+	height: 4vw
+
+//----------返回----------
+
+.backtotop
+	border-radius: 50%
+	display: scroll
+	position: fixed
+	bottom: -65px
+	right: 2vw
+	color: var(--Dark)
+	opacity: 1
+	&:hover
+		opacity: 0.8
+.fa-chevron-circle-up
+	font-size: 3vw
+
+/*----------介紹頁面----------
+
+.showintro
+	position: fixed
+	width: 100%
+	height: 100vh
+	z-index: 50
+	overflow-y: auto
+	overflow-x: hidden
+.showintro::-webkit-scrollbar 
+    display: none
+
+.introback
+	position: fixed
+	width: 100%
+	height: 100vh
+	background-color: rgba(0, 0, 0, 0.5)
+	z-index: 50
+
+.INTRO
+	position: relative
+	width: 65%
+	height: auto
+	border-radius: 5px
+	background-color: rgba(255, 255, 255, 1)
+	z-index: 55
+	margin: 2.5vw auto
+	color: var(--Font)
+.intro_top
+	position: relative
+	width: 100%
+	height: 3.5vw
+	border-bottom: 0.13vw solid #b9b9b9
+
+
+.closeBtn
+	cursor: pointer
+	position: absolute
+	font-size: 1.55vw
+	right: 1.5vw
+	top: 1.5vw
+	color: #b9b9b9
+	z-index: 100
+
+.intro_content
+	width: 90%
+	padding-top: 2vw
+	overflow-y: auto
+
+
+.closeBtn:hover
+	color: rgba(121, 121, 121, 0.6)
+.intro_intro
+	text-align: center
+.tourline_title
+	font-size: 1.55vw
+.tourline_intro
+	margin: 1vw auto 2vw
+	width: 70%
+	font-size: 0.95vw
+.tourArticle
+	padding-left: 6vw
+	margin-bottom: 5vw
+	padding-top: 2vw
+
+.tourArticle::before
+	content: ''
+	display: block
+	width: 0.15vw
+	height: calc(100% + 3vw)
+	background-color: var(--Dark)
+	position: absolute
+	left: calc((5vw - .2vw)/2)
+	top: 0px
+.tourArticle::after 
+    content: ''
+    display: block
+    width: 1vw
+    height: 1vw
+    border-radius: 100%
+    background-color: var(--Font)
+    position: absolute
+    left: 1.95vw
+    bottom: -3vw
+.tourtitle
+	padding-bottom: .5vw 
+	z-index: 10
+.tourtitle::after
+    content: ''
+    display: block
+    width: 1vw
+    height: 1vw
+    border-radius: 100%
+    background-color: var(--Font)
+    position: absolute
+    left: 1.95vw
+    bottom: -1vw
+.tourtitle>span
+	font-size: 1.1vw
+	margin-left: .18vw
+.tourlineBox
+	border: 0.1vw solid var(--Dark)
+	border-radius: 2vw
+	padding: 2vw
+	margin: 2vw 0
+	display: flex
+
+.tourlineBox:before, .tourlineBox_distance:before
+	content: ''
+	width: 3.5vw
+	height: 0.15vw
+	background-color: var(--Dark)
+	position: absolute
+	left: -3.6vw
+	top: 50%
+
+.showintro img
+	width: 50%
+	height: 100%
+	display: block
+	top: 0
+	border-radius: 1vw
+
+
+.tourlineSpots_Right
+	width: 50%
+	padding: 0 0 0 2.5vw
+	font-size: 1.1vw
+
+.tourlineSpots_title
+	font-size: 1.3vw
+	margin: 10px 0 
+.distancebtn
+	display: inline-block
+	color: var(--Dark)
+	margin-left: 1.5vw
+	line-height: 2.4vw
+	font-size: 1.1vw
+	border-bottom: 2px dashed var(--Dark)
+	a
+		text-decoration: none
+		color: var(--Dark)

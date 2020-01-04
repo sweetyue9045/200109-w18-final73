@@ -16,6 +16,16 @@ $(document).ready(function () {
     firebase.analytics();
     let db = firebase.database();
     let storageRef = firebase.storage().ref();
+    const auth = firebase.auth()
+    let loginuser
+    auth.onAuthStateChanged(function (user) {
+        if (user) {
+            console.log(`${user.uid} is login...`);
+            loginuser = user.uid
+        }
+        else console.log(`no one is login...`)
+    })
+
     //送出表單
     $("#submit").click(function () {
         $("#submit").html(`<span class= "spinner-border spinner-border-sm"></span>`)
@@ -33,7 +43,7 @@ $(document).ready(function () {
             } else if ($("#intro").val().replace(/\s+/g, "") == "") {
                 eval($("#submit").html(`送出`));
             } else {
-                db.ref('/' + $("#area").val() + '/' + $("#title").val().replace(/\//g, "\\") + '/').set(
+                db.ref('/' + loginuser + '/' + $("#area").val() + '/' + $("#title").val().replace(/\//g, "\\") + '/').set(
                     {
                         "title": $("#title").val(),
                         "route": $("#route").val(),
@@ -115,7 +125,7 @@ $(document).ready(function () {
             } else if ($('#input-file' + i).val() == "") {
                 places = []
                 $("#submit").html(`送出`);
-                $(".btn-info" + i).attr("style","background-color: #F08080; border-color: #F08080")
+                $(".btn-info" + i).attr("style", "background-color: #F08080; border-color: #F08080")
                 eval("document.form['input-file'].focus()")
             } else if ($("#mon" + i).val().replace(/\s+/g, "") == "") {
                 eval($("#submit").html(`送出`));
@@ -154,60 +164,78 @@ $(document).ready(function () {
     $("#addItem").click(function () {
         txtId++;
         let div = `<div class="place place${txtId}">
-        第 ${txtId + 1} 站<br>
-            地名：<input type="text" class="location" id="location${txtId}" autocomplete="off" required><br>
-            地址：<input type="text" class="address" id="address${txtId}" autocomplete="off" required><br>
-            介紹：<br><textarea type="text" class="contents" id="contents${txtId}" autocomplete="off" required></textarea><br>
-            開放時間：<br>
-            星期一：<select name="mon${txtId}" id="time${txtId}0" required>
-            <option value="">開放時間</option>
-            <option value="24小時營業">24小時營業</option>
-            <option value="休館">休館</option>
-            <option value="自訂">自訂</option>
-        </select><input type="text" name="datetimes" id="mon${txtId}" required autocomplete="off"><br>
-            星期二：<select name="tue${txtId}" id="time${txtId}1" required>
-            <option value="">開放時間</option>
-            <option value="24小時營業">24小時營業</option>
-            <option value="休館">休館</option>
-            <option value="自訂">自訂</option>
-        </select><input type="text" name="datetimes" id="tue${txtId}" required autocomplete="off"><br>
-            星期三：<select name="wed${txtId}" id="time${txtId}2" required>
-            <option value="">開放時間</option>
-            <option value="24小時營業">24小時營業</option>
-            <option value="休館">休館</option>
-            <option value="自訂">自訂</option>
-        </select><input type="text" name="datetimes" id="wed${txtId}" required autocomplete="off"><br>
-            星期四：<select name="thu${txtId}" id="time${txtId}3" required>
-            <option value="">開放時間</option>
-            <option value="24小時營業">24小時營業</option>
-            <option value="休館">休館</option>
-            <option value="自訂">自訂</option>
-        </select><input type="text" name="datetimes" id="thu${txtId}" required autocomplete="off"><br>
-            星期五：<select name="fri${txtId}" id="time${txtId}4" required>
-            <option value="">開放時間</option>
-            <option value="24小時營業">24小時營業</option>
-            <option value="休館">休館</option>
-            <option value="自訂">自訂</option>
-        </select><input type="text" name="datetimes" id="fri${txtId}" required autocomplete="off"><br>
-            星期六：<select name="sat${txtId}" id="time${txtId}5" required>
-            <option value="">開放時間</option>
-            <option value="24小時營業">24小時營業</option>
-            <option value="休館">休館</option>
-            <option value="自訂">自訂</option>
-        </select><input type="text" name="datetimes" id="sat${txtId}" required autocomplete="off"><br>
-            星期日：<select name="sun${txtId}" id="time${txtId}6" required>
-            <option value="">開放時間</option>
-            <option value="24小時營業">24小時營業</option>
-            <option value="休館">休館</option>
-            <option value="自訂">自訂</option>
-        </select><input type="text" name="datetimes" id="sun${txtId}" required autocomplete="off"><br>
-            <label class="btn btn-info bun-info${txtId}">
-                <input class="input-file" type="file" id="input-file${txtId}" name="${txtId}" accept="image/*" required />
-                <i class="fa fa-photo" id="i${txtId}"><span class= "sptext"> 選擇圖片</span></i>
-            </label>
-        </div>`
+                <div class="input_main">第 ${txtId + 1} 站</div></br>
+                <div class="place_">
+                    <div class="input_main">地名</div>
+                    <input type="text" class="input location" id="location${txtId}" autocomplete="off" required>
+                    <div class="input_main">地址</div>
+                    <input type="text" class="input address" id="address${txtId}" autocomplete="off" required>
+                    <div class="input_main">介紹</div>
+                    <textarea type="text" class="input contents" id="contents${txtId}" autocomplete="off" required></textarea>
+                </br><div class="input_main"></div>
+                    <div class="input_main">圖片</div>
+                    <label class="btn btn-info btn-info${txtId}">
+                        <input class="input-file" type="file" id="input-file${txtId}" name="${txtId}" accept="image/*" required />
+                        <i class="fa fa-image" id="i${txtId}z"><span class="sptext">選擇圖片</span></i>
+                    </label>
+                </div>
+                <div class="place_">
+                    <div class="input_main">星期一</div>
+                    <div class="input"><select name="mon${txtId}" id="time${txtId}0" required>
+                            <option value="">開放時間</option>
+                            <option value="24小時營業">24小時營業</option>
+                            <option value="休館">休館</option>
+                            <option value="自訂">自訂</option>
+                        </select>　<input type="text" name="datetimes" id="mon${txtId}" required autocomplete="off">
+                    </div>
+                    <div class="input_main">星期二</div>
+                    <div class="input"><select name="tue${txtId}" id="time${txtId}1" required>
+                            <option value="">開放時間</option>
+                            <option value="24小時營業">24小時營業</option>
+                            <option value="休館">休館</option>
+                            <option value="自訂">自訂</option>
+                        </select>　<input type="text" name="datetimes" id="tue${txtId}" required autocomplete="off">
+                    </div>
+                    <div class="input_main">星期三</div>
+                    <div class="input"><select name="wed${txtId}" id="time${txtId}2" required>
+                            <option value="">開放時間</option>
+                            <option value="24小時營業">24小時營業</option>
+                            <option value="休館">休館</option>
+                            <option value="自訂">自訂</option>
+                        </select>　<input type="text" name="datetimes" id="wed${txtId}" required autocomplete="off">
+                    </div>
+                    <div class="input_main">星期四</div>
+                    <div class="input"><select name="thu${txtId}" id="time${txtId}3" required>
+                            <option value="">開放時間</option>
+                            <option value="24小時營業">24小時營業</option>
+                            <option value="休館">休館</option>
+                            <option value="自訂">自訂</option>
+                        </select>　<input type="text" name="datetimes" id="thu${txtId}" required autocomplete="off"></div>
+                    <div class="input_main">星期五</div>
+                    <div class="input"><select name="fri${txtId}" id="time${txtId}4" required>
+                            <option value="">開放時間</option>
+                            <option value="24小時營業">24小時營業</option>
+                            <option value="休館">休館</option>
+                            <option value="自訂">自訂</option>
+                        </select>　<input type="text" name="datetimes" id="fri${txtId}" required autocomplete="off"></div>
+                    <div class="input_main">星期六</div>
+                    <div class="input"><select name="sat${txtId}" id="time${txtId}5" required>
+                            <option value="">開放時間</option>
+                            <option value="24小時營業">24小時營業</option>
+                            <option value="休館">休館</option>
+                            <option value="自訂">自訂</option>
+                        </select>　<input type="text" name="datetimes" id="sat${txtId}" required autocomplete="off"></div>
+                    <div class="input_main">星期日</div>
+                    <div class="input"><select name="sun${txtId}" id="time${txtId}6" required>
+                            <option value="">開放時間</option>
+                            <option value="24小時營業">24小時營業</option>
+                            <option value="休館">休館</option>
+                            <option value="自訂">自訂</option>
+                        </select>　<input type="text" name="datetimes" id="sun${txtId}" required autocomplete="off"></div>
+                </div>
+            </div>`
         $("#showBlock").append(div);
-        $("#del").attr("style", "display:block")
+        $("#del").attr("style", "display:inline-block")
         //時間外掛
         $('input[name="datetimes"]').daterangepicker({
             timePicker: true,
@@ -224,10 +252,7 @@ $(document).ready(function () {
     function time() {
         for (i = 0; i < 7; i++) {
             for (a = 0; a <= txtId; a++) {
-                console.log($("#time" + a + i))
-
                 $("#time" + a + i).change(function () {
-                    console.log($("#time" + a + i))
                     var timename = this.name
                     switch ($(this).val()) {
                         default:
@@ -293,10 +318,8 @@ $(document).ready(function () {
                     }).then(function (downloadURL) {
                         $("#i" + imgname).html(`<span class= "sptext">上傳成功</span>`)
                         img[imgname] = downloadURL
-                        console.log(img)
                     }).catch(function (error) {
                         $("#i" + imgname).html(`<span class= "sptext">上傳失敗</span>`)
-                        console.log(`failed`)
                     })
             })
         }

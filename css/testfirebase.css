@@ -1,0 +1,230 @@
+@charset "UTF-8";
+:root {
+  --Dark: #679298;
+  --Back: #ECF4F7;
+  --Font: #264D52;
+  --NAV_F: #ECF4F7;
+  --UPBA: rgba(255, 255, 255, 0.5);
+}
+
+* {
+  margin: auto;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+}
+
+* ::-webkit-scrollbar {
+  width: 5px;
+}
+
+* ::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+* ::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #779ea3;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  font-family: "微軟正黑體";
+}
+
+.site_title {
+  margin-left: 2vw;
+}
+
+.spinner-border {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  border: .25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: spinner-border .75s linear infinite;
+          animation: spinner-border .75s linear infinite;
+}
+
+.spinner-border-sm {
+  height: 0.8rem;
+  width: 0.8rem;
+  border-width: .2em;
+}
+
+.spinner-border-ss {
+  height: 0.6rem;
+  width: 0.6rem;
+  border-width: .15em;
+  margin-left: .4rem;
+}
+
+@-webkit-keyframes spinner-border {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-border {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+#del {
+  display: none;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+
+.btn-info:hover {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+
+.btn {
+  display: inline-block;
+  padding: .4vw .8vw;
+  margin-top: auto;
+  margin-left: 0;
+  font-size: 1vw;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: .4vw;
+  outline: none;
+}
+
+input[type=file] {
+  display: none;
+}
+
+.btnUpload {
+  display: none;
+}
+
+.sptext {
+  font-size: 1.1vw;
+  line-height: 1.1vw;
+  margin-left: .4rem;
+}
+
+select, input, textarea {
+  font-family: "微軟正黑體";
+  outline: none;
+  padding: .4vw .6vw;
+  border: 1px solid #ccc;
+  border-radius: .4vw;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: #fff;
+  background-image: none;
+  font-size: 1.1vw;
+  line-height: inherit;
+  height: 2.7vw;
+}
+
+textarea {
+  height: 8vw;
+  resize: none;
+}
+
+input[name="datetimes"] {
+  display: none;
+}
+
+.place {
+  padding: 2vw 3vw;
+  border: 1px solid #ccc;
+  border-radius: 1.5vw;
+  margin: 1vw auto;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  grid-column-gap: 0.5vw;
+  background-color: #f2f2f2;
+  text-align: left;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+  grid-column-gap: 0vw;
+}
+
+.placetop {
+  -ms-grid-rows: (4.5vw)[5];
+      grid-template-rows: repeat(5, 4.5vw);
+  -ms-grid-columns: 10% 30%;
+      grid-template-columns: 10% 30%;
+  grid-row-gap: 0.8vw;
+}
+
+.place_ {
+  margin: 0;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -ms-grid-columns: 20% 60%;
+      grid-template-columns: 20% 60%;
+  -ms-grid-rows: (4.5vw)[7];
+      grid-template-rows: repeat(7, 4.5vw);
+  grid-row-gap: 0.8vw;
+  grid-column-gap: 0.5vw;
+}
+
+.input_main {
+  font-size: 1.3vw;
+  margin: 1vw 0;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-weight: 500;
+}
+
+.input {
+  text-align: left;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: start;
+          flex-direction: start;
+  margin: 1vw 0;
+}
+
+.btnn {
+  display: -webkit-box;
+  -webkit-box-pack: end;
+  padding: 0 1vw;
+}
+
+.btnn > .btn {
+  margin-left: 1vw;
+}
+
+#submit {
+  border: 1px solid #ccc;
+}
+/*# sourceMappingURL=testfirebase.css.map */
