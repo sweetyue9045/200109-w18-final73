@@ -16,15 +16,15 @@
 }
 
 * ::-webkit-scrollbar {
-  width: 5px;
+  width: .5vw;
 }
 
 * ::-webkit-scrollbar-track {
-  border-radius: 10px;
+  border-radius: 1.0vw;
 }
 
 * ::-webkit-scrollbar-thumb {
-  border-radius: 4px;
+  border-radius: .4vw;
   background: #779ea3;
 }
 
@@ -113,8 +113,9 @@ select, input, textarea {
   font-family: "微軟正黑體";
   outline: none;
   padding: .4vw .6vw;
-  border: 1px solid #ccc;
+  border: 0.1vw solid #92b7bd;
   border-radius: .4vw;
+  color: #4c777c;
   -webkit-box-shadow: none;
           box-shadow: none;
   background-color: #fff;
@@ -135,8 +136,9 @@ input[name="datetimes"] {
 
 .place {
   padding: 2vw 3vw;
-  border: 1px solid #ccc;
+  border: .1vw solid #92b7bd;
   border-radius: 1.5vw;
+  background-color: #d6e8eb;
   margin: 1vw auto;
   display: -ms-grid;
   display: grid;
@@ -146,11 +148,11 @@ input[name="datetimes"] {
   -ms-flex-line-pack: start;
       align-content: flex-start;
   grid-column-gap: 0.5vw;
-  background-color: #f2f2f2;
   text-align: left;
   -ms-grid-columns: 50% 50%;
       grid-template-columns: 50% 50%;
   grid-column-gap: 0vw;
+  color: var(--Font);
 }
 
 .placetop {
@@ -207,6 +209,6 @@ input[name="datetimes"] {
 }
 
 #submit {
-  border: 1px solid #ccc;
+  border: .1vw solid #ccc;
 }
-/*# sourceMappingURL=testfirebase.css.map */
+/*# sourceMappingURL=plusroute.css.map */

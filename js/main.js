@@ -1,5 +1,7 @@
 //----------各種click----------
 var searchbar = 0;
+let loginuser
+
 $(function () {
 	//----------firebase----------
 	var firebaseConfig = {
@@ -15,6 +17,7 @@ $(function () {
 	firebase.initializeApp(firebaseConfig);
 	firebase.analytics();
 	const auth = firebase.auth()
+
 	auth.onAuthStateChanged(function (user) {
 		if (user) {
 			console.log(`${user.email} is login...`)
@@ -22,19 +25,24 @@ $(function () {
 			$("#btnSignOut").attr("style", "display:block")
 			$("#members").attr("style", "display:block")
 			$("#login").attr("style", "display:none")
-			
+			$("#like_btn").attr("disabled", false)
+			loginuser = user.uid
+
 		} else {
 			console.log(`no one is login...`)
 			$("#plusroute").attr("style", "display:none")
 			$("#btnSignOut").attr("style", "display:none")
 			$("#members").attr("style", "display:none")
 			$("#login").attr("style", "display:block")
+			$("#like_btn").attr("disabled", "disabled")
 
 		}
 	})
 	$('.loginback').click(function (event) {
 		$('.showlogin').fadeOut();
 	});
+
+
 
 	//----------各種scroll----------
 	var top = $('.container').offset().top - 55
@@ -50,10 +58,10 @@ $(function () {
 	$(window).scroll(function () {
 		if ($(this).scrollTop() > 100) {
 			if ($(this).scrollTop() < down - 600) $('#backtotop').stop().animate({ bottom: "2vw" });
-			else $('#backtotop').stop().animate({ bottom: "-65px" });
+			else $('#backtotop').stop().animate({ bottom: "-6.5vw" });
 		}
 		else {
-			$('#backtotop').stop().animate({ bottom: "-65px" });
+			$('#backtotop').stop().animate({ bottom: "-6.5vw" });
 		}
 	}).scroll();
 	$('#backtotop').click(function () { $('html,body').animate({ scrollTop: 0 }, 800); });
@@ -118,6 +126,7 @@ $(function () {
 	});
 
 	//----------行程----------
+	$('.showintro').hide();
 	//--選擇--
 	$("#CheckAll").click(function () {
 		$(".items:checkbox").prop("checked", false)
@@ -156,14 +165,11 @@ $(function () {
 		document.getElementById("route_content").style.display = "none";
 		route(choosearea)
 	})
-	$('.showintro').hide();
+	//--行程消失--
 	$('.introback').click(function (event) {
 		$('.showintro').fadeOut();
 	});
-	$('.closeBtn1').click(function (event) {
-		$('.showintro').fadeOut();
-	});
-	$('.closeBtn2').click(function (event) {
+	$('.closeBtn').click(function (event) {
 		$('.showintro').fadeOut();
 	});
 });
@@ -321,14 +327,36 @@ function showin(id) {
 	$(".tourline").empty()
 	$(".intro_intro").empty()
 	var route = firebase.database().ref().orderByKey();
-	route.on("value", function (only) {
+	let db = firebase.database();
+	var likebtn
+	const auth = firebase.auth()
+	route.once("value", function (only) {
 		only.forEach(function (area) {
 			area.forEach(function (myroute) {
 				myroute.forEach(function (title) {
 					var TData = title.val();
+					$("#like_btn").attr("name", id.id)
 					if (TData.title == id.id) {
+						
+						db.ref('/like/' + loginuser + '/' + TData.title).once("value", function (snapshop) {
+							if (snapshop.val()) { //在裡面
+								likebtn = "like"
+							} else if (snapshop.val() == null) { //不在裡面
+								likebtn = "dislike"
+								if(loginuser==null){
+									likebtn = "nlike"
+								}
+							}
+						});
+						auth.onAuthStateChanged(function (user) {
+							if (user) {
+								$("#like_btn").attr("disabled", false)
+							} else {
+								$("#like_btn").attr("disabled", "disabled")
+							}
+						})
 						var b = TData.place.length
-						$(".intro_intro").append('<div class="tourline_title">' + TData.title + '</div><div class="tourline_intro">' + TData.intro + '</div>')
+						$(".intro_intro").append('<div class="tourline_title">' + TData.title + '<button type="button" class="btn like_btn" onclick="getlike(this)" id="like_btn" name=""><i class="fas fa-heart '+likebtn+'" id="like_i"></i><span class="splike">收藏</span></button></div><div class="tourline_intro">' + TData.intro + '</div>')
 						for (x = 0; x < b; x++) {
 							$(".tourline").append('<div class="tourlineBox"><img src="' + TData.place[x].img + '"><div class="tourlineSpots_Right"><div class="tourlineSpots_title">' + TData.place[x].location + '</div>' + TData.place[x].contents + '</br>地址：' + TData.place[x].address + '<div id="tour_time' + x + '">開放時間：</br></div></div></div>')
 							for (i = 0; i < 7; i++) {
@@ -340,8 +368,8 @@ function showin(id) {
 							if (x < b - 1) {
 								$(".tourline").append('<div class="tourlineBox_distance"><div class="distancebtn"><i class="fas fa-map-marker-alt"></i><a href="https://www.google.com/maps/dir/' + TData.place[x].address + '/' + TData.place[x + 1].address + '" target="_blank">　點擊觀看路線　</a><i class="fas fa-map-marker-alt"></i></div></div>')
 							}
-
 						}
+						
 					}
 				})
 			})
@@ -379,12 +407,12 @@ function showlogin() {
 			</div>
 		</div>
 		<div class="form-group">
-			<button class="btn btni"><i class="fas fa-user"></i></button>
-			<input type="text" class="login_input" id="email" placeholder="Exampe@mail.com">
+			<button class="btn btni"><i class="fas fa-user" tabindex="-1"></i></button>
+			<input type="text" class="login_input" id="email" placeholder="Exampe@mail.com" tabindex="1" autocomplete="off">
 		</div>
 		<div class="form-group">
-			<button class="btn btni"><i class="fas fa-unlock-alt"></i></button>
-			<input type="password" class="login_input" id="password" placeholder="">
+			<button class="btn btni"><i class="fas fa-unlock-alt" tabindex="-1"></i></button>
+			<input type="password" class="login_input" id="password" placeholder="" tabindex="2" autocomplete="off">
 		</div>
 		<div class="forgot">忘記帳號 / 密碼 ?</div>
 		<div class="button-row">
@@ -443,4 +471,21 @@ function logout() {
 	$("#password").val('')
 	$("#sign-info").html("No one login...")
 	window.location.href = "../index.html"
+}
+function getlike(name) {
+	var name = name.name
+	//按愛心
+	let db = firebase.database();
+	db.ref('/like/' + loginuser + '/' + name).once("value", function (snapshop) {
+		if (snapshop.val()) {
+			db.ref('/like/' + loginuser + '/' + name).set({});
+			$("#like_i").attr("class", "fas fa-heart dislike")
+		} else if (snapshop.val() == null) {
+			db.ref('/like/' + loginuser + '/' + name ).update({
+				this: name
+			})
+			$("#like_i").attr("class", "fas fa-heart like")
+
+		}
+	});
 }

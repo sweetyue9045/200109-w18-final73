@@ -16,15 +16,15 @@
 }
 
 * ::-webkit-scrollbar {
-  width: 5px;
+  width: .5vw;
 }
 
 * ::-webkit-scrollbar-track {
-  border-radius: 10px;
+  border-radius: 1vw;
 }
 
 * ::-webkit-scrollbar-thumb {
-  border-radius: 4px;
+  border-radius: .4vw;
   background: #779ea3;
 }
 
@@ -52,7 +52,7 @@ html, body {
       -ms-flex-align: start;
           align-items: flex-start;
   border-collapse: separate;
-  width: 0px;
+  width: 0;
   top: 5vw;
   left: 5vw;
   margin: 0;
@@ -64,9 +64,9 @@ html, body {
   height: 2.6vw;
   font-size: 1.1vw;
   color: #2c5155;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   border: 0.1vw solid var(--Dark);
-  border-left: 0px transparent;
+  border-left: 0 transparent;
   border-radius: 0vw;
   -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
@@ -75,23 +75,14 @@ html, body {
   outline: none;
 }
 
-.form-control ::-webkit-input-placeholder {
-  color: #4c777c;
-}
-
-.form-control:focus {
-  color: var(--Dark);
-}
-
 .search {
   height: 2.6vw;
   border: 0.1vw solid var(--Dark);
   border-radius: 0.3vw;
   color: #4c777c;
-  background-color: rgba(0, 0, 0, 0);
   background-color: var(--Dark);
   color: #fff;
-  padding: 0.55vw 0.9vw;
+  padding: 0.4vw 0.9vw;
 }
 
 .search:active, .open > .search {
@@ -109,7 +100,7 @@ html, body {
   background-color: rgba(0, 0, 0, 0);
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  border-right: 0px transparent;
+  border-right: 0 transparent;
 }
 
 #dropdown-toggle {
@@ -130,15 +121,15 @@ html, body {
   background-clip: padding-box;
   border: 0.1vw solid var(--Dark);
   border-radius: 0.3vw;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  -webkit-box-shadow: 0 0.6vw 1.2vw rgba(0, 0, 0, 0.175);
+          box-shadow: 0 0.6vw 1.2vw rgba(0, 0, 0, 0.175);
 }
 
 .dropdown-menu a {
   display: block;
-  width: calc( 100% - 2px);
+  width: calc( 100% - 0.2vw);
   text-align: center;
-  padding: 3px 5px;
+  padding: .3vw .5vw;
   clear: both;
   font-weight: 400;
   color: var(--Dark);
@@ -155,7 +146,7 @@ html, body {
   width: 100%;
   height: 100%;
   background-color: #bcdce6;
-  border-radius: 4px;
+  border-radius: .4vw;
 }
 
 .bigcloud {
@@ -181,7 +172,7 @@ html, body {
   position: absolute;
   width: 88vw;
   height: 28vw;
-  bottom: 0px;
+  bottom: 0;
   left: 50%;
   -webkit-filter: contrast(90%);
           filter: contrast(90%);
@@ -192,7 +183,7 @@ html, body {
 .boy {
   position: absolute;
   width: 17%;
-  bottom: -1px;
+  bottom: -0.1vw;
   right: 15%;
   height: 50%;
   z-index: 3;
@@ -209,11 +200,11 @@ html, body {
   font-size: 1.55vw;
   color: var(--Font);
   text-align: left;
-  margin-left: 80px;
+  margin-left: 8vw;
 }
 
 .site_content {
-  margin-top: 40px;
+  margin-top: 4vw;
 }
 
 @-webkit-keyframes run {
@@ -423,7 +414,7 @@ html, body {
   position: absolute;
   width: 100%;
   height: 4.7vw;
-  bottom: 0px;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   -webkit-transition: all .3s;
   transition: all .3s;
@@ -433,7 +424,7 @@ html, body {
   font-size: 1.3vw;
   color: rgba(247, 255, 252, 0.9);
   text-align: left;
-  margin-left: 15px;
+  margin-left: 1.5vw;
   padding-top: 1.3vw;
   display: inline-block;
 }
@@ -442,7 +433,7 @@ html, body {
   position: absolute;
   font-size: 1.3vw;
   color: rgba(247, 255, 252, 0.9);
-  right: 15px;
+  right: 1.5vw;
   padding-top: 1.3vw;
   display: inline-block;
 }
@@ -452,6 +443,6 @@ html, body {
 }
 
 .attraction_hover:hover > .attraction_text {
-  bottom: -100px;
+  bottom: -10vw;
 }
 /*# sourceMappingURL=attraction.css.map */

@@ -10,11 +10,11 @@
 	box-sizing: border-box
 	position: relative
 	\::-webkit-scrollbar
-		width: 5px
+		width: .5vw
 	\::-webkit-scrollbar-track
-		border-radius: 10px
+		border-radius: 1.0vw
 	\::-webkit-scrollbar-thumb
-		border-radius: 4px
+		border-radius: .4vw
 		background: #779ea3
 
 html,body
@@ -52,7 +52,6 @@ nav
 	align-items: center
 	justify-content: flex-end
 	width: 100%
-	margin-top: 1.5px
 .nav_bar li
 	margin: 0 1.55vw
 	font-size: 1.1vw
@@ -86,7 +85,7 @@ nav
 	white-space: nowrap
 	touch-action: manipulation
 	cursor: pointer
-	border: 1px solid transparent
+	border: .1vw solid transparent
 	border-radius: .4vw
 	outline: none
 	font-family: "微軟正黑體"
@@ -95,7 +94,7 @@ select,input,textarea
 	font-family: "微軟正黑體"
 	outline: none
 	padding: .4vw .6vw
-	border: 1px solid #ccc
+	border: .1vw solid #ccc
 	border-radius: .4vw
 	box-shadow: none
 	background-color: #fff
@@ -103,8 +102,14 @@ select,input,textarea
 	font-size: 1.1vw
 	line-height: inherit
 	height: 2.7vw
+input
+	color: #4c777c
 input::placeholder
 	opacity: 0.5
+input::-webkit-input-placeholder
+	color: #4c777c
+input:focus 
+	color: var(--Dark)
 //----------footer CSS----------
 footer
 	width: 100%
@@ -118,7 +123,7 @@ footer
 	font-size: 0.95vw
 	color: var(--NAV_F)
 .F_title
-	margin: 10px 0 0 0 
+	margin: 1vw 0 0 0 
 .F_title img
 	height: 4vw
 
@@ -128,7 +133,7 @@ footer
 	border-radius: 50%
 	display: scroll
 	position: fixed
-	bottom: -65px
+	bottom: -6.5vw
 	right: 2vw
 	color: var(--Dark)
 	opacity: 1
@@ -160,7 +165,7 @@ footer
 	position: relative
 	width: 65%
 	height: auto
-	border-radius: 5px
+	border-radius: .5vw
 	background-color: rgba(255, 255, 255, 1)
 	z-index: 55
 	margin: 2.5vw auto
@@ -193,6 +198,17 @@ footer
 	text-align: center
 .tourline_title
 	font-size: 1.55vw
+.like_btn
+	background-color: var(--Dark)
+.like
+	color: red
+.dislike
+	color: white
+.nlike
+	color: gray
+.splike
+	color: white
+	margin-left: .5vw
 .tourline_intro
 	margin: 1vw auto 2vw
 	width: 70%
@@ -210,7 +226,7 @@ footer
 	background-color: var(--Dark)
 	position: absolute
 	left: calc((5vw - .2vw)/2)
-	top: 0px
+	top: 0
 .tourArticle::after 
 	content: ''
 	display: block
@@ -268,14 +284,14 @@ footer
 
 .tourlineSpots_title
 	font-size: 1.3vw
-	margin: 10px 0 
+	margin: 1vw 0 
 .distancebtn
 	display: inline-block
 	color: var(--Dark)
 	margin-left: 1.5vw
 	line-height: 2.4vw
 	font-size: 1.1vw
-	border-bottom: 2px dashed var(--Dark)
+	border-bottom: .2vw dashed var(--Dark)
 	a
 		text-decoration: none
 		color: var(--Dark)
@@ -308,7 +324,7 @@ footer
 	color: var(--Font)
 	display: grid
 	justify-items: center
-	grid-gap: 5px
+	grid-gap: .5vw
 	padding: 5vw 0
 
 .login_or
@@ -341,12 +357,13 @@ hr
 	height: 2.8vw 
 	color: #fff
 	display: flex
-	// justify-items: center
+	padding-top: 0.45vw
 
 .btnL>span
 	font-size: 1.2vw
 	font-family: "微軟正黑體"
 	margin: 0
+	margin-left: .7vw
 .btnfa
 	font-size: 1.5vw
 .btnF
@@ -364,9 +381,10 @@ hr
 	border: 0.1vw solid var(--Dark)
 	border-top-left-radius: 0
 	border-bottom-left-radius: 0
-	border-left: 0px transparent
+	border-left: 0 transparent
 	margin: 0
 	font-size: 1.3vw
+	padding-left: 0
 .btni
 	margin: 0
 	width: 5vw
@@ -377,8 +395,8 @@ hr
 	border-radius: 20vw
 	border-top-right-radius: 0 
 	border-bottom-right-radius: 0 
-	border-right: 0px transparent
-	font-size: 1.5vw
+	border-right:  transparent
+	font-size: 1.3vw
 .forgot
 	width: 23vw
 	font-size: 0.95vw

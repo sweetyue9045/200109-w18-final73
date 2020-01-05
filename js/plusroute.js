@@ -176,7 +176,7 @@ $(document).ready(function () {
                     <div class="input_main">圖片</div>
                     <label class="btn btn-info btn-info${txtId}">
                         <input class="input-file" type="file" id="input-file${txtId}" name="${txtId}" accept="image/*" required />
-                        <i class="fa fa-image" id="i${txtId}z"><span class="sptext">選擇圖片</span></i>
+                        <i class="fa fa-image" id="i${txtId}"></i><span class="sptext">選擇圖片</span>
                     </label>
                 </div>
                 <div class="place_">

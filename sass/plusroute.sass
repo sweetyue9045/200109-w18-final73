@@ -10,11 +10,11 @@
 	box-sizing: border-box
 	position: relative
 	\::-webkit-scrollbar
-		width: 5px
+		width: .5vw
 	\::-webkit-scrollbar-track
-		border-radius: 10px
+		border-radius: 1.0vw
 	\::-webkit-scrollbar-thumb
-		border-radius: 4px
+		border-radius: .4vw
 		background: #779ea3
 
 html,body
@@ -22,6 +22,7 @@ html,body
 	height: 100%
 	background-color: #fff
 	font-family: "微軟正黑體"
+
 .site_title
 	margin-left: 2vw
 //loading	
@@ -76,8 +77,9 @@ select,input,textarea
 	font-family: "微軟正黑體"
 	outline: none
 	padding: .4vw .6vw
-	border: 1px solid #ccc
+	border: 0.1vw solid #92b7bd
 	border-radius: .4vw
+	color: #4c777c
 	box-shadow: none
 	background-color: #fff
 	background-image: none
@@ -92,17 +94,20 @@ input[name="datetimes"]
 
 .place
 	padding: 2vw 3vw
-	border: 1px solid #ccc
+	border: .1vw solid #92b7bd
 	border-radius: 1.5vw
+	background-color: #d6e8eb
 	margin: 1vw auto
 	display: grid
 	justify-content: start
 	align-content: flex-start
 	grid-column-gap: 0.5vw
-	background-color: #f2f2f2
+	// background-color: var(--UPBA)
+	// box-shadow: 0 .4vw .8vw 0 rgba(0,0,0,0.2)
 	text-align: left
 	grid-template-columns: 50% 50%
 	grid-column-gap: 0vw
+	color: var(--Font)
 .placetop
 	grid-template-rows: repeat(5,4.5vw)
 	grid-template-columns: 10% 30%
@@ -139,4 +144,4 @@ input[name="datetimes"]
 	margin-left: 1vw
 
 #submit
-	border: 1px solid #ccc
+	border: .1vw solid #ccc
