@@ -306,4 +306,8 @@ function showin(id) {
 	}, 'json')
 	$('.showintro').fadeIn();
 }
-
+// 漢堡
+$(function() {
+    $('nav#menu').mmenu();
+});
+// 漢堡結束
