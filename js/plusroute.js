@@ -19,40 +19,56 @@ $(document).ready(function () {
     const auth = firebase.auth()
     let loginuser
     auth.onAuthStateChanged(function (user) {
-        if (user) {
-            console.log(`${user.uid} is login...`);
-            loginuser = user.uid
-        }
-        else console.log(`no one is login...`)
-    })
+		if (user) {
+			console.log(`${user.email} is login...`)
+			$("#plusroute").attr("style", "display:block")
+			$("#btnSignOut").attr("style", "display:block")
+			$("#members").attr("style", "display:block")
+			$("#login").attr("style", "display:none")
+			$("#like_btn").attr("disabled", false)
+			loginuser = user.uid
+
+		} else {
+			loginuser = ""
+			console.log(`"${loginuser}"no one is login...`)
+			$("#plusroute").attr("style", "display:none")
+			$("#btnSignOut").attr("style", "display:none")
+			$("#members").attr("style", "display:none")
+			$("#login").attr("style", "display:block")
+			$("#like_btn").attr("disabled", "disabled")
+			
+		}
+	})
 
     //送出表單
     $("#submit").click(function () {
-        $("#submit").html(`<span class= "spinner-border spinner-border-sm"></span>`)
-        place()
-        submit()
-        function submit() {
-            if ($("#area").val().replace(/\s+/g, "") == "") {
-                eval($("#submit").html(`送出`));
-            } else if ($("#county").val().replace(/\s+/g, "") == "") {
-                eval($("#submit").html(`送出`));
-            } else if ($("#title").val().replace(/\s+/g, "") == "") {
-                eval($("#submit").html(`送出`));
-            } else if ($("#route").val().replace(/\s+/g, "") == "") {
-                eval($("#submit").html(`送出`));
-            } else if ($("#intro").val().replace(/\s+/g, "") == "") {
-                eval($("#submit").html(`送出`));
-            } else {
-                db.ref('/' + loginuser + '/' + $("#area").val() + '/' + $("#title").val().replace(/\//g, "\\") + '/').set(
-                    {
-                        "title": $("#title").val(),
-                        "route": $("#route").val(),
-                        "intro": $("#intro").val().replace(/\r\n|\n/g, "</br>"),
-                        "place":
-                            places,
-                        "county": $("#county").val()
-                    })
-                window.location.href = "../html/route.html"
+        $("#submit").html(`<span class= "spinner-border spinner-border-sl"></span>`)
+        if (confirm("確認送出嗎?")) {
+            place()
+            submit()
+            function submit() {
+                if ($("#area").val().replace(/\s+/g, "") == "") {
+                    eval($("#submit").html(`送出`));
+                } else if ($("#county").val().replace(/\s+/g, "") == "") {
+                    eval($("#submit").html(`送出`));
+                } else if ($("#title").val().replace(/\s+/g, "") == "") {
+                    eval($("#submit").html(`送出`));
+                } else if ($("#route").val().replace(/\s+/g, "") == "") {
+                    eval($("#submit").html(`送出`));
+                } else if ($("#intro").val().replace(/\s+/g, "") == "") {
+                    eval($("#submit").html(`送出`));
+                } else {
+                    db.ref('/' + loginuser + '/' + $("#area").val() + '/' + $("#title").val().replace(/\//g, "\\") + '/').set(
+                        {
+                            "title": $("#title").val(),
+                            "route": $("#route").val(),
+                            "intro": $("#intro").val().replace(/\r\n|\n/g, "</br>"),
+                            "place":
+                                places,
+                            "county": $("#county").val()
+                        })
+                    window.location.href = "../html/route.html"
+                }
             }
         }
     })
@@ -147,13 +163,34 @@ $(document).ready(function () {
                     "address": $("#address" + i).val(),
                     "contents": $("#contents" + i).val().replace(/\r\n|\n/g, "</br>"),
                     "time": [
-                        { "week": $("#mon" + i).val() },
-                        { "week": $("#tue" + i).val() },
-                        { "week": $("#wed" + i).val() },
-                        { "week": $("#thu" + i).val() },
-                        { "week": $("#fri" + i).val() },
-                        { "week": $("#sat" + i).val() },
-                        { "week": $("#sun" + i).val() }
+                        {
+                            "check": $("#time" + i + "0").val(),
+                            "week": $("#mon" + i).val()
+                        },
+                        {
+                            "check": $("#time" + i + "1").val(),
+                            "week": $("#tue" + i).val()
+                        },
+                        {
+                            "check": $("#time" + i + "2").val(),
+                            "week": $("#wed" + i).val()
+                        },
+                        {
+                            "check": $("#time" + i + "3").val(),
+                            "week": $("#thu" + i).val()
+                        },
+                        {
+                            "check": $("#time" + i + "4").val(),
+                            "week": $("#fri" + i).val()
+                        },
+                        {
+                            "check": $("#time" + i + "5").val(),
+                            "week": $("#sat" + i).val()
+                        },
+                        {
+                            "check": $("#time" + i + "6").val(),
+                            "week": $("#sun" + i).val()
+                        }
                     ],
                     "img": img[i]
                 })
@@ -176,7 +213,8 @@ $(document).ready(function () {
                     <div class="input_main">圖片</div>
                     <label class="btn btn-info btn-info${txtId}">
                         <input class="input-file" type="file" id="input-file${txtId}" name="${txtId}" accept="image/*" required />
-                        <i class="fa fa-image" id="i${txtId}"></i><span class="sptext">選擇圖片</span>
+                        <span id="i${txtId}">
+                        <i class="fa fa-image"></i><span class="sptext">選擇圖片</span></span>
                     </label>
                 </div>
                 <div class="place_">
@@ -184,7 +222,7 @@ $(document).ready(function () {
                     <div class="input"><select name="mon${txtId}" id="time${txtId}0" required>
                             <option value="">開放時間</option>
                             <option value="24小時營業">24小時營業</option>
-                            <option value="休館">休館</option>
+                            <option value="公休">公休</option>
                             <option value="自訂">自訂</option>
                         </select>　<input type="text" name="datetimes" id="mon${txtId}" required autocomplete="off">
                     </div>
@@ -192,7 +230,7 @@ $(document).ready(function () {
                     <div class="input"><select name="tue${txtId}" id="time${txtId}1" required>
                             <option value="">開放時間</option>
                             <option value="24小時營業">24小時營業</option>
-                            <option value="休館">休館</option>
+                            <option value="公休">公休</option>
                             <option value="自訂">自訂</option>
                         </select>　<input type="text" name="datetimes" id="tue${txtId}" required autocomplete="off">
                     </div>
@@ -200,7 +238,7 @@ $(document).ready(function () {
                     <div class="input"><select name="wed${txtId}" id="time${txtId}2" required>
                             <option value="">開放時間</option>
                             <option value="24小時營業">24小時營業</option>
-                            <option value="休館">休館</option>
+                            <option value="公休">公休</option>
                             <option value="自訂">自訂</option>
                         </select>　<input type="text" name="datetimes" id="wed${txtId}" required autocomplete="off">
                     </div>
@@ -208,28 +246,28 @@ $(document).ready(function () {
                     <div class="input"><select name="thu${txtId}" id="time${txtId}3" required>
                             <option value="">開放時間</option>
                             <option value="24小時營業">24小時營業</option>
-                            <option value="休館">休館</option>
+                            <option value="公休">公休</option>
                             <option value="自訂">自訂</option>
                         </select>　<input type="text" name="datetimes" id="thu${txtId}" required autocomplete="off"></div>
                     <div class="input_main">星期五</div>
                     <div class="input"><select name="fri${txtId}" id="time${txtId}4" required>
                             <option value="">開放時間</option>
                             <option value="24小時營業">24小時營業</option>
-                            <option value="休館">休館</option>
+                            <option value="公休">公休</option>
                             <option value="自訂">自訂</option>
                         </select>　<input type="text" name="datetimes" id="fri${txtId}" required autocomplete="off"></div>
                     <div class="input_main">星期六</div>
                     <div class="input"><select name="sat${txtId}" id="time${txtId}5" required>
                             <option value="">開放時間</option>
                             <option value="24小時營業">24小時營業</option>
-                            <option value="休館">休館</option>
+                            <option value="公休">公休</option>
                             <option value="自訂">自訂</option>
                         </select>　<input type="text" name="datetimes" id="sat${txtId}" required autocomplete="off"></div>
                     <div class="input_main">星期日</div>
                     <div class="input"><select name="sun${txtId}" id="time${txtId}6" required>
                             <option value="">開放時間</option>
                             <option value="24小時營業">24小時營業</option>
-                            <option value="休館">休館</option>
+                            <option value="公休">公休</option>
                             <option value="自訂">自訂</option>
                         </select>　<input type="text" name="datetimes" id="sun${txtId}" required autocomplete="off"></div>
                 </div>
@@ -266,8 +304,8 @@ $(document).ready(function () {
                             $("#" + timename).attr("style", "display:inline-block")
                             $("#" + timename).attr("disabled", true)
                             break;
-                        case "休館":
-                            document.getElementById(this.name).value = "休館"
+                        case "公休":
+                            document.getElementById(this.name).value = "公休"
                             $("#" + timename).attr("style", "display:inline-block")
                             $("#" + timename).attr("disabled", true)
 
@@ -309,17 +347,17 @@ $(document).ready(function () {
             $("#input-file" + i).change(function () {
                 var imgname = this.name
                 filePath[imgname] = this.files[0]
-                $("#i" + imgname).html(`<span class= "spinner-border spinner-border-ss"></span>`)
+                $("#i" + imgname).html(`<span class= "spinner-border spinner-border-sl"></span>`)
                 let fileRef = storageRef.child(`${$("#title").val().replace(/\//g, "\\")}/${filePath[imgname].name}`)
                 fileRef.put(filePath[imgname])
                     .then(function (snapshot) {
-                        $("#i" + imgname).html(`<span class= "sptext">上傳成功</span>`)
+                        $("#i" + imgname).html(`<i class="fa fa-image"></i><span class= "sptext">上傳成功</span>`)
                         return snapshot.ref.getDownloadURL()
                     }).then(function (downloadURL) {
-                        $("#i" + imgname).html(`<span class= "sptext">上傳成功</span>`)
+                        $("#i" + imgname).html(`<i class="fa fa-image"></i><span class= "sptext">上傳成功</span>`)
                         img[imgname] = downloadURL
                     }).catch(function (error) {
-                        $("#i" + imgname).html(`<span class= "sptext">上傳失敗</span>`)
+                        $("#i" + imgname).html(`<i class="fa fa-image"></i><span class= "sptext">上傳失敗</span>`)
                     })
             })
         }
@@ -339,3 +377,12 @@ Array.prototype.remove = function () {
     return this;
 }
 
+function logout() {
+	const auth = firebase.auth()
+	auth.signOut()
+	$("#email").val('')
+	$("#password").val('')
+	$("#sign-info").html("No one login...")
+	window.location.href = "../index.html"
+	loginuser = ""
+}

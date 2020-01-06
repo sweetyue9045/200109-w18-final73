@@ -35,7 +35,11 @@ html,body
 	border-right-color: transparent
 	border-radius: 50%
 	animation: spinner-border .75s linear infinite
-
+.spinner-border-sl
+	height: 1rem
+	width: 1rem
+	border-width: .2em
+	top: -1.2px
 .spinner-border-sm
 	height: 0.8rem
 	width: 0.8rem
@@ -91,7 +95,9 @@ textarea
 	resize: none
 input[name="datetimes"]
 	display: none
-
+input[disabled="disabled"]
+    border: 0.1vw solid #b4b4b4
+    color: #747474
 .place
 	padding: 2vw 3vw
 	border: .1vw solid #92b7bd
@@ -144,4 +150,10 @@ input[name="datetimes"]
 	margin-left: 1vw
 
 #submit
-	border: .1vw solid #ccc
+	border: 0.1vw solid #588288
+	color: #fff
+	background-color: #588288
+#submit:hover
+	border: 0.1vw solid #426d72
+	color: #fff
+	background-color: #4c777c

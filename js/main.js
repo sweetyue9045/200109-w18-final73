@@ -1,6 +1,7 @@
 //----------各種click----------
 var searchbar = 0;
-let loginuser
+let loginuser="";
+let likedata = []
 
 $(function () {
 	//----------firebase----------
@@ -29,13 +30,14 @@ $(function () {
 			loginuser = user.uid
 
 		} else {
-			console.log(`no one is login...`)
+			loginuser = ""
+			console.log(`"${loginuser}"no one is login...`)
 			$("#plusroute").attr("style", "display:none")
 			$("#btnSignOut").attr("style", "display:none")
 			$("#members").attr("style", "display:none")
 			$("#login").attr("style", "display:block")
 			$("#like_btn").attr("disabled", "disabled")
-
+			
 		}
 	})
 	$('.loginback').click(function (event) {
@@ -67,10 +69,7 @@ $(function () {
 	$('#backtotop').click(function () { $('html,body').animate({ scrollTop: 0 }, 800); });
 	var slide = 0;
 	//----------景點----------
-	//--輪播速度--
-	$('.carousel').carousel({
-		interval: 3500
-	})
+	
 	//--預設地點點擊--
 	$("#dropdown-toggle").click(function () {
 		$("#dropdown-menu").slideToggle("");
@@ -182,19 +181,29 @@ function home_route() {
 	var route = firebase.database().ref();
 	route.on("value", function (only) {
 		only.forEach(function (area) {
-			area.forEach(function (myroute) {
-				myroute.forEach(function (title) {
-					var TData = title.val();
-					route_box.push(TData.title)
-					for (k = 0; k < 5; k++) {
-						if (TData.title == route_box[k]) {
-							$("#route_box").append('<div class="route_content"><a id="' + TData.title + '" " onclick="showin(this)"><div class="route_left"><img src="' + TData.place[0].img + '" alt=""></div><div class="route_right"><div class="route_title">' + TData.title + '</div><div class="route_text">' + TData.route + '</div></div></a></div>')
+			if (area.key != "like") {
+				area.forEach(function (myroute) {
+					myroute.forEach(function (title) {
+						var TData = title.val();
+						route_box.push(TData.title)
+						for (k = 0; k < 5; k++) {
+							if (TData.title == route_box[k]) {
+								$("#route_box").append('<div class="route_content"><a id="' + TData.title + '" " onclick="showin(this)"><div class="route_left"><img src="' + TData.place[0].img + '" alt=""></div><div class="route_right"><div class="route_title">' + TData.title + '</div><div class="route_text">' + TData.route + '</div></div></a></div>')
+							}
 						}
-					}
+					})
 				})
-			})
+			}
 		})
 	})
+	$("#route_box").append('<div class="route_content route_plus_content"><a id="route_plus" onclick="routeplus(this)"><div class="route_left"><div class="bus"><div class="fbus"><i class="fas fa-bus"></i></div><div class="fplus"><i class="fas fa-plus-circle"></i></div></div></div><div class="route_right"><div class="route_title">創建我的景點路線</div></div></a></div>')
+}
+function routeplus(){
+	if(loginuser==""){
+		showlogin()
+	}else {
+		window.location.href = "html/plusroute.html"
+	}
 }
 //--抓資料庫--
 function home(x) {
@@ -261,24 +270,26 @@ function area(area) {
 function route(myroutefun) {
 	$("#route_content").empty()
 	var route = firebase.database().ref().orderByKey();
-	route.on("value", function (only) {
+	route.once("value", function (only) {
 		only.forEach(function (area) {
-			area.forEach(function (myroute) {
-				myroute.forEach(function (title) {
-					var TData = title.val();
-					if (myroutefun != null) {
-						for (k = 0; k < choosearea.length; k++) {
-							if (myroute.key == choosearea[k]) {
-								$("#route_content").append('<div class="wrap" data-index="' + TData.title + ' ' + TData.county + '"><a class="name" id="' + TData.title + '" onclick="showin(this)"><div class="wrap_img"><img src="' + TData.place[0].img + '" alt=""></div><div class="wrap_text"><div class="wrap_title">' + TData.title + '</div><div class="wrap_route">' + TData.route + '</div></div></a></div>')
+			if (area.key != "like") {
+				area.forEach(function (myroute) {
+					myroute.forEach(function (title) {
+						var TData = title.val();
+						if (myroutefun != null) {
+							for (k = 0; k < choosearea.length; k++) {
+								if (myroute.key == choosearea[k]) {
+									$("#route_content").append('<div class="wrap" data-index="' + TData.title + ' ' + TData.county + '"><a class="name" id="' + TData.title + '" onclick="showin(this)"><div class="wrap_img"><img src="' + TData.place[0].img + '" alt=""></div><div class="wrap_text"><div class="wrap_title">' + TData.title + '</div><div class="wrap_route">' + TData.route + '</div></div></a></div>')
+								}
 							}
 						}
-					}
-					if (myroutefun == null) {
-						$("#route_content").append('<div class="wrap" data-index="' + TData.title + ' ' + TData.county + '"><a class="name" id="' + TData.title + '" onclick="showin(this)"><div class="wrap_img"><img src="' + TData.place[0].img + '" alt=""></div><div class="wrap_text"><div class="wrap_title">' + TData.title + '</div><div class="wrap_route">' + TData.route + '</div></div></a></div>')
-						choosearea = []
-					}
+						if (myroutefun == null) {
+							$("#route_content").append('<div class="wrap" data-index="' + TData.title + ' ' + TData.county + '"><a class="name" id="' + TData.title + '" onclick="showin(this)"><div class="wrap_img"><img src="' + TData.place[0].img + '" alt=""></div><div class="wrap_text"><div class="wrap_title">' + TData.title + '</div><div class="wrap_route">' + TData.route + '</div></div></a></div>')
+							choosearea = []
+						}
+					})
 				})
-			})
+			}
 		})
 	})
 	$("#route_content").fadeIn()
@@ -332,47 +343,49 @@ function showin(id) {
 	const auth = firebase.auth()
 	route.once("value", function (only) {
 		only.forEach(function (area) {
-			area.forEach(function (myroute) {
-				myroute.forEach(function (title) {
-					var TData = title.val();
-					$("#like_btn").attr("name", id.id)
-					if (TData.title == id.id) {
-						
-						db.ref('/like/' + loginuser + '/' + TData.title).once("value", function (snapshop) {
-							if (snapshop.val()) { //在裡面
-								likebtn = "like"
-							} else if (snapshop.val() == null) { //不在裡面
-								likebtn = "dislike"
-								if(loginuser==null){
-									likebtn = "nlike"
+			if (area.key != "like") {
+				area.forEach(function (myroute) {
+					myroute.forEach(function (title) {
+						var TData = title.val();
+						$("#like_btn").attr("name", id.id)
+						if (TData.title == id.id) {
+							likedata = TData
+							db.ref('/like/' + loginuser + '/' + TData.title).once("value", function (snapshop) {
+								if (snapshop.val()) { //在裡面
+									likebtn = "like"
+								} else if (snapshop.val() == null) { //不在裡面
+									likebtn = "dislike"
+									if (loginuser == null) {
+										likebtn = "nlike"
+									}
+								}
+							});
+							auth.onAuthStateChanged(function (user) {
+								if (user) {
+									$("#like_btn").attr("disabled", false)
+								} else {
+									$("#like_btn").attr("disabled", "disabled")
+								}
+							})
+							var b = TData.place.length
+							$(".intro_intro").append('<div class="tourline_title">' + TData.title + '<button type="button" class="btn like_btn" onclick="getlike(this)" id="like_btn" name=""><i class="fas fa-heart ' + likebtn + '" id="like_i"></i><span class="splike">收藏</span></button></div><div class="tourline_intro">' + TData.intro + '</div>')
+							for (x = 0; x < b; x++) {
+								$(".tourline").append('<div class="tourlineBox"><img src="' + TData.place[x].img + '"><div class="tourlineSpots_Right"><div class="tourlineSpots_title">' + TData.place[x].location + '</div>' + TData.place[x].contents + '</br>地址：' + TData.place[x].address + '<div id="tour_time' + x + '">開放時間：</br></div></div></div>')
+								for (i = 0; i < 7; i++) {
+									var week = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"]
+									$("#tour_time" + x).append(
+										`${week[i]}：${TData.place[x].time[i].week}</br>`
+									)
+								}
+								if (x < b - 1) {
+									$(".tourline").append('<div class="tourlineBox_distance"><div class="distancebtn"><i class="fas fa-map-marker-alt"></i><a href="https://www.google.com/maps/dir/' + TData.place[x].address + '/' + TData.place[x + 1].address + '" target="_blank">　點擊觀看路線　</a><i class="fas fa-map-marker-alt"></i></div></div>')
 								}
 							}
-						});
-						auth.onAuthStateChanged(function (user) {
-							if (user) {
-								$("#like_btn").attr("disabled", false)
-							} else {
-								$("#like_btn").attr("disabled", "disabled")
-							}
-						})
-						var b = TData.place.length
-						$(".intro_intro").append('<div class="tourline_title">' + TData.title + '<button type="button" class="btn like_btn" onclick="getlike(this)" id="like_btn" name=""><i class="fas fa-heart '+likebtn+'" id="like_i"></i><span class="splike">收藏</span></button></div><div class="tourline_intro">' + TData.intro + '</div>')
-						for (x = 0; x < b; x++) {
-							$(".tourline").append('<div class="tourlineBox"><img src="' + TData.place[x].img + '"><div class="tourlineSpots_Right"><div class="tourlineSpots_title">' + TData.place[x].location + '</div>' + TData.place[x].contents + '</br>地址：' + TData.place[x].address + '<div id="tour_time' + x + '">開放時間：</br></div></div></div>')
-							for (i = 0; i < 7; i++) {
-								var week = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"]
-								$("#tour_time" + x).append(
-									`${week[i]}：${TData.place[x].time[i].week}</br>`
-								)
-							}
-							if (x < b - 1) {
-								$(".tourline").append('<div class="tourlineBox_distance"><div class="distancebtn"><i class="fas fa-map-marker-alt"></i><a href="https://www.google.com/maps/dir/' + TData.place[x].address + '/' + TData.place[x + 1].address + '" target="_blank">　點擊觀看路線　</a><i class="fas fa-map-marker-alt"></i></div></div>')
-							}
+
 						}
-						
-					}
+					})
 				})
-			})
+			}
 		})
 	})
 	$('.showintro').fadeIn();
@@ -471,6 +484,7 @@ function logout() {
 	$("#password").val('')
 	$("#sign-info").html("No one login...")
 	window.location.href = "../index.html"
+	loginuser = ""
 }
 function getlike(name) {
 	var name = name.name
@@ -481,11 +495,410 @@ function getlike(name) {
 			db.ref('/like/' + loginuser + '/' + name).set({});
 			$("#like_i").attr("class", "fas fa-heart dislike")
 		} else if (snapshop.val() == null) {
-			db.ref('/like/' + loginuser + '/' + name ).update({
-				this: name
-			})
+			db.ref('/like/' + loginuser + '/' + name).update(likedata)
 			$("#like_i").attr("class", "fas fa-heart like")
-
 		}
 	});
 }
+
+function like() {
+	$("#like_box").empty()
+	var route = firebase.database().ref();
+	route.once("value", function (only) {
+		only.forEach(function (area) {
+			if (area.key == "like") {
+				area.forEach(function (myroute) {
+					myroute.forEach(function (title) {
+						var TData = title.val();
+						$("#like_box").append('<div class="route_content"><a id="' + TData.title + '" " onclick="showin(this)"><div class="route_left"><img src="' + TData.place[0].img + '" alt=""></div><div class="route_right"><div class="route_title">' + TData.title + '</div><div class="route_text">' + TData.route + '</div></div></a></div>')
+					})
+				})
+			}
+		})
+	})
+}
+function myroute() {
+	$("#myroute_box").empty()
+	var route = firebase.database().ref();
+	route.once("value", function (only) {
+		only.forEach(function (area) {
+			if (area.key == loginuser) {
+				area.forEach(function (myroute) {
+					myroute.forEach(function (title) {
+						var TData = title.val();
+						$("#myroute_box").append('<div class="route_content"><a id="' + TData.title + '" " onclick="showupdate(this)"><div class="route_left"><img src="' + TData.place[0].img + '" alt=""></div><div class="route_right"><div class="route_title">' + TData.title + '</div><div class="route_text">' + TData.route + '</div></div></a></div>')
+					})
+				})
+			}
+		})
+	})
+}
+function showupdate(id) {
+	$(".placetop").empty()
+	$("#showBlock").empty()
+	var route = firebase.database().ref().orderByKey();
+	let db = firebase.database();
+	const auth = firebase.auth()
+	route.once("value", function (only) {
+		only.forEach(function (area) {
+			if (area.key != "like") {
+				area.forEach(function (myroute) {
+					myroute.forEach(function (title) {
+						var TData = title.val();
+						var txId
+						if (TData.title == id.id) {
+							$(".placetop").append(`
+						<input type="text" id="none" required style="display: none;">
+                    <div class="input_main">所在</div>
+                    <div class="input">
+                        <select name="area" id="area" required disabled="disabled">
+                            <option value="">地區</option>
+                            <option value="northern">北部</option>
+                            <option value="central">中部</option>
+                            <option value="southern">南部</option>
+                            <option value="eastern">東部</option>
+                            <option value="islands">離島</option>
+                        </select>
+                        <select name="county" id="county" required>
+                            <option value="">縣市</option>
+                        </select>
+                    </div>
+                    <div class="input_main">行程名稱</div>
+                    <input type="text" name="title" id="title" class="input" placeholder='【...一日遊】...' autocomplete="off"
+                        required value="${TData.title}" disabled="disabled">
+    
+                    <div class="input_main">行程途經</div>
+                    <input type="text" name="route" id="route" class="input" placeholder='兩地請用" > "分隔' autocomplete="off"
+                        required value="${TData.route}">
+    
+                    <div class="input_main">介紹此行程</div>
+                    <textarea name="intro" id="intro" class="input" required >${TData.intro}</textarea>
+    
+                </div>
+						`)
+						
+							$('#area option[value="' + myroute.key + '"]').attr('selected', 'selected');
+							switch ($("#area").val()) {
+								default:
+								case "":
+									$("#county option").remove();
+									var array = ["縣市"];
+									$.each(array, function (i, val) {
+										$("#county").append($("<option value=''>" + array[i] + "</option>"));
+									});
+									break;
+								case "northern":
+									$("#county option").remove();
+									var array = ["縣市", "台北", "新北", "基隆", "宜蘭", "桃園", "新竹"];
+									$.each(array, function (i, val) {
+										if (i == 0) $("#county").append($("<option value=''>" + array[i] + "</option>"));
+										else $("#county").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+									});
+									break;
+								case "central":
+									$("#county option").remove();
+									var array = ["縣市", "苗栗", "台中", "彰化", "南投", "雲林"];
+									$.each(array, function (i, val) {
+										if (i == 0) $("#county").append($("<option value=''>" + array[i] + "</option>"));
+										else $("#county").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+									});
+									break;
+								case "southern":
+									$("#county option").remove();
+									var array = ["縣市", "嘉義", "台南", "高雄", "屏東"];
+									$.each(array, function (i, val) {
+										if (i == 0) $("#county").append($("<option value=''>" + array[i] + "</option>"));
+										else $("#county").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+									});
+									break;
+								case "eastern":
+									$("#county option").remove();
+									var array = ["縣市", "花蓮", "台東"];
+									$.each(array, function (i, val) {
+										if (i == 0) $("#county").append($("<option value=''>" + array[i] + "</option>"));
+										else $("#county").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+									});
+									break;
+								case "islands":
+									$("#county option").remove();
+									var array = ["縣市", "澎湖", "金門", " 馬祖"];
+									$.each(array, function (i, val) {
+										if (i == 0) $("#county").append($("<option value=''>" + array[i] + "</option>"));
+										else $("#county").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+									});
+									break;
+							}
+							$('#county option[value="' + TData.county + '"]').attr('selected', 'selected');
+							txtId = TData.place.length
+							let img = []
+
+							console.log(txtId)
+							// var b = TData.place.length
+							for (x = 0; x < txtId; x++) {
+								$("#showBlock").append(`<div class="place place0">
+    
+								<div class="input_main">第 ${x + 1} 站</div></br>
+								<div class="place_">
+									<div class="input_main">地名</div>
+									<input type="text" class="input location" id="location${x}" autocomplete="off" required value="${TData.place[x].location}">
+									<div class="input_main">地址</div>
+									<input type="text" class="input address" id="address${x}" autocomplete="off" required value="${TData.place[x].address}">
+									<div class="input_main">介紹</div>
+									<textarea type="text" class="input contents" id="contents${x}" autocomplete="off" required>${TData.place[x].contents}</textarea>
+									</br>
+									<div class="input_main"></div>
+									<div class="input_main">圖片</div>
+									<span class="sptext">不可更改</span></br>
+									<img class="sptextimg" src="${TData.place[x].img}" alt="">
+								</div>
+								<div class="place_ place_1">
+									<div class="input_main">星期一</div>
+									<div class="input"><select name="mon${x}" id="time${x}0" required>
+											<option value="">開放時間</option>
+											<option value="24小時營業">24小時營業</option>
+											<option value="公休">公休</option>
+											<option value="自訂">自訂</option>
+										</select>　<input type="text" name="datetimes" id="mon${x}" required autocomplete="off">
+									</div>
+									<div class="input_main">星期二</div>
+									<div class="input"><select name="tue${x}" id="time${x}1" required>
+											<option value="">開放時間</option>
+											<option value="24小時營業">24小時營業</option>
+											<option value="公休">公休</option>
+											<option value="自訂">自訂</option>
+										</select>　<input type="text" name="datetimes" id="tue${x}" required autocomplete="off">
+									</div>
+									<div class="input_main">星期三</div>
+									<div class="input"><select name="wed${x}" id="time${x}2" required>
+											<option value="">開放時間</option>
+											<option value="24小時營業">24小時營業</option>
+											<option value="公休">公休</option>
+											<option value="自訂">自訂</option>
+										</select>　<input type="text" name="datetimes" id="wed${x}" required autocomplete="off">
+									</div>
+									<div class="input_main">星期四</div>
+									<div class="input"><select name="thu${x}" id="time${x}3" required>
+											<option value="">開放時間</option>
+											<option value="24小時營業">24小時營業</option>
+											<option value="公休">公休</option>
+											<option value="自訂">自訂</option>
+										</select>　<input type="text" name="datetimes" id="thu${x}" required autocomplete="off"></div>
+									<div class="input_main">星期五</div>
+									<div class="input"><select name="fri${x}" id="time${x}4" required>
+											<option value="">開放時間</option>
+											<option value="24小時營業">24小時營業</option>
+											<option value="公休">公休</option>
+											<option value="自訂">自訂</option>
+										</select>　<input type="text" name="datetimes" id="fri${x}" required autocomplete="off"></div>
+									<div class="input_main">星期六</div>
+									<div class="input"><select name="sat${x}" id="time${x}5" required>
+											<option value="">開放時間</option>
+											<option value="24小時營業">24小時營業</option>
+											<option value="公休">公休</option>
+											<option value="自訂">自訂</option>
+										</select>　<input type="text" name="datetimes" id="sat${x}" required autocomplete="off"></div>
+									<div class="input_main">星期日</div>
+									<div class="input"><select name="sun${x}" id="time${x}6" required>
+											<option value="">開放時間</option>
+											<option value="24小時營業">24小時營業</option>
+											<option value="公休">公休</option>
+											<option value="自訂">自訂</option>
+										</select>　<input type="text" name="datetimes" id="sun${x}" required autocomplete="off"></div>
+								</div>
+							</div>`)
+							img.push(TData.place[x].img)
+								for (i = 0; i < 7; i++) {
+									$('#time' + x + i + ' option[value="' + TData.place[x].time[i].check + '"]').attr('selected', 'selected');
+									var timeweek = document.getElementById("time" + x + i).name
+									$('#' + timeweek).attr('value', TData.place[x].time[i].week);
+									
+									if ($('#time' + x + i + ' option[value="' + TData.place[x].time[i].check + '"]').val() != "自訂") {
+										var timename1 = document.getElementById("time" + x + i).name
+										$('#' + timename1).attr("disabled", true);
+									}else{
+										var timename2 = document.getElementById("time" + x + i).name
+										$('#' + timename2).daterangepicker({
+											timePicker: true,
+											timePickerIncrement: 1, // 以 30 分鐘為一個選取單位
+											timePicker24Hour: true,
+											locale: {
+												format: 'HH:mm'
+											}
+										});
+									}
+
+								}
+								
+							}
+							$("#submit").click(function () {
+								$("#submit").html(`<span class= "spinner-border spinner-border-sm"></span>`)
+								if (confirm("確認送出嗎?")) {
+									place()
+									submit()
+									function submit() {
+										if ($("#area").val() == "") {
+											eval($("#submit").html(`送出`));
+										} else if ($("#county").val() == "") {
+											eval($("#submit").html(`送出`));
+										} else if ($("#title").val() == "") {
+											eval($("#submit").html(`送出`));
+										} else if ($("#route").val() == "") {
+											eval($("#submit").html(`送出`));
+										} else if ($("#intro").val() == "") {
+											eval($("#submit").html(`送出`));
+										} else {
+											console.log("here")
+											db.ref('/' + loginuser + '/' + $("#area").val() + '/' + $("#title").val().replace(/\//g, "\\") + '/').update(
+												{
+													"title": $("#title").val(),
+													"route": $("#route").val(),
+													"intro": $("#intro").val(),
+													"place":
+														places,
+													"county": $("#county").val()
+												})
+												console.log("here2")
+											window.location.reload()
+										}
+									}
+								}
+							})
+							//存取地點
+							var places = [];
+							function place() {
+								for (i = 0; i < txtId; i++) {
+									if ($("#location" + i).val() == "") {
+										places = []
+										eval($("#submit").html(`送出`))
+									} else if ($("#address" + i).val() == "") {
+										places = []
+										eval($("#submit").html(`送出`))
+									} else if ($("#contents" + i).val() == "") {
+										places = []
+										eval($("#submit").html(`送出`))
+									} else if ($('#input-file' + i).val() == "") {
+										places = []
+										$("#submit").html(`送出`);
+										$(".btn-info" + i).attr("style", "background-color: #F08080; border-color: #F08080")
+										eval("document.form['input-file'].focus()")
+									} else if ($("#mon" + i).val() == "") {
+										eval($("#submit").html(`送出`));
+									} else if ($("#tue" + i).val() == "") {
+										eval($("#submit").html(`送出`));
+									} else if ($("#wed" + i).val() == "") {
+										eval($("#submit").html(`送出`));
+									} else if ($("#thu" + i).val() == "") {
+										eval($("#submit").html(`送出`));
+									} else if ($("#fri" + i).val() == "") {
+										eval($("#submit").html(`送出`));
+									} else if ($("#sat" + i).val() == "") {
+										eval($("#submit").html(`送出`));
+									} else if ($("#sun" + i).val() == "") {
+										eval($("#submit").html(`送出`));
+									} else {
+										places.push({
+											"location": $("#location" + i).val(),
+											"address": $("#address" + i).val(),
+											"contents": $("#contents" + i).val(),
+											"time": [
+												{
+													"check": $("#time" + i + "0").val(),
+													"week": $("#mon" + i).val()
+												},
+												{
+													"check": $("#time" + i + "1").val(),
+													"week": $("#tue" + i).val()
+												},
+												{
+													"check": $("#time" + i + "2").val(),
+													"week": $("#wed" + i).val()
+												},
+												{
+													"check": $("#time" + i + "3").val(),
+													"week": $("#thu" + i).val()
+												},
+												{
+													"check": $("#time" + i + "4").val(),
+													"week": $("#fri" + i).val()
+												},
+												{
+													"check": $("#time" + i + "5").val(),
+													"week": $("#sat" + i).val()
+												},
+												{
+													"check": $("#time" + i + "6").val(),
+													"week": $("#sun" + i).val()
+												}
+											],
+											"img": img[i]
+										})
+									}
+								}
+							}
+							//時間
+							function time() {
+								for (i = 0; i < 7; i++) {
+									for (a = 0; a <= txtId; a++) {
+										$("#time" + a + i).change(function () {
+											var timename = this.name
+											switch ($(this).val()) {
+												default:
+												case "":
+													document.getElementById(this.name).value = " "
+													$("#" + timename).attr("style", "display:none")
+													$("#" + timename).attr("disabled", true)
+													break;
+												case "24小時營業":
+													document.getElementById(this.name).value = "24小時營業"
+													$("#" + timename).attr("style", "display:inline-block")
+													$("#" + timename).attr("disabled", true)
+													break;
+												case "公休":
+													document.getElementById(this.name).value = "公休"
+													$("#" + timename).attr("style", "display:inline-block")
+													$("#" + timename).attr("disabled", true)
+						
+													break;
+												case "自訂":
+													document.getElementById(this.name).value = ""
+													$("#" + timename).attr("placeholder", "點擊選擇時間")
+													$("#" + timename).attr("style", "display:inline-block")
+													$("#" + timename).attr("disabled", false)
+													$("#" + timename).daterangepicker({
+														timePicker: true,
+														timePickerIncrement: 1, // 以 30 分鐘為一個選取單位
+														timePicker24Hour: true,
+														locale: {
+															format: 'HH:mm'
+														}
+													});
+													break;
+											}
+										});
+									}
+								}
+							}
+							time()
+						}
+						
+						
+					})
+				})
+			}
+		})
+	})
+	$('.showupdate').fadeIn();
+}
+
+//remove函式
+Array.prototype.remove = function () {
+	var what, a = arguments, L = a.length, ax;
+	while (L && this.length) {
+		what = a[--L];
+		while ((ax = this.indexOf(what)) !== -1) {
+			this.splice(ax, 1);
+		}
+	}
+	return this;
+}
+
