@@ -415,3 +415,12 @@ input:checked + .choose:before {
   color: var(--Dark);
 }
 /*# sourceMappingURL=route.css.map */
+@media (max-width:768px) {
+  .container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 90%;
+  }
+
+}
