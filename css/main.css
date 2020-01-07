@@ -805,11 +805,12 @@ hr {
     width: 34vw;
   }
   .login_input {
-    width: 57vw;
+    width: 53vw;
     height: 7vw;
     top: 2vw;
   }
   .btni {
+    width: 10vw;
     height: 7vw;
     top: 2vw;
   }
