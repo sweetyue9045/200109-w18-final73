@@ -439,3 +439,40 @@ input:checked + .choose:before {
     margin: 40px 0 0 0;
   }
 }
+@media (max-width: 320px) {
+  .H_title img {
+    height: 5vw;
+    top: 2vw;
+  }
+  .site_title {
+    text-align: center;
+  }
+  .wrap a{
+    height: 70vw;
+    display: grid;
+    grid-template-rows: 60% 20%;
+    margin-top: 45vw;
+  }
+  .wrap_title, .wrap_route {
+    width: 80vw;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .wrap_route {
+    padding-top: 0;
+  }
+  .wrap_text {
+    padding: 0;
+  }
+  .wrap_img img {
+    width: 80vw;
+    height: 100%;
+    object-fit: cover;
+    right: 72%;
+  }
+  .wrap_img {
+    height: 100%;
+    overflow: visible;
+  }
+}
