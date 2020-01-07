@@ -1,6 +1,6 @@
 //----------各種click----------
 var searchbar = 0;
-let loginuser="";
+let loginuser = "";
 let likedata = []
 
 $(function () {
@@ -26,6 +26,10 @@ $(function () {
 			$("#btnSignOut").attr("style", "display:block")
 			$("#members").attr("style", "display:block")
 			$("#login").attr("style", "display:none")
+			$("#plusroute_h").attr("style", "display:block")
+			$("#btnSignOut_h").attr("style", "display:block")
+			$("#members_h").attr("style", "display:block")
+			$("#login_h").attr("style", "display:none")
 			$("#like_btn").attr("disabled", false)
 			loginuser = user.uid
 
@@ -36,8 +40,12 @@ $(function () {
 			$("#btnSignOut").attr("style", "display:none")
 			$("#members").attr("style", "display:none")
 			$("#login").attr("style", "display:block")
+			$("#plusroute_h").attr("style", "display:none")
+			$("#btnSignOut_h").attr("style", "display:none")
+			$("#members_h").attr("style", "display:none")
+			$("#login_h").attr("style", "display:block")
 			$("#like_btn").attr("disabled", "disabled")
-			
+
 		}
 	})
 	$('.loginback').click(function (event) {
@@ -69,7 +77,7 @@ $(function () {
 	$('#backtotop').click(function () { $('html,body').animate({ scrollTop: 0 }, 800); });
 	var slide = 0;
 	//----------景點----------
-	
+
 	//--預設地點點擊--
 	$("#dropdown-toggle").click(function () {
 		$("#dropdown-menu").slideToggle("");
@@ -93,14 +101,33 @@ $(function () {
 				slide = 0;
 			}
 		}
-	});
+	});  
+	if (document.body.offsetWidth < 769){
+		$('.northern').html(`北部`)
+		$('.central').html(`中部`)
+		$('.southern').html(`南部`)
+		$('.eastern').html(`東部`)
+		$('.islands').html(`離島`)
+	}else{
+		$('.northern').html(`北部▸基隆 宜蘭 台北 新北 桃園 新竹`)
+		$('.central').html(`中部▸苗栗 台中 彰化 南投 雲林`)
+		$('.southern').html(`南部▸嘉義 台南 高雄 屏東`)
+		$('.eastern').html(`東部▸花蓮 台東`)
+		$('.islands').html(`離島▸澎湖 金門 馬祖`)
+	}
 	//--搜尋點擊--
+	var wid
+	var rad
+	if (document.body.offsetWidth <321) {wid="70vw";rad="1vw"}
+	if (document.body.offsetWidth >320) {wid="40vw";rad="0.6vw"}
+	if (document.body.offsetWidth >768) {wid="16vw";rad="0.3vw"}
+
 	$("#searchitem").click(function () {
 		if (searchbar == 0) {
 			document.getElementById("dropdown-toggle").style.display = "block";
 			document.getElementById("form-control").style.display = "block";
-			$("#searchitem").attr("style", "border-radius: 0 0.3vw 0.3vw 0 ;outline: none")
-			$("#input-group").animate({ width: '16vw' }, 200);
+			$("#searchitem").attr("style", "border-radius: 0 "+rad+" " +rad+" 0 ;outline: none")
+			$("#input-group").animate({ width: wid }, 200);
 			searchbar = 1;
 		}
 		else if (searchbar != 0) {
@@ -198,10 +225,10 @@ function home_route() {
 	})
 	$("#route_box").append('<div class="route_content route_plus_content"><a id="route_plus" onclick="routeplus(this)"><div class="route_left"><div class="bus"><div class="fbus"><i class="fas fa-bus"></i></div><div class="fplus"><i class="fas fa-plus-circle"></i></div></div></div><div class="route_right"><div class="route_title">創建我的景點路線</div></div></a></div>')
 }
-function routeplus(){
-	if(loginuser==""){
+function routeplus() {
+	if (loginuser == "") {
 		showlogin()
-	}else {
+	} else {
 		window.location.href = "html/plusroute.html"
 	}
 }
@@ -461,20 +488,20 @@ function login() {
 
 	// var provider = new firebase.auth.GoogleAuthProvider()
 	// $btnGoogle.click(function () {
-	//     $btnGoogle.html(`<span class= "spinner-border spinner-border-sm"></span>`)
-	//     firebase.auth().signInWithPopup(provider).then(function (result) {
-	//         var token = result.credential.accessToken;
-	//         var user = result.user;      // 使用者資訊
-	//     }).catch(function (error) {
-	//         // 處理錯誤
-	//         $btnGoogle.html(`google`)
-	//         alert("error")
-	//         var errorCode = error.code;
-	//         var errorMessage = error.message;
-	//         var email = error.email;      // 使用者所使用的 Email
-	//         var credential = error.credential;
-	//         console.log(error.message)
-	//     });
+	//		 $btnGoogle.html(`<span class= "spinner-border spinner-border-sm"></span>`)
+	//		 firebase.auth().signInWithPopup(provider).then(function (result) {
+	//				 var token = result.credential.accessToken;
+	//				 var user = result.user;			// 使用者資訊
+	//		 }).catch(function (error) {
+	//				 // 處理錯誤
+	//				 $btnGoogle.html(`google`)
+	//				 alert("error")
+	//				 var errorCode = error.code;
+	//				 var errorMessage = error.message;
+	//				 var email = error.email;			// 使用者所使用的 Email
+	//				 var credential = error.credential;
+	//				 console.log(error.message)
+	//		 });
 	// })
 }
 function logout() {
@@ -549,34 +576,34 @@ function showupdate(id) {
 						if (TData.title == id.id) {
 							$(".placetop").append(`
 						<input type="text" id="none" required style="display: none;">
-                    <div class="input_main">所在</div>
-                    <div class="input">
-                        <select name="area" id="area" required disabled="disabled">
-                            <option value="">地區</option>
-                            <option value="northern">北部</option>
-                            <option value="central">中部</option>
-                            <option value="southern">南部</option>
-                            <option value="eastern">東部</option>
-                            <option value="islands">離島</option>
-                        </select>
-                        <select name="county" id="county" required>
-                            <option value="">縣市</option>
-                        </select>
-                    </div>
-                    <div class="input_main">行程名稱</div>
-                    <input type="text" name="title" id="title" class="input" placeholder='【...一日遊】...' autocomplete="off"
-                        required value="${TData.title}" disabled="disabled">
-    
-                    <div class="input_main">行程途經</div>
-                    <input type="text" name="route" id="route" class="input" placeholder='兩地請用" > "分隔' autocomplete="off"
-                        required value="${TData.route}">
-    
-                    <div class="input_main">介紹此行程</div>
-                    <textarea name="intro" id="intro" class="input" required >${TData.intro}</textarea>
-    
-                </div>
+										<div class="input_main">所在</div>
+										<div class="input">
+												<select name="area" id="area" required disabled="disabled">
+														<option value="">地區</option>
+														<option value="northern">北部</option>
+														<option value="central">中部</option>
+														<option value="southern">南部</option>
+														<option value="eastern">東部</option>
+														<option value="islands">離島</option>
+												</select>
+												<select name="county" id="county" required>
+														<option value="">縣市</option>
+												</select>
+										</div>
+										<div class="input_main">行程名稱</div>
+										<input type="text" name="title" id="title" class="input" placeholder='【...一日遊】...' autocomplete="off"
+												required value="${TData.title}" disabled="disabled">
+		
+										<div class="input_main">行程途經</div>
+										<input type="text" name="route" id="route" class="input" placeholder='兩地請用" > "分隔' autocomplete="off"
+												required value="${TData.route}">
+		
+										<div class="input_main">介紹此行程</div>
+										<textarea name="intro" id="intro" class="input" required >${TData.intro}</textarea>
+		
+								</div>
 						`)
-						
+
 							$('#area option[value="' + myroute.key + '"]').attr('selected', 'selected');
 							switch ($("#area").val()) {
 								default:
@@ -636,7 +663,7 @@ function showupdate(id) {
 							// var b = TData.place.length
 							for (x = 0; x < txtId; x++) {
 								$("#showBlock").append(`<div class="place place0">
-    
+		
 								<div class="input_main">第 ${x + 1} 站</div></br>
 								<div class="place_">
 									<div class="input_main">地名</div>
@@ -706,16 +733,16 @@ function showupdate(id) {
 										</select>　<input type="text" name="datetimes" id="sun${x}" required autocomplete="off"></div>
 								</div>
 							</div>`)
-							img.push(TData.place[x].img)
+								img.push(TData.place[x].img)
 								for (i = 0; i < 7; i++) {
 									$('#time' + x + i + ' option[value="' + TData.place[x].time[i].check + '"]').attr('selected', 'selected');
 									var timeweek = document.getElementById("time" + x + i).name
 									$('#' + timeweek).attr('value', TData.place[x].time[i].week);
-									
+
 									if ($('#time' + x + i + ' option[value="' + TData.place[x].time[i].check + '"]').val() != "自訂") {
 										var timename1 = document.getElementById("time" + x + i).name
 										$('#' + timename1).attr("disabled", true);
-									}else{
+									} else {
 										var timename2 = document.getElementById("time" + x + i).name
 										$('#' + timename2).daterangepicker({
 											timePicker: true,
@@ -728,7 +755,7 @@ function showupdate(id) {
 									}
 
 								}
-								
+
 							}
 							$("#submit").click(function () {
 								$("#submit").html(`<span class= "spinner-border spinner-border-sm"></span>`)
@@ -757,7 +784,7 @@ function showupdate(id) {
 														places,
 													"county": $("#county").val()
 												})
-												console.log("here2")
+											console.log("here2")
 											window.location.reload()
 										}
 									}
@@ -857,7 +884,7 @@ function showupdate(id) {
 													document.getElementById(this.name).value = "公休"
 													$("#" + timename).attr("style", "display:inline-block")
 													$("#" + timename).attr("disabled", true)
-						
+
 													break;
 												case "自訂":
 													document.getElementById(this.name).value = ""
@@ -880,8 +907,8 @@ function showupdate(id) {
 							}
 							time()
 						}
-						
-						
+
+
 					})
 				})
 			}
@@ -904,7 +931,30 @@ Array.prototype.remove = function () {
 
 
 // 漢堡
-$(function() {
-    $('nav#menu').mmenu();
-});
+$(function () {
+	if (document.body.offsetWidth < 321) {
+		$('#menu').attr("style","display:inline-block")
+		var $menu = $("#menu").mmenu({
+		 });
+		 var $icon = $("#amenu");
+		 var API = $menu.data( "mmenu" );
+		 
+		 $icon.on( "click", function() {
+			API.open();
+		 });
+		 
+		 API.bind( "open:start", function() {
+			setTimeout(function() {
+			   $icon.addClass( "is-active" );
+			}, 100);
+		 });
+		 API.bind( "close:start", function() {
+			setTimeout(function() {
+			   $icon.removeClass( "is-active" );
+			}, 100);
+		 });
+	} else $('#menu').attr("style","display:none")
+}
+);
+
 // 漢堡結束

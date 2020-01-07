@@ -40,7 +40,7 @@ html, body {
   width: 100%;
   height: 35vw;
   background-color: var(--Back);
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .input-group {
@@ -165,7 +165,6 @@ html, body {
   right: -40%;
   -webkit-animation: run2 16s linear infinite;
           animation: run2 16s linear infinite;
-  z-index: 2;
 }
 
 .mountain {
@@ -194,13 +193,6 @@ html, body {
 
 .Carousel:hover .boy {
   background-image: url("../im/小男孩-2.png");
-}
-
-.site_title {
-  font-size: 1.55vw;
-  color: var(--Font);
-  text-align: left;
-  margin-left: 8vw;
 }
 
 .site_content {
@@ -447,10 +439,6 @@ html, body {
 }
 
 @media (max-width: 768px) {
-  .site_title {
-    font-size: 2.5vw;
-    margin-left: 6vw;
-  }
   .attraction_site {
     width: 85%;
     display: -ms-grid;
@@ -478,16 +466,54 @@ html, body {
     font-size: 1.5vw;
     line-height: 3vw;
   }
+  .input-group {
+    width: 0;
+    top: 5vw;
+    left: 5vw;
+    margin: 0;
+  }
+  .form-control {
+    width: 100%;
+    height: 4vw;
+    font-size: 1.5vw;
+    border-left: 0 transparent;
+  }
+  .search {
+    height: 4vw;
+    font-size: 1.5vw;
+    border: 0.1vw solid var(--Dark);
+    border-radius: 0.6vw;
+    background-color: var(--Dark);
+    padding: 0.4vw 1.2vw;
+  }
+  .dropdown-toggle {
+    padding: 0.7vw 1.5vw;
+    height: 4vw;
+    font-size: 1.5vw;
+    border-radius: 0.6vw;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0 transparent;
+  }
+  .dropdown-menu {
+    display: none;
+    min-width: 8vw;
+    padding: 0.4vw 0;
+    top: 4.5vw;
+    font-size: 1.5vw;
+    border-radius: 0.6vw;
+  }
+  .dropdown-menu a {
+    padding: .6vw .5vw;
+  }
 }
 
 @media (max-width: 320px) {
-  .H_title img {
-    height: 5vw;
-    top: 2vw;
+  .Carousel {
+    overflow-y: visible;
   }
-  .site_title {
-    font-size: 2.5vw;
-    text-align: center;
+  .topbox {
+    overflow-x: hidden;
   }
   .attraction_site {
     width: 90%;
@@ -512,14 +538,45 @@ html, body {
     bottom: 5px;
     line-height: 8vw;
   }
-  footer {
-    background-color: #ECF4F7;
+  .input-group {
+    top: 5vw;
+    left: 14vw;
   }
-  .F_left {
+  .form-control {
+    width: 100%;
+    height: 8vw;
+    font-size: 4vw;
+    border: 0.4vw solid var(--Dark);
+    border-left: 0 transparent;
+  }
+  .search {
+    height: 8vw;
+    font-size: 4vw;
+    border: 0.4vw solid var(--Dark);
+    border-radius: 1vw;
+    background-color: var(--Dark);
+    padding: 0.4vw 2vw;
+  }
+  .dropdown-toggle {
+    padding: 0.7vw 3vw;
+    height: 8vw;
+    font-size: 4vw;
+    border: 0.4vw solid var(--Dark);
+    border-radius: 1vw;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0 transparent;
+  }
+  .dropdown-menu {
     display: none;
+    min-width: 16vw;
+    padding: 0.4vw 0;
+    top: 9vw;
+    font-size: 4vw;
+    border-radius: 0.6vw;
   }
-  .F_title {
-    left: 45%;
+  .dropdown-menu a {
+    padding: 1vw .5vw;
   }
 }
 /*# sourceMappingURL=attraction.css.map */
