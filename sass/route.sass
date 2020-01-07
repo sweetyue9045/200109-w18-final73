@@ -27,18 +27,14 @@ html,body
 	padding: 4vw 9vw
 	display: flex
 	align-items: flex-start
+
 .container_left
-	width: 30%
+	width: 30% 
 	margin: 0
 .container_right
-	width: 70%
+	width:  70%
 	margin: 0
 	color: var(--Font)
-
-.site_title
-	font-size: 1.55vw
-	text-align: left
-
 .wrap
 	cursor: pointer
 	height: 13.5vw
@@ -51,6 +47,7 @@ html,body
 	height: 100%
 	width: 40%
 	overflow: hidden
+	margin: 0
 .wrap_img img
 	width: 100%
 .wrap_text
@@ -136,64 +133,154 @@ input:checked + .choose:before
 	opacity: 1
 
 @media (max-width: 768px)
+	.site_title 
+    margin-left: 0vw
+    
 	.container
 		width: 100%
-		display: grid
-		grid-template-columns: 1fr
-		grid-template-rows: 10% 90%
-
-	.container_right
+		display: block
+	.container_left
 		width: 100%
 
-	.wrap_img
-		img
-			width: 95%
-
-		height: 120%
-
+	.container_right
+		width:  100%
+		margin: 2vw 0 0 0
 	.wrap_text
 		width: 85%
-		padding-top: 10px
+		padding: 2vw 0 0 0
 
-	.wrap a
-		margin: 40px 0 0 0
-
-@media (max-width: 320px)
-	.H_title img
-		height: 5vw
-		top: 2vw
-
-	.site_title
-		text-align: center
-
-	.wrap a
-		height: 70vw
-		display: grid
-		grid-template-rows: 60% 20%
-		margin-top: 45vw
-
-	.wrap_title
-		width: 80vw
-		text-overflow: ellipsis
-		overflow: hidden
-		white-space: nowrap
-
-	.wrap_route
-		width: 80vw
-		text-overflow: ellipsis
-		overflow: hidden
-		white-space: nowrap
-		padding-top: 0
+	.wrap
+		height: 20vw
 
 	.wrap_text
-		padding: 0
+		width: 65%
+		padding: 3vw 0 0 3vw
 
+	.wrap_title
+		width: 100%
+		font-size: 2vw
+		text-overflow: ellipsis
+		white-space: nowrap
+		overflow: hidden
+	.wrap_route
+		width: 100%
+		font-size: 1.5vw
+		text-overflow: ellipsis
+		white-space: nowrap
+		overflow: hidden
 	.wrap_img
-		img
-			width: 80vw
-			height: 100%
-			object-fit: cover
-			right: 72%
+		width: 35%
+		overflow: hidden
 
+	.wrap_img img
 		height: 100%
-		overflow: visible
+	//----------Search CSS----------
+
+	.route_input_group
+		width: 100%
+		margin: 0 0 0 0
+		text-align: center
+	.route_form_control
+		width: 100%
+		height: 4vw 
+		font-size: 1.5vw 
+		border-radius: 0.6vw 0 0 0.6vw
+	.route_search
+		height: 4vw 
+		font-size: 1.5vw 
+		border-radius: 0 0.6vw 0.6vw 0
+	.choose_box
+		display: inline-block
+		width: 13.2vw
+		border-radius: 0.6vw
+	label
+		display: inline-block
+		font-weight: 400
+		margin: 0
+		text-align: center
+		white-space: nowrap
+		touch-action: manipulation
+		cursor: pointer
+		outline: none
+		font-family: "微軟正黑體"
+		width: 100%
+		font-size: 1.5vw
+		line-height: 5vw
+		border-radius: 0.6vw
+		color: #fff
+	.choose
+		position: absolute
+		width: 100%
+		height: 100%
+		border: 0px
+		border-radius: 0.6vw
+		background: #91b9be
+	.choose:before
+		left: 0vw
+		top: 0vw
+		width: 100%
+		height: 100%
+		border-radius: 0.6vw
+
+@media (max-width: 320px)
+	.container_right
+		margin: 4vw 0 0 0
+	.wrap
+		margin: 2vw 0 0 0 
+		min-height: 80vw
+		padding: 3vw
+		background: rgba(255, 255, 255, 1)
+	.wrap:not(:first-child)
+		margin: 5vw 0 0 0 
+	.wrap a
+		display: block
+		margin: 0vw 0 0 0
+	.wrap_text
+		width: 100%
+		padding: 3vw 0 0 0
+
+	.wrap_title
+		width: 100%
+		font-size: 4.5vw
+		text-overflow: ellipsis
+		white-space: nowrap
+		overflow: hidden
+	.wrap_route
+		width: 100%
+		font-size: 4vw
+		text-overflow: ellipsis
+		white-space: nowrap
+		overflow: hidden
+	.wrap_img
+		width: 100%
+		height: 55vw
+		overflow: hidden
+
+	.wrap_img img
+		height: 100%
+	//----------Search CSS----------
+
+	.route_input_group
+		width: 100%
+		margin: 0 0 1vw 0
+		text-align: center
+	.route_form_control
+		width: 100%
+		padding-left: 2vw
+		height: 8vw 
+		font-size: 4vw 
+		border: 0.4vw solid var(--Dark)
+		border-right: none
+		border-radius: 1vw 0 0 1vw
+	.route_search
+		padding-right: 2vw
+		height: 8vw 
+		font-size: 4vw 
+		border: 0.4vw solid var(--Dark)
+		border-left: none
+		border-radius: 0 1vw 1vw 0
+	.choose_box
+		width: 12.5vw
+	label
+		font-size: 3.5vw
+		line-height: 7vw

@@ -67,6 +67,7 @@ nav
 //----------container CSS----------
 .container
 	width: 100%
+	height: auto
 	background-color: var(--Back)
 	padding: 4vw 8vw
 	min-height: calc(100vh - 12.35vw)
@@ -75,6 +76,7 @@ nav
 	font-size: 1.55vw
 	color: var(--Font)
 	text-align: left
+	margin-left: 6.5vw
 .btn
 	display: inline-block
 	padding: .4vw .8vw
@@ -143,8 +145,8 @@ footer
 .fa-chevron-circle-up
 	font-size: 3vw
 
-/*----------介紹頁面----------
-
+/*----------介紹頁面----------*/
+	
 .showintro
 	position: fixed
 	width: 100%
@@ -154,14 +156,14 @@ footer
 	overflow-x: hidden
 .showintro::-webkit-scrollbar 
 	display: none
-
+	
 .introback
 	position: fixed
 	width: 100%
 	height: 100vh
 	background-color: rgba(0, 0, 0, 0.5)
 	z-index: 50
-
+	
 .INTRO
 	position: relative
 	width: 65%
@@ -176,8 +178,8 @@ footer
 	width: 100%
 	height: 3.5vw
 	border-bottom: 0.13vw solid #b9b9b9
-
-
+	
+	
 .closeBtn
 	cursor: pointer
 	position: absolute
@@ -186,13 +188,13 @@ footer
 	top: 1.5vw
 	color: #b9b9b9
 	z-index: 100
-
+	
 .intro_content
 	width: 90%
 	padding-top: 2vw
 	overflow-y: auto
-
-
+	
+	
 .closeBtn:hover
 	color: rgba(121, 121, 121, 0.6)
 .intro_intro
@@ -218,7 +220,7 @@ footer
 	padding-left: 6vw
 	margin-bottom: 5vw
 	padding-top: 2vw
-
+	
 .tourArticle::before
 	content: ''
 	display: block
@@ -260,7 +262,7 @@ footer
 	padding: 2vw
 	margin: 2vw 0
 	display: flex
-
+	
 .tourlineBox:before, .tourlineBox_distance:before
 	content: ''
 	width: 3.5vw
@@ -269,20 +271,20 @@ footer
 	position: absolute
 	left: -3.6vw
 	top: 50%
-
+	
 .showintro img
 	width: 50%
 	height: 100%
 	display: block
 	top: 0
 	border-radius: 1vw
-
-
+	
+	
 .tourlineSpots_Right
 	width: 50%
 	padding: 0 0 0 2.5vw
 	font-size: 1.1vw
-
+	
 .tourlineSpots_title
 	font-size: 1.3vw
 	margin: 1vw 0 
@@ -293,11 +295,11 @@ footer
 	line-height: 2.4vw
 	font-size: 1.1vw
 	border-bottom: .2vw dashed var(--Dark)
-	a
-		text-decoration: none
-		color: var(--Dark)
-/*----------登入頁面----------
-
+a
+	text-decoration: none
+	color: var(--Dark)
+/*----------登入頁面----------*/
+	
 .showlogin
 	position: fixed
 	width: 100%
@@ -327,20 +329,20 @@ footer
 	justify-items: center
 	grid-gap: .5vw
 	padding: 5vw 0
-
+	
 .login_or
 	display: grid
 	grid-template-rows: 100%
 	grid-template-columns: 12vw 8vw 12vw
 	align-items: center
 	margin: .5vw
-
+	
 .l
 	background-color: #262626
 	height: .05vw
 	width: 100%
 	margin: 0
-
+	
 hr
 	margin-top: 1rem
 	margin-bottom: 1rem
@@ -359,7 +361,7 @@ hr
 	color: #fff
 	display: flex
 	padding-top: 0.45vw
-
+	
 .btnL>span
 	font-size: 1.2vw
 	font-family: "微軟正黑體"
@@ -411,19 +413,19 @@ hr
 	grid-template-columns: 5.5vw
 	justify-content: flex-end
 	align-items: center
-
+	
 .btnSignIn
 	width: 5.5vw
 	border-radius: 20vw
 	color: #fff
 	background-color: var(--Dark)
-
-
+	
+	
 //loading	
 @keyframes spinner-border
 	to
-		transform: rotate(360deg)
-
+	transform: rotate(360deg)
+	
 .spinner-border
 	display: inline-block
 	width: 2rem
@@ -442,19 +444,48 @@ hr
 	height: 0.8rem
 	width: 0.8rem
 	border-width: .2em
-
+	
 .spinner-border-ss
 	height: 0.6rem
 	width: 0.6rem
 	border-width: .15em
 	margin-left: .4rem
+@media (max-width: 768px)
+	.site_title
+		font-size: 2.5vw
+		margin-left: 6vw
 
-/* 漢堡 */
+	/* 漢堡 */
 @media (max-width: 320px)
-	.H_title
-		width: 320px
+	.site_title
+		font-size: 6vw
 		text-align: center
-		top: -1.5vw
+		margin-left: 0
+
+	html.mm-opening .mm-menu~.mm-slideout
+		transform: translate3d(100%,0,0)
+	#mm-blocker 
+		width: 40px
+		height: 40px
+		left: 92%
+		transform: translateX(-50%)
+	.mm-listview>li:not(.mm-divider):after 
+		left: 50%
+		width: 85%
+		transform: translateX(-50%)
+	a.hamburger
+		text-align: center
+	.H_title
+		width: 100%
+		text-align: center
+		padding: 0 7.5vw
+	header
+		padding: 0 7.5vw
+	.H_title a
+		left: 1.5vw
+		top: 1vw
+	.H_title img
+		height: 5vw
 
 	h1, h2, h3, h4, h5, h6
 		line-height: 1
@@ -480,13 +511,13 @@ hr
 		display: none
 
 	.mm-menu.mm-offcanvas.mm-opened
-		z-index: 50
+		width: 100%
 
 	.header, .content, .footer
 		text-align: center
 
 	.header, .footer
-		background: #4E8393
+		background: var(--Dark)
 		font-size: 16px
 		//font-weight: bold;
 		color: #fff
@@ -510,18 +541,16 @@ hr
 
 	.header a
 		background: center center no-repeat transparent
-		background-image: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADhJREFUeNpi/P//PwOtARMDHQBdLGFBYtMq3BiHT3DRPU4YR4NrNAmPJuHRJDyahEeT8Ii3BCDAAF0WBj5Er5idAAAAAElFTkSuQmCC )
+		// background-image: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADhJREFUeNpi/P//PwOtARMDHQBdLGFBYtMq3BiHT3DRPU4YR4NrNAmPJuHRJDyahEeT8Ii3BCDAAF0WBj5Er5idAAAAAElFTkSuQmCC )
 		display: block
 		width: 40px
 		height: 40px
 		position: absolute
 		top: 0
-		left: 10px
-	// .mm-navbar 
-	// 	height: 13.3vw
-	// 	padding: 0.6vw 4vw 0.4vw
-
-
+		// left: 10px
+	.mm-navbar 
+		height: 13.3vw
+		padding: 0.6vw 4vw 0.4vw
 	.content
 		padding: 150px 50px 50px 50px
 
@@ -542,4 +571,113 @@ hr
 
 	.F_title
 		left: 45%
-/* 漢堡結束*/
+
+
+
+	.hamburger
+		padding: 10px
+		display: inline-block
+		cursor: pointer
+		transition-property: opacity,-webkit-filter
+		transition-property: opacity,filter
+		transition-property: opacity,filter,-webkit-filter
+		transition-duration: .15s
+		transition-timing-function: linear
+		font: inherit
+		color: inherit
+		text-transform: none
+		background-color: transparent
+		border: 0
+		margin: 0
+		overflow: visible
+
+		&:hover
+			opacity: .8
+
+	.hamburger-box
+		width: 40px
+		height: 40px
+		top: 100%
+		// display: inline-block
+		position: relative
+
+	.hamburger-inner
+		display: block
+		top: 50%
+		margin-top: -2px
+		width: 30px
+		height: 2px
+		background-color: #fff
+		border-radius: 2px
+		position: absolute
+		transition-property: transform
+		transition-duration: .15s
+		transition-timing-function: ease
+
+		&::after, &::before
+			width: 30px
+			height: 2px
+			background-color: #fff
+			border-radius: 2px
+			position: absolute
+			transition-property: transform
+			transition-duration: .15s
+			transition-timing-function: ease
+
+		&::after
+			content: ""
+			display: block
+
+		&::before
+			content: ""
+			display: block
+			top: -10px
+
+		&::after
+			bottom: -10px
+
+	.hamburger--collapse
+		.hamburger-inner
+			top: auto
+			bottom: 0
+			transition-duration: .15s
+			transition-delay: .15s
+			transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19)
+
+			&::after
+				top: -20px
+				transition: top 0.3s 0.3s cubic-bezier(0.33333, 0.66667, 0.66667, 1), opacity 0.1s linear
+
+			&::before
+				transition: top 0.12s 0.3s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.15s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+
+		&.is-active .hamburger-inner
+			transform: translate3d(0, -10px, 0) rotate(-45deg)
+			transition-delay: .32s
+			transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
+
+			&::after
+				top: 0
+				opacity: 0
+				transition: top 0.3s cubic-bezier(0.33333, 0, 0.66667, 0.33333), opacity 0.1s 0.27s linear
+
+			&::before
+				top: 0
+				-ms-transform: rotate(-90deg)
+				transform: rotate(-90deg)
+				transition: top 0.12s 0.18s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.15s 0.42s cubic-bezier(0.215, 0.61, 0.355, 1)
+
+	.hamburger--arrow.is-active .hamburger-inner
+		&::before
+			transform: translate3d(-8px, 0, 0) rotate(-45deg) scale(0.7, 1)
+
+		&::after
+			transform: translate3d(-8px, 0, 0) rotate(45deg) scale(0.7, 1)
+
+	.hamburger--arrow-r.is-active .hamburger-inner
+		&::before
+			transform: translate3d(8px, 0, 0) rotate(45deg) scale(0.7, 1)
+
+		&::after
+			transform: translate3d(8px, 0, 0) rotate(-45deg) scale(0.7, 1)
+	/* 漢堡結束*/

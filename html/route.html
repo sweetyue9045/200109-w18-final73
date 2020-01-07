@@ -66,7 +66,11 @@
          <!-- 漢堡 -->
          <div class="page">
             <div class="header">
-                <a href="#menu" data-icon="grid"></a>
+                <a id="amenu" class="hamburger hamburger--collapse" href="#menu" data-icon="grid">
+                    <span class="hamburger-box">
+                       <span class="hamburger-inner"></span>
+                    </span>
+                </a>
                 <nav id="menu">
                     <ul>
                         <li><a class="hamburger" href="../index.html">首頁</a></li>
@@ -102,28 +106,28 @@
                 <div class="choose_box">
                     <input type="checkbox" class="items" id="northern" onclick="choose(this)" />
                     <label for="northern" class="choose"></label>
-                    <label for="northern">北部▸基隆 宜蘭 台北 新北 桃園 新竹</label>
+                    <label for="northern" class="northern">北部▸基隆 宜蘭 台北 新北 桃園 新竹</label>
                 </div>
                 <div class="choose_box">
                     <input type="checkbox" class="items" id="central" onclick="choose(this)" />
                     <label for="central" class="choose"></label>
-                    <label for="central">中部▸苗栗 台中 彰化 南投 雲林</label>
+                    <label for="central" class="central">中部▸苗栗 台中 彰化 南投 雲林</label>
 
                 </div>
                 <div class="choose_box">
                     <input type="checkbox" class="items" id="southern" onclick="choose(this)" />
                     <label for="southern" class="choose"></label>
-                    <label for="southern">南部▸嘉義 台南 高雄 屏東</label>
+                    <label for="southern" class="southern">南部▸嘉義 台南 高雄 屏東</label>
                 </div>
                 <div class="choose_box">
                     <input type="checkbox" class="items" id="eastern" onclick="choose(this)" />
                     <label for="eastern" class="choose"></label>
-                    <label for="eastern">東部▸花蓮 台東</label>
+                    <label for="eastern" class="eastern">東部▸花蓮 台東</label>
                 </div>
                 <div class="choose_box">
                     <input type="checkbox" class="items" id="islands" onclick="choose(this)" />
                     <label for="islands" class="choose"></label>
-                    <label for="islands">離島▸澎湖 金門 馬祖</label>
+                    <label for="islands" class="islands">離島▸澎湖 金門 馬祖</label>
                 </div>
             </form>
         </div>
@@ -146,7 +150,7 @@
         </picture></div>
     </footer>
 
-    <a class="backtotop" id="backtoroute"><i class="fas fa-chevron-circle-up"></i></a>
+    <!-- <a class="backtotop" id="backtoroute"><i class="fas fa-chevron-circle-up"></i></a> -->
 
 </body>
 
