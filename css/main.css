@@ -1,0 +1,261 @@
+@charset "UTF-8";
+:root {
+  --Dark: #679298;
+  --Back: #ECF4F7;
+  --Font: #264D52;
+  --NAV_F: #ECF4F7;
+  --UPBA: rgba(255, 255, 255, 0.5);
+}
+
+* {
+  margin: auto;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+}
+
+* ::-webkit-scrollbar {
+  width: 5px;
+}
+
+* ::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+* ::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #779ea3;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  font-family: "微軟正黑體";
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  background-color: var(--Dark);
+  padding: 0.6vw 7.5vw 0.4vw;
+}
+
+header a {
+  margin: 0;
+  text-decoration: none;
+  height: 2vw;
+}
+
+.H_title {
+  width: 10%;
+  padding: 0;
+}
+
+.H_title a {
+  text-decoration: none;
+  color: var(--NAV_F);
+}
+
+.H_title img {
+  margin: 0.4vw 0 0 0;
+  height: 2.35vw;
+}
+
+nav {
+  width: 90%;
+}
+
+.nav_bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+  margin-top: 1.5px;
+}
+
+.nav_bar li {
+  margin: 0 1.55vw;
+  font-size: 1.1vw;
+  font-weight: bold;
+  list-style-type: none;
+}
+
+.nav_bar a {
+  text-decoration: none;
+  color: var(--NAV_F);
+}
+
+.container {
+  width: 100%;
+  background-color: var(--Back);
+  padding: 4vw 8vw;
+  min-height: calc(100vh - 12.35vw);
+}
+
+footer {
+  width: 100%;
+  background-color: var(--Dark);
+  padding: 1.8vw  7.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.F_left {
+  width: 100%;
+  font-size: 0.95vw;
+  color: var(--NAV_F);
+}
+
+.F_title {
+  margin: 10px 0 0 0;
+}
+
+.F_title img {
+  height: 4vw;
+}
+
+.backtotop {
+  border-radius: 50%;
+  display: scroll;
+  position: fixed;
+  bottom: -65px;
+  right: 2vw;
+  color: var(--Dark);
+  opacity: 1;
+}
+
+.backtotop:hover {
+  opacity: 0.8;
+}
+
+.fa-chevron-circle-up {
+  font-size: 3vw;
+}
+/*# sourceMappingURL=main.css.map */
+
+/* 漢堡 */
+@media (max-width: 320px) {
+  .H_title {
+    width: 320px;
+    text-align: center;
+    top: -1.5vw;
+  }
+  h1, h2, h3, h4, h5, h6
+{
+    line-height: 1;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+h1, h2, h3
+{
+    font-size: 18px;
+}
+h4, h5, h6
+{
+    font-size: 16px;
+}
+p
+{
+    margin: 0 0 10px 0;
+}
+a, a:link, a:active, a:visited, a:hover
+{
+    text-decoration: none;
+}
+
+nav:not(.mm-menu)
+{
+    display: none;
+}
+.mm-menu.mm-offcanvas.mm-opened {
+  z-index: 50;
+}
+.header,
+.content,
+.footer
+{
+    text-align: center;
+}
+.header,
+.footer
+{
+    background: #4E8393;
+    font-size: 16px;
+    /* font-weight: bold; */
+    color: #fff;
+    line-height: 40px;
+
+
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; 
+    width: 100%;
+    height: 40px;
+    /* padding: 0 50px; */
+    right: 10vw;
+}
+.header.fixed
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.footer.fixed
+{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+.header a
+{
+    background: center center no-repeat transparent;
+    background-image: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADhJREFUeNpi/P//PwOtARMDHQBdLGFBYtMq3BiHT3DRPU4YR4NrNAmPJuHRJDyahEeT8Ii3BCDAAF0WBj5Er5idAAAAAElFTkSuQmCC );
+
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
+.content
+{
+    padding: 150px 50px 50px 50px;
+}
+
+.mm-opened, .mm-panel, .mm-hasnavbar {
+    background-color: #679298 !important;
+}
+
+.mm-title {
+    color: white !important;
+    font-weight: bold !important;
+} 
+
+.hamburger {
+    color: white !important;
+}
+}
+/* 漢堡結束 */
