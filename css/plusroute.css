@@ -232,3 +232,8 @@ input[disabled="disabled"] {
   background-color: #4c777c;
 }
 /*# sourceMappingURL=plusroute.css.map */
+@media (max-width: 768px) {
+  select, .input, .textarea {
+    height: 3.7vw;
+  }
+}
