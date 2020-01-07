@@ -445,7 +445,6 @@ html, body {
 .attraction_hover:hover > .attraction_text {
   bottom: -10vw;
 }
-/*# sourceMappingURL=attraction.css.map */
 
 @media (max-width: 768px) {
   .site_title {
@@ -454,9 +453,12 @@ html, body {
   }
   .attraction_site {
     width: 85%;
+    display: -ms-grid;
     display: grid;
-    grid-template-columns: 48% 48%;
-    column-gap: 5vw;
+    -ms-grid-columns: 48% 48%;
+        grid-template-columns: 48% 48%;
+    -webkit-column-gap: 5vw;
+            column-gap: 5vw;
     row-gap: 5vw;
   }
   .attraction_intbox {
@@ -473,7 +475,7 @@ html, body {
     font-size: 1.5vw;
   }
   .intbox_mask {
-    font-size:1.5vw;
+    font-size: 1.5vw;
     line-height: 3vw;
   }
 }
@@ -487,10 +489,12 @@ html, body {
     font-size: 2.5vw;
     text-align: center;
   }
-  .attraction_site{
+  .attraction_site {
     width: 90%;
+    display: -ms-grid;
     display: grid;
-    grid-template-columns: 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
     row-gap: 10vw;
   }
   .attraction_intbox {
@@ -518,3 +522,4 @@ html, body {
     left: 45%;
   }
 }
+/*# sourceMappingURL=attraction.css.map */
