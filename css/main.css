@@ -182,7 +182,7 @@ input:focus {
 footer {
   width: 100%;
   background-color: var(--Dark);
-  padding: 1.8vw  7.5vw;
+  padding: 1.8vw	7.5vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -192,6 +192,7 @@ footer {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  z-index: 2;
 }
 
 .F_left {
@@ -727,6 +728,15 @@ hr {
   }
   .hamburger {
     color: white !important;
+  }
+  footer {
+    background-color: var(--Back);
+  }
+  .F_left {
+    display: none;
+  }
+  .F_title {
+    left: 45%;
   }
 }
 

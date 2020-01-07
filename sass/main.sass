@@ -1,9 +1,9 @@
 \:root
-  --Dark: #679298
-  --Back: #ECF4F7
-  --Font: #264D52
-  --NAV_F: #ECF4F7
-  --UPBA: rgba(255, 255, 255, 0.5)
+	--Dark: #679298
+	--Back: #ECF4F7
+	--Font: #264D52
+	--NAV_F: #ECF4F7
+	--UPBA: rgba(255, 255, 255, 0.5)
 *
 	margin: auto
 	padding: 0
@@ -114,10 +114,11 @@ input:focus
 footer
 	width: 100%
 	background-color: var(--Dark)
-	padding: 1.8vw  7.5vw
+	padding: 1.8vw	7.5vw
 	display: flex
 	align-items: center
 	justify-content: space-between
+	z-index: 2
 .F_left
 	width: 100%
 	font-size: 0.95vw
@@ -395,7 +396,7 @@ hr
 	border-radius: 20vw
 	border-top-right-radius: 0 
 	border-bottom-right-radius: 0 
-	border-right:  transparent
+	border-right:	transparent
 	font-size: 1.3vw
 .forgot
 	width: 23vw
@@ -450,84 +451,95 @@ hr
 
 /* 漢堡 */
 @media (max-width: 320px)
-  .H_title
-    width: 320px
-    text-align: center
-    top: -1.5vw
+	.H_title
+		width: 320px
+		text-align: center
+		top: -1.5vw
 
-  h1, h2, h3, h4, h5, h6
-    line-height: 1
-    font-weight: bold
-    margin: 20px 0 10px 0
+	h1, h2, h3, h4, h5, h6
+		line-height: 1
+		font-weight: bold
+		margin: 20px 0 10px 0
 
-  h1, h2, h3
-    font-size: 18px
+	h1, h2, h3
+		font-size: 18px
 
-  h4, h5, h6
-    font-size: 16px
+	h4, h5, h6
+		font-size: 16px
 
-  p
-    margin: 0 0 10px 0
+	p
+		margin: 0 0 10px 0
 
-  a
-    text-decoration: none
+	a
+		text-decoration: none
 
-    &:link, &:active, &:visited, &:hover
-      text-decoration: none
+		&:link, &:active, &:visited, &:hover
+			text-decoration: none
 
-  nav:not(.mm-menu)
-    display: none
+	nav:not(.mm-menu)
+		display: none
 
-  .mm-menu.mm-offcanvas.mm-opened
-    z-index: 50
+	.mm-menu.mm-offcanvas.mm-opened
+		z-index: 50
 
-  .header, .content, .footer
-    text-align: center
+	.header, .content, .footer
+		text-align: center
 
-  .header, .footer
-    background: #4E8393
-    font-size: 16px
-    //font-weight: bold;
-    color: #fff
-    line-height: 40px
-    -moz-box-sizing: border-box
-    box-sizing: border-box
-    width: 100%
-    height: 40px
-    // padding: 0 50px;
-    right: 10vw
+	.header, .footer
+		background: #4E8393
+		font-size: 16px
+		//font-weight: bold;
+		color: #fff
+		line-height: 40px
+		-moz-box-sizing: border-box
+		box-sizing: border-box
+		width: 100%
+		height: 40px
+		// padding: 0 50px;
+		right: 10vw
 
-  .header.fixed
-    position: fixed
-    top: 0
-    left: 0
+	.header.fixed
+		position: fixed
+		top: 0
+		left: 0
 
-  .footer.fixed
-    position: fixed
-    bottom: 0
-    left: 0
+	.footer.fixed
+		position: fixed
+		bottom: 0
+		left: 0
 
-  .header a
-    background: center center no-repeat transparent
-    background-image: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADhJREFUeNpi/P//PwOtARMDHQBdLGFBYtMq3BiHT3DRPU4YR4NrNAmPJuHRJDyahEeT8Ii3BCDAAF0WBj5Er5idAAAAAElFTkSuQmCC )
-    display: block
-    width: 40px
-    height: 40px
-    position: absolute
-    top: 0
-    left: 10px
+	.header a
+		background: center center no-repeat transparent
+		background-image: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADhJREFUeNpi/P//PwOtARMDHQBdLGFBYtMq3BiHT3DRPU4YR4NrNAmPJuHRJDyahEeT8Ii3BCDAAF0WBj5Er5idAAAAAElFTkSuQmCC )
+		display: block
+		width: 40px
+		height: 40px
+		position: absolute
+		top: 0
+		left: 10px
+	// .mm-navbar 
+	// 	height: 13.3vw
+	// 	padding: 0.6vw 4vw 0.4vw
 
-  .content
-    padding: 150px 50px 50px 50px
 
-  .mm-opened, .mm-panel, .mm-hasnavbar
-    background-color: #679298 !important
+	.content
+		padding: 150px 50px 50px 50px
 
-  .mm-title
-    color: white !important
-    font-weight: bold !important
+	.mm-opened, .mm-panel, .mm-hasnavbar
+		background-color: #679298 !important
 
-  .hamburger
-    color: white !important
+	.mm-title
+		color: white !important
+		font-weight: bold !important
 
+	.hamburger
+		color: white !important
+	footer
+		background-color: var(--Back)
+
+	.F_left
+		display: none
+
+	.F_title
+		left: 45%
 /* 漢堡結束*/
