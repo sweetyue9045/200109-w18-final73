@@ -1,6 +1,7 @@
 var txtId = 0; //新增表單
 
-$(document).ready(function () {
+$(function () {
+    
     // 引入 Firebase
     var firebaseConfig = {
         apiKey: "AIzaSyAScJw62d8pXsaIsKfOZCEgEulba3zEM4A",
@@ -386,3 +387,31 @@ function logout() {
 	window.location.href = "../index.html"
 	loginuser = ""
 }
+// 漢堡
+$(function () {
+	if (document.body.offsetWidth < 321) {
+		$('#menu').attr("style","display:inline-block")
+		var $menu = $("#menu").mmenu({
+		 });
+		 var $icon = $("#amenu");
+		 var API = $menu.data( "mmenu" );
+		 
+		 $icon.on( "click", function() {
+			API.open();
+		 });
+		 
+		 API.bind( "open:start", function() {
+			setTimeout(function() {
+			   $icon.addClass( "is-active" );
+			}, 100);
+		 });
+		 API.bind( "close:start", function() {
+			setTimeout(function() {
+			   $icon.removeClass( "is-active" );
+			}, 100);
+		 });
+	} else $('#menu').attr("style","display:none")
+}
+);
+
+// 漢堡結束

@@ -541,13 +541,12 @@ hr
 
 	.header a
 		background: center center no-repeat transparent
-		// background-image: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADhJREFUeNpi/P//PwOtARMDHQBdLGFBYtMq3BiHT3DRPU4YR4NrNAmPJuHRJDyahEeT8Ii3BCDAAF0WBj5Er5idAAAAAElFTkSuQmCC )
 		display: block
 		width: 40px
 		height: 40px
 		position: absolute
-		top: 0
-		// left: 10px
+		// top: 0.5vw
+
 	.mm-navbar 
 		height: 13.3vw
 		padding: 0.6vw 4vw 0.4vw
@@ -597,8 +596,6 @@ hr
 	.hamburger-box
 		width: 40px
 		height: 40px
-		top: 100%
-		// display: inline-block
 		position: relative
 
 	.hamburger-inner
@@ -636,48 +633,29 @@ hr
 		&::after
 			bottom: -10px
 
-	.hamburger--collapse
+	.hamburger--elastic-r
 		.hamburger-inner
-			top: auto
-			bottom: 0
-			transition-duration: .15s
-			transition-delay: .15s
-			transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19)
-
-			&::after
-				top: -20px
-				transition: top 0.3s 0.3s cubic-bezier(0.33333, 0.66667, 0.66667, 1), opacity 0.1s linear
+			top: 2px
+			transition-duration: 0.275s
+			transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55)
 
 			&::before
-				transition: top 0.12s 0.3s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.15s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+				top: 10px
+				transition: opacity 0.125s 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+
+			&::after
+				top: 20px
+				transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55)
 
 		&.is-active .hamburger-inner
-			transform: translate3d(0, -10px, 0) rotate(-45deg)
-			transition-delay: .32s
-			transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
-
-			&::after
-				top: 0
-				opacity: 0
-				transition: top 0.3s cubic-bezier(0.33333, 0, 0.66667, 0.33333), opacity 0.1s 0.27s linear
+			transform: translate3d(0, 10px, 0) rotate(-135deg)
+			transition-delay: 0.075s
 
 			&::before
-				top: 0
-				-ms-transform: rotate(-90deg)
-				transform: rotate(-90deg)
-				transition: top 0.12s 0.18s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.15s 0.42s cubic-bezier(0.215, 0.61, 0.355, 1)
+				transition-delay: 0s
+				opacity: 0
 
-	.hamburger--arrow.is-active .hamburger-inner
-		&::before
-			transform: translate3d(-8px, 0, 0) rotate(-45deg) scale(0.7, 1)
-
-		&::after
-			transform: translate3d(-8px, 0, 0) rotate(45deg) scale(0.7, 1)
-
-	.hamburger--arrow-r.is-active .hamburger-inner
-		&::before
-			transform: translate3d(8px, 0, 0) rotate(45deg) scale(0.7, 1)
-
-		&::after
-			transform: translate3d(8px, 0, 0) rotate(-45deg) scale(0.7, 1)
+			&::after
+				transform: translate3d(0, -20px, 0) rotate(270deg)
+				transition-delay: 0.075s
 	/* 漢堡結束*/
