@@ -746,12 +746,13 @@ hr {
 /* 漢堡結束*/
 /*# sourceMappingURL=main.css.map */
 .LOGIN {
-  height: 41vw;
+  height: 420px;
+  width: 450px;
 }
 @media (max-width: 768px) {
   .LOGIN {
-    width: 70vw;
-    height: 75vw;
+    width: 530px;
+    height: 512px;
   }
   .btnL {
     width: 15vw;
