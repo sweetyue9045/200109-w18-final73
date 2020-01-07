@@ -745,3 +745,34 @@ hr {
 
 /* 漢堡結束*/
 /*# sourceMappingURL=main.css.map */
+@media (max-width: 768px) {
+  .LOGIN {
+    width: 55vw;
+    height: 53vw;
+  }
+  .btnL {
+    width: 15vw;
+    height: 3vw;
+  }
+  .login_btn {
+    grid-template-columns: 18vw 18vw;
+    left: -5.5vw;
+  }
+  .login_input {
+    width: 28vw;
+    height: 3.5vw;
+  }
+  .btni {
+    height: 3.5vw;
+  }
+  .forgot {
+    right: -4.5vw;
+  }
+  .btnSignIn {
+    width: 7vw;
+    right: -2vw;
+  }
+  .login_or {
+    grid-template-columns: 15vw 8vw 15vw;
+  }
+}
