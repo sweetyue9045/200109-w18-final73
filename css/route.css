@@ -422,5 +422,20 @@ input:checked + .choose:before {
     grid-template-columns: 1fr;
     grid-template-rows: 10% 90%;
   }
-
+  .container_right {
+    width: 100%;
+  }
+  .wrap_img img {
+    width: 95%;
+  }
+  .wrap_img {
+    height: 120%;
+  }
+  .wrap_text {
+    width: 85%;
+    padding-top: 10px;
+  }
+  .wrap a {
+    margin: 40px 0 0 0;
+  }
 }
