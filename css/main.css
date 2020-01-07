@@ -776,3 +776,50 @@ hr {
     grid-template-columns: 15vw 8vw 15vw;
   }
 }
+@media (max-width: 320px) {
+  .LOGIN {
+    top: 10vw;
+    width: 80vw;
+    height: 100vw;
+    padding: 2vw 0;
+    row-gap: 2vw;
+  }
+  .login_or {
+    grid-template-columns: 23vw 15vw 25.5vw;
+    top: 3vw;
+  }
+  .LOGIN h1 {
+    margin: 15px 0 -1px 0;
+  }
+  .or {
+    font-size: 0.8vw;
+  }
+  .btnL {
+    width: 30vw;
+    height: 7vw;
+    top: 2vw;
+  }
+  .login_btn {
+    grid-template-columns: 1vw 1vw;
+    left: -15vw;
+    width: 34vw;
+  }
+  .login_input {
+    width: 57vw;
+    height: 7vw;
+    top: 2vw;
+  }
+  .btni {
+    height: 7vw;
+    top: 2vw;
+  }
+  .forgot {
+    width: 35vw;
+    right: -12vw;
+  }
+  .btnSignIn {
+    width: 15vw;
+    height: 8vw;
+    right: -8vw;
+  }
+}
