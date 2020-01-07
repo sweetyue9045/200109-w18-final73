@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>推薦行程丨Dtrip</title>
+    <title>我的專區丨Dtrip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/jquery.mmenu.all.css" />
     <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/route.css" />
+    <link rel="stylesheet" href="../css/members.css" />
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <script src="../js/jquery-3.4.1.js"></script>
     <script src="../js/popper.min.js"></script>
@@ -24,11 +25,14 @@
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
     <script src=" https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
 
-    <script src="https://kit.fontawesome.com/cd8e6a98a4.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="../js/daterangepicker.js"></script>
 
+    <script src="https://kit.fontawesome.com/cd8e6a98a4.js" crossorigin="anonymous"></script>
 </head>
 
-<body onload="route()">
+<body onload="like();myroute()">
     <article class="showintro">
         <div class="introback"></div>
         <div class="INTRO">
@@ -46,9 +50,44 @@
             </div>
         </div>
     </article>
-    <article class="showlogin">
-        <div class="loginback"></div>
-        <div class="LOGIN"></div>
+    <article class="showupdate">
+        <div class="updateback"></div>
+        <div class="UPDATE">
+            <form>
+                <div class="place placetop">
+                    <input type="text" id="none" required style="display: none;">
+                    <div class="input_main">所在</div>
+                    <div class="input">
+                        <select name="area" id="area" required>
+                            <option value="">地區</option>
+                            <option value="northern">北部</option>
+                            <option value="central">中部</option>
+                            <option value="southern">南部</option>
+                            <option value="eastern">東部</option>
+                            <option value="islands">離島</option>
+                        </select>
+                        <select name="county" id="county" required>
+                            <option value="">縣市</option>
+                        </select>
+                    </div>
+                    <div class="input_main">行程名稱</div>
+                    <input type="text" name="title" id="title" class="input" placeholder='【...一日遊】...'
+                        autocomplete="off" required>
+
+                    <div class="input_main">行程途經</div>
+                    <input type="text" name="route" id="route" class="input" placeholder='兩地請用" > "分隔'
+                        autocomplete="off" required>
+
+                    <div class="input_main">介紹此行程</div>
+                    <textarea name="intro" id="intro" class="input" required></textarea>
+
+                </div>
+                <div id="showBlock"></div>
+                <div class="btnn">
+                    <button type="submit" class="btn" id="submit">送出</button>
+                </div>
+            </form>
+        </div>
     </article>
     <header>
         <div class="H_title"><a href="../index.html"><img src="../im/LOGO-Dtrip-2.png" alt=""></a></div>
@@ -63,8 +102,8 @@
 
             </ul>
         </nav>
-         <!-- 漢堡 -->
-         <div class="page">
+        <!-- 漢堡 -->
+        <div class="page">
             <div class="header">
                 <a href="#menu" data-icon="grid"></a>
                 <nav id="menu">
@@ -83,54 +122,13 @@
         <!-- 漢堡結束 -->
     </header>
     <div class="container">
-        <div class="container_left">
-            <form>
-                <div class="route_input_group" id="route_input_group">
-                    <input type="text" class="route_form_control" id="route_form_control" placeholder="搜尋..." autofocus
-                        autocomplete="off">
-                    <style id="route_search"></style>
-                    <button type="button" class="btn route_search" style="outline: none" onclick="change(this)">
-                        <i class="fas fa-search"></i>
-                    </button>
+        <div class="likey">like
+            <div class="like_box" id="like_box">
 
-                </div>
-                <div class="choose_box">
-                    <input type="radio" id="CheckAll" onclick="choose(this)" checked />
-                    <label for="CheckAll" class="choose"></label>
-                    <label for="CheckAll">全部</label>
-                </div>
-                <div class="choose_box">
-                    <input type="checkbox" class="items" id="northern" onclick="choose(this)" />
-                    <label for="northern" class="choose"></label>
-                    <label for="northern">北部▸基隆 宜蘭 台北 新北 桃園 新竹</label>
-                </div>
-                <div class="choose_box">
-                    <input type="checkbox" class="items" id="central" onclick="choose(this)" />
-                    <label for="central" class="choose"></label>
-                    <label for="central">中部▸苗栗 台中 彰化 南投 雲林</label>
-
-                </div>
-                <div class="choose_box">
-                    <input type="checkbox" class="items" id="southern" onclick="choose(this)" />
-                    <label for="southern" class="choose"></label>
-                    <label for="southern">南部▸嘉義 台南 高雄 屏東</label>
-                </div>
-                <div class="choose_box">
-                    <input type="checkbox" class="items" id="eastern" onclick="choose(this)" />
-                    <label for="eastern" class="choose"></label>
-                    <label for="eastern">東部▸花蓮 台東</label>
-                </div>
-                <div class="choose_box">
-                    <input type="checkbox" class="items" id="islands" onclick="choose(this)" />
-                    <label for="islands" class="choose"></label>
-                    <label for="islands">離島▸澎湖 金門 馬祖</label>
-                </div>
-            </form>
+            </div>
         </div>
-        <div class="container_right">
-
-            <div class="site_title">行程分享</div>
-            <div class="route_content" id="route_content">
+        <div class="myroute">myroute
+            <div class="myroute_box" id="myroute_box">
 
             </div>
         </div>

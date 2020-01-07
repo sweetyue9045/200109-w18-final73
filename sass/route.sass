@@ -10,11 +10,11 @@
 	box-sizing: border-box
 	position: relative
 	\::-webkit-scrollbar
-		width: 5px
+		width: .5vw
 	\::-webkit-scrollbar-track
-		border-radius: 10px
+		border-radius: 1.0vw
 	\::-webkit-scrollbar-thumb
-		border-radius: 4px
+		border-radius: .4vw
 		background: #779ea3
 
 html,body
@@ -44,7 +44,7 @@ html,body
 	height: 13.5vw
 .wrap a
 	height: 100%
-	margin: 20px 0 0 0
+	margin: 2vw 0 0 0
 	display: flex
 	align-items: flex-start 
 .wrap_img
@@ -55,13 +55,13 @@ html,body
 	width: 100%
 .wrap_text
 	width: 60%
-	margin: 0px
-	padding: 0 0 0 20px
+	margin: 0
+	padding: 0 0 0 2vw
 .wrap_title
 	font-size: 1.3vw
 .wrap_route
 	font-size: 0.95vw
-	padding: 10px 0 0 5px
+	padding: 1vw 0 0 .5vw
 
 
 //----------Search CSS----------
@@ -72,7 +72,7 @@ html,body
 	align-items: flex-start 
 	border-collapse: collapse
 	width: 19.5vw
-	margin: 0 0 20px 0
+	margin: 0 0 2vw 0
 .route_form_control
 	width: 100%
 	height: 2.7vw 
@@ -86,31 +86,16 @@ html,body
 	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s 
 	outline: none
 	margin: 0
-.route_form_control ::-webkit-input-placeholder
-	color: #4c777c
-.route_form_control:focus 
-	color: var(--Dark)
-	
-.btn 
-	display: inline-block 
-	padding: 0.65vw 1vw
-	height: 2.7vw 
-	margin-bottom: 0 
-	font-size: 1.1vw 
-	font-weight: 400 
-	text-align: center 
-	white-space: nowrap 
-	vertical-align: middle 
-	touch-action: manipulation 
-	cursor: pointer 
-	user-select: none 
-	border: 0.1vw solid var(--Dark)
-	border-left: none
-	border-radius: 0 0.3vw 0.3vw 0
-	outline: none
-	background-color: transparent
+
 .route_search
 	color: var(--Dark)
+	border: 0.1vw solid var(--Dark)
+	padding: 0.4vw 1vw
+	height: 2.7vw 
+	user-select: none 
+	border-left: none
+	border-radius: 0 0.3vw 0.3vw 0
+	background: transparent
 
 .route_search:active, .open >.route_search
 	color: var(--Font)
@@ -126,11 +111,11 @@ html,body
 .choose_box input
 	display: none
 label
-	margin: 3px 
+	margin: .3vw
 	color: var(--Dark)
 
 .choose
-	left: 0px
+	left: 0
 	width: 1.05vw
 	height: 1.05vw
 	border: 0.13vw solid var(--Dark)
@@ -150,153 +135,65 @@ label
 input:checked + .choose:before
 	opacity: 1
 
-/*----------介紹頁面----------
+@media (max-width: 768px)
+  .container
+    width: 100%
+    display: grid
+    grid-template-columns: 1fr
+    grid-template-rows: 10% 90%
 
-.showintro
-	position: fixed
-	width: 100%
-	height: 100vh
-	z-index: 1
-	overflow-y: auto
-	overflow-x: hidden
-.showintro::-webkit-scrollbar 
-    display: none
+  .container_right
+    width: 100%
 
-.introback
-	position: fixed
-	width: 100%
-	height: 100vh
-	background-color: rgba(0, 0, 0, 0.5)
+  .wrap_img
+    img
+      width: 95%
 
-.INTRO
-	position: relative
-	width: 80%
-	height: auto
-	border-radius: 20px
-	background-color: rgba(255, 255, 255, 0.8)
-	z-index: 2
-	margin: 25px auto
-	color: var(--Font)
-.intro_top
-	position: relative
-	width: 100%
-	height: 3.5vw
+    height: 120%
 
-.closeBtn
-	cursor: pointer
+  .wrap_text
+    width: 85%
+    padding-top: 10px
 
-.closeBtn1
-	position: absolute
-	font-size: 1.55vw
-	right: 20px
-	top: 50%
-	transform: translateY(-50%)
-	color: #b9b9b9
+  .wrap a
+    margin: 40px 0 0 0
 
-.intro_content
-	width: 90%
+@media (max-width: 320px)
+  .H_title img
+    height: 5vw
+    top: 2vw
 
-.intro_btm
-	position: relative
-	width: 100%
-	height: 3.5vw
-	border-top: 0.13vw solid #b9b9b9
+  .site_title
+    text-align: center
 
-.closeBtn2
-	position: relative
-	font-size: 2vw
-	left: 50%
-	top: 50%
-	transform: translate(-50%, -50%)
-	color: #b9b9b9
+  .wrap a
+    height: 70vw
+    display: grid
+    grid-template-rows: 60% 20%
+    margin-top: 45vw
 
-.closeBtn:hover
-	color: rgba(121, 121, 121, 0.6)
-.intro_intro
-	text-align: center
-.tourline_title
-	font-size: 1.55vw
-.tourline_intro
-	margin: 10px auto 20px
-	width: 70%
-	font-size: 0.95vw
-.tourArticle
-	padding-left: 60px
-	margin-bottom: 50px
-	padding-top: 20px
+  .wrap_title
+    width: 80vw
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
 
-.tourArticle::before
-	content: ''
-	display: block
-	width: 1.5px
-	height: calc(100% + 30px)
-	background-color: var(--Dark)
-	position: absolute
-	left: calc((50px - 2px)/2)
-	top: 0px
-.tourArticle::after 
-    content: ''
-    display: block
-    width: 10px
-    height: 10px
-    border-radius: 100%
-    background-color: var(--Font)
-    position: absolute
-    left: 19.5px
-    bottom: -30px
-.tourtitle
-	left: -8px
-	padding-bottom: 5px 
-	z-index: 10
-.tourtitle::after
-    content: ''
-    display: block
-    width: 10px
-    height: 10px
-    border-radius: 100%
-    background-color: var(--Font)
-    position: absolute
-    left: 27.5px
-    bottom: -10px
-.tourlineBox
-	border: 0.1vw solid var(--Dark)
-	border-radius: 20px
-	padding: 20px
-	margin: 20px 0
-	display: flex
+  .wrap_route
+    width: 80vw
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
+    padding-top: 0
 
-.tourlineBox:before, .tourlineBox_distance:before
-	content: ''
-	width: 35px
-	height: 1.5px
-	background-color: var(--Dark)
-	position: absolute
-	left: -36px
-	top: 50%
+  .wrap_text
+    padding: 0
 
-.showintro img
-	width: 50%
-	height: 100%
-	display: block
-	top: 0
-	border-radius: 10px
+  .wrap_img
+    img
+      width: 80vw
+      height: 100%
+      object-fit: cover
+      right: 72%
 
-
-.tourlineSpots_Right
-	width: 50%
-	padding: 0 0 0 25px
-	font-size: 1.1vw
-
-.tourlineSpots_title
-	font-size: 1.3vw
-	margin: 10px 0 
-.distancebtn
-	display: inline-block
-	color: var(--Dark)
-	margin-left: 15px
-	line-height: 2.4vw
-	font-size: 1.1vw
-	border-bottom: 2px dashed var(--Dark)
-	a
-		text-decoration: none
-		color: var(--Dark)
+    height: 100%
+    overflow: visible

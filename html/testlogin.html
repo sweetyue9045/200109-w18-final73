@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/jquery-3.4.1.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/testlogin.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+    <script src=" https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+    <script src="../js/daterangepicker.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/testlogin.css" />
+    <script src="https://kit.fontawesome.com/cd8e6a98a4.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="LOGIN">
+        <h1>LOGO</h1>
+        <div class="login_or">
+            <div class="l">
+                <hr>
+            </div>
+            <div class="or">快速登入</div>
+            <div class="l">
+                <hr>
+            </div>
+        </div>
+        <div class="login_btn">
+            <button type="button" class="btn btnL btnF" id="facebookSingIn"><i class="fab fa-facebook btnfa"></i>
+                <span>Facebook登入</span></button>
+            <button type="button" class="btn btnL btnG" id="btnGoogleSingIn"><i class="fab fa-google-plus btnfa"></i>
+                <span>Google+登入</span></button>
+        </div>
+        <div class="login_or">
+            <div class="l">
+                <hr>
+            </div>
+            <div class="or">一般登入</div class="or">
+            <div class="l">
+                <hr>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btni"><i class="fas fa-user" tabindex="-1"></i></button>
+            <input type="text" class="login_input" id="email" placeholder="Exampe@mail.com" tabindex="1">
+        </div>
+        <div class="form-group">
+            <button class="btn btni"><i class="fas fa-unlock-alt" disabled="disabled" tabindex="-1"></i></button>
+            <input type="password" class="login_input" id="password" placeholder="" tabindex="2">
+        </div>
+        <div class="forgot">忘記帳號 / 密碼 ?</div>
+        <div class="button-row">
+            <button type="button" class="btn btnSignIn" id="btnSignIn" tabindex="3">登入</button>
+            <button type="button" class="btn" id="btnSignOut">登出</button>
+        </div>
+    </div>
+</body>
+
+</html>
