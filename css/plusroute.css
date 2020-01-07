@@ -233,7 +233,33 @@ input[disabled="disabled"] {
 }
 /*# sourceMappingURL=plusroute.css.map */
 @media (max-width: 768px) {
-  select, .input, .textarea {
+  select, input {
     height: 3.7vw;
+  }
+  .placetop {
+    grid-template-columns: 15% 40%;
+  }
+  textarea {
+    height: 7vw;
+  }
+}
+@media (max-width: 320px) {
+  .placetop {
+    grid-template-rows: repeat(5,10vw);
+    grid-template-columns: 30% 60%;
+  }
+  select, input {
+    height: 7vw;
+  }
+  textarea {
+    resize: none;
+    height: 14vw;
+  }
+  .place {
+    grid-template-columns: 1fr;
+  }
+  .place_ {
+    height: 80vw;
+    grid-template-rows: repeat(7,9vw);
   }
 }
