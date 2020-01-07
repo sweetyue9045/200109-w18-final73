@@ -2,6 +2,7 @@
 var searchbar = 0;
 let loginuser = "";
 let likedata = []
+var homek=0
 
 $(function () {
 	//----------firebase----------
@@ -76,6 +77,10 @@ $(function () {
 	}).scroll();
 	$('#backtotop').click(function () { $('html,body').animate({ scrollTop: 0 }, 800); });
 	var slide = 0;
+	if (document.body.offsetWidth < 769){
+		homek=3
+	} else if (document.body.offsetWidth > 768) {homek=5}
+	console.log(homek)
 	//----------景點----------
 
 	//--預設地點點擊--
@@ -102,19 +107,7 @@ $(function () {
 			}
 		}
 	});  
-	if (document.body.offsetWidth < 769){
-		$('.northern').html(`北部`)
-		$('.central').html(`中部`)
-		$('.southern').html(`南部`)
-		$('.eastern').html(`東部`)
-		$('.islands').html(`離島`)
-	}else{
-		$('.northern').html(`北部▸基隆 宜蘭 台北 新北 桃園 新竹`)
-		$('.central').html(`中部▸苗栗 台中 彰化 南投 雲林`)
-		$('.southern').html(`南部▸嘉義 台南 高雄 屏東`)
-		$('.eastern').html(`東部▸花蓮 台東`)
-		$('.islands').html(`離島▸澎湖 金門 馬祖`)
-	}
+	
 	//--搜尋點擊--
 	var wid
 	var rad
@@ -152,6 +145,19 @@ $(function () {
 	});
 
 	//----------行程----------
+	if (document.body.offsetWidth < 769){
+		$('.northern').html(`北部`)
+		$('.central').html(`中部`)
+		$('.southern').html(`南部`)
+		$('.eastern').html(`東部`)
+		$('.islands').html(`離島`)
+	}else{
+		$('.northern').html(`北部▸基隆 宜蘭 台北 新北 桃園 新竹`)
+		$('.central').html(`中部▸苗栗 台中 彰化 南投 雲林`)
+		$('.southern').html(`南部▸嘉義 台南 高雄 屏東`)
+		$('.eastern').html(`東部▸花蓮 台東`)
+		$('.islands').html(`離島▸澎湖 金門 馬祖`)
+	}
 	$('.showintro').hide();
 	//--選擇--
 	$("#CheckAll").click(function () {
@@ -202,6 +208,8 @@ $(function () {
 
 /*----------首頁頁面----------*/
 //--抓資料庫 + 渲染行程--
+
+
 function home_route() {
 	$("#route_box").empty()
 	var route_box = []
@@ -213,7 +221,7 @@ function home_route() {
 					myroute.forEach(function (title) {
 						var TData = title.val();
 						route_box.push(TData.title)
-						for (k = 0; k < 5; k++) {
+						for (k = 0; k < homek; k++) {
 							if (TData.title == route_box[k]) {
 								$("#route_box").append('<div class="route_content"><a id="' + TData.title + '" " onclick="showin(this)"><div class="route_left"><img src="' + TData.place[0].img + '" alt=""></div><div class="route_right"><div class="route_title">' + TData.title + '</div><div class="route_text">' + TData.route + '</div></div></a></div>')
 							}
