@@ -10,11 +10,11 @@
 	box-sizing: border-box
 	position: relative
 	\::-webkit-scrollbar
-		width: 5px
+		width: .5vw
 	\::-webkit-scrollbar-track
-		border-radius: 10px
+		border-radius: 1.0vw
 	\::-webkit-scrollbar-thumb
-		border-radius: 4px
+		border-radius: .4vw
 		background: #779ea3
 
 html,body
@@ -52,23 +52,64 @@ nav
 	align-items: center
 	justify-content: flex-end
 	width: 100%
-	margin-top: 1.5px
 .nav_bar li
 	margin: 0 1.55vw
 	font-size: 1.1vw
 	font-weight: bold
 	list-style-type: none
+	cursor: pointer
 .nav_bar a 
 	text-decoration: none
 	color: var(--NAV_F)
+#plusroute,#login,#members,#btnSignOut
+	display: none
+
 //----------container CSS----------
 .container
 	width: 100%
 	background-color: var(--Back)
 	padding: 4vw 8vw
 	min-height: calc(100vh - 12.35vw)
+	font-family: "微軟正黑體"
+.site_title
+	font-size: 1.55vw
+	color: var(--Font)
+	text-align: left
+.btn
+	display: inline-block
+	padding: .4vw .8vw
+	font-size: 1.1vw
+	font-weight: 400
+	line-height: 1.42857143
+	text-align: center
+	white-space: nowrap
+	touch-action: manipulation
+	cursor: pointer
+	border: .1vw solid transparent
+	border-radius: .4vw
+	outline: none
+	font-family: "微軟正黑體"
 
-    
+select,input,textarea
+	font-family: "微軟正黑體"
+	outline: none
+	padding: .4vw .6vw
+	border: .1vw solid #ccc
+	border-radius: .4vw
+	box-shadow: none
+	background-color: #fff
+	background-image: none
+	font-size: 1.1vw
+	line-height: inherit
+	height: 2.7vw
+input
+	color: #4c777c
+input::placeholder
+	opacity: 0.5
+input::-webkit-input-placeholder
+	color: #4c777c
+input:focus 
+	color: var(--Dark)
 //----------footer CSS----------
 footer
 	width: 100%
@@ -82,7 +123,7 @@ footer
 	font-size: 0.95vw
 	color: var(--NAV_F)
 .F_title
-	margin: 10px 0 0 0 
+	margin: 1vw 0 0 0 
 .F_title img
 	height: 4vw
 
@@ -92,7 +133,7 @@ footer
 	border-radius: 50%
 	display: scroll
 	position: fixed
-	bottom: -65px
+	bottom: -6.5vw
 	right: 2vw
 	color: var(--Dark)
 	opacity: 1
@@ -100,3 +141,309 @@ footer
 		opacity: 0.8
 .fa-chevron-circle-up
 	font-size: 3vw
+
+/*----------介紹頁面----------
+
+.showintro
+	position: fixed
+	width: 100%
+	height: 100vh
+	z-index: 50
+	overflow-y: auto
+	overflow-x: hidden
+.showintro::-webkit-scrollbar 
+	display: none
+
+.introback
+	position: fixed
+	width: 100%
+	height: 100vh
+	background-color: rgba(0, 0, 0, 0.5)
+	z-index: 50
+
+.INTRO
+	position: relative
+	width: 65%
+	height: auto
+	border-radius: .5vw
+	background-color: rgba(255, 255, 255, 1)
+	z-index: 55
+	margin: 2.5vw auto
+	color: var(--Font)
+.intro_top
+	position: relative
+	width: 100%
+	height: 3.5vw
+	border-bottom: 0.13vw solid #b9b9b9
+
+
+.closeBtn
+	cursor: pointer
+	position: absolute
+	font-size: 1.55vw
+	right: 1.5vw
+	top: 1.5vw
+	color: #b9b9b9
+	z-index: 100
+
+.intro_content
+	width: 90%
+	padding-top: 2vw
+	overflow-y: auto
+
+
+.closeBtn:hover
+	color: rgba(121, 121, 121, 0.6)
+.intro_intro
+	text-align: center
+.tourline_title
+	font-size: 1.55vw
+.like_btn
+	background-color: var(--Dark)
+.like
+	color: red
+.dislike
+	color: white
+.nlike
+	color: gray
+.splike
+	color: white
+	margin-left: .5vw
+.tourline_intro
+	margin: 1vw auto 2vw
+	width: 70%
+	font-size: 0.95vw
+.tourArticle
+	padding-left: 6vw
+	margin-bottom: 5vw
+	padding-top: 2vw
+
+.tourArticle::before
+	content: ''
+	display: block
+	width: 0.15vw
+	height: calc(100% + 3vw)
+	background-color: var(--Dark)
+	position: absolute
+	left: calc((5vw - .2vw)/2)
+	top: 0
+.tourArticle::after 
+	content: ''
+	display: block
+	width: 1vw
+	height: 1vw
+	border-radius: 100%
+	background-color: var(--Font)
+	position: absolute
+	left: 1.95vw
+	bottom: -3vw
+.tourtitle
+	padding-bottom: .5vw 
+	z-index: 10
+.tourtitle::after
+	content: ''
+	display: block
+	width: 1vw
+	height: 1vw
+	border-radius: 100%
+	background-color: var(--Font)
+	position: absolute
+	left: 1.95vw
+	bottom: -1vw
+.tourtitle>span
+	font-size: 1.1vw
+	margin-left: .18vw
+.tourlineBox
+	border: 0.1vw solid var(--Dark)
+	border-radius: 2vw
+	padding: 2vw
+	margin: 2vw 0
+	display: flex
+
+.tourlineBox:before, .tourlineBox_distance:before
+	content: ''
+	width: 3.5vw
+	height: 0.15vw
+	background-color: var(--Dark)
+	position: absolute
+	left: -3.6vw
+	top: 50%
+
+.showintro img
+	width: 50%
+	height: 100%
+	display: block
+	top: 0
+	border-radius: 1vw
+
+
+.tourlineSpots_Right
+	width: 50%
+	padding: 0 0 0 2.5vw
+	font-size: 1.1vw
+
+.tourlineSpots_title
+	font-size: 1.3vw
+	margin: 1vw 0 
+.distancebtn
+	display: inline-block
+	color: var(--Dark)
+	margin-left: 1.5vw
+	line-height: 2.4vw
+	font-size: 1.1vw
+	border-bottom: .2vw dashed var(--Dark)
+	a
+		text-decoration: none
+		color: var(--Dark)
+/*----------登入頁面----------
+
+.showlogin
+	position: fixed
+	width: 100%
+	height: 100vh
+	z-index: 50
+	overflow-y: auto
+	overflow-x: hidden
+	display: none
+.showintro::-webkit-scrollbar 
+	display: none
+.loginback
+	position: fixed
+	width: 100%
+	height: 100vh
+	background-color: rgba(0, 0, 0, 0.5)
+	z-index: 50
+.LOGIN
+	position: relative
+	width: 40vw
+	height: 38vw
+	border-radius: 2vw
+	background-color: rgba(255, 255, 255, 1)
+	z-index: 55
+	margin: 3.5vw auto
+	color: var(--Font)
+	display: grid
+	justify-items: center
+	grid-gap: .5vw
+	padding: 5vw 0
+
+.login_or
+	display: grid
+	grid-template-rows: 100%
+	grid-template-columns: 12vw 8vw 12vw
+	align-items: center
+	margin: .5vw
+
+.l
+	background-color: #262626
+	height: .05vw
+	width: 100%
+	margin: 0
+
+hr
+	margin-top: 1rem
+	margin-bottom: 1rem
+	border: 0
+.or
+	font-size: 0.95vw
+.login_btn
+	display: grid
+	width: 25vw
+	grid-template-columns: 11.5vw 11.5vw
+	justify-content: space-between
+.btnL
+	width: 11.5vw
+	border-radius: 20vw
+	height: 2.8vw 
+	color: #fff
+	display: flex
+	padding-top: 0.45vw
+
+.btnL>span
+	font-size: 1.2vw
+	font-family: "微軟正黑體"
+	margin: 0
+	margin-left: .7vw
+.btnfa
+	font-size: 1.5vw
+.btnF
+	background-color: #7783A8
+.btnG
+	background-color: #D19C6C
+.form-group
+	display: flex
+	align-items: flex-start 
+	margin: .5vw
+.login_input
+	width: 20vw
+	height: 3vw 
+	border-radius: 20vw
+	border: 0.1vw solid var(--Dark)
+	border-top-left-radius: 0
+	border-bottom-left-radius: 0
+	border-left: 0 transparent
+	margin: 0
+	font-size: 1.3vw
+	padding-left: 0
+.btni
+	margin: 0
+	width: 5vw
+	height: 3vw
+	border: 0.1vw solid var(--Dark)
+	color: var(--Dark)
+	background-color: rgba(0, 0, 0, 0)
+	border-radius: 20vw
+	border-top-right-radius: 0 
+	border-bottom-right-radius: 0 
+	border-right:  transparent
+	font-size: 1.3vw
+.forgot
+	width: 23vw
+	font-size: 0.95vw
+	margin: 0
+	text-align: right
+	text-decoration: underline
+.button-row
+	margin: 1.3vw 0 0
+	display: grid
+	width: 25vw
+	grid-template-columns: 5.5vw
+	justify-content: flex-end
+	align-items: center
+
+.btnSignIn
+	width: 5.5vw
+	border-radius: 20vw
+	color: #fff
+	background-color: var(--Dark)
+
+
+//loading	
+@keyframes spinner-border
+	to
+		transform: rotate(360deg)
+
+.spinner-border
+	display: inline-block
+	width: 2rem
+	height: 2rem
+	vertical-align: text-bottom
+	border: .25em solid currentColor
+	border-right-color: transparent
+	border-radius: 50%
+	animation: spinner-border .75s linear infinite
+.spinner-border-sl
+	height: 1rem
+	width: 1rem
+	border-width: .2em
+	top: -1.2px
+.spinner-border-sm
+	height: 0.8rem
+	width: 0.8rem
+	border-width: .2em
+
+.spinner-border-ss
+	height: 0.6rem
+	width: 0.6rem
+	border-width: .15em
+	margin-left: .4rem

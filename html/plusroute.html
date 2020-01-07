@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>新增行程丨Dtrip</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/plusroute.css" />
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+   
+    <script src="../js/jquery-3.4.1.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/plusroute.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+    <script src=" https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="../js/daterangepicker.js"></script>
+
+    <script src="https://kit.fontawesome.com/cd8e6a98a4.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="H_title"><a href="../index.html"><img src="../im/LOGO-Dtrip-2.png" alt=""></a></div>
+        <nav>
+            <ul class="nav_bar">
+                <li><a href="attraction.html">景點</a></li>
+                <li><a href="route.html">推薦行程</a></li>
+                <li id="plusroute"><a href="plusroute.html">新增行程</a></li>
+                <li id="login"><a onclick="showlogin()">登入</a></li>
+                <li id="members"><a href="members.html">我的專區</a></li>
+                <li id="btnSignOut"><a onclick="logout()">登出</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="site_title">新增行程分享</div>
+        <form>
+            <div class="place placetop">
+                <input type="text" id="none" required style="display: none;">
+                <div class="input_main">所在</div>
+                <div class="input">
+                    <select name="area" id="area" required>
+                        <option value="">地區</option>
+                        <option value="northern">北部</option>
+                        <option value="central">中部</option>
+                        <option value="southern">南部</option>
+                        <option value="eastern">東部</option>
+                        <option value="islands">離島</option>
+                    </select>
+                    <select name="county" id="county" required>
+                        <option value="">縣市</option>
+                    </select>
+                </div>
+                <div class="input_main">行程名稱</div>
+                <input type="text" name="title" id="title" class="input" placeholder='【...一日遊】...' autocomplete="off"
+                    required>
+
+                <div class="input_main">行程途經</div>
+                <input type="text" name="route" id="route" class="input" placeholder='兩地請用" > "分隔' autocomplete="off"
+                    required>
+
+                <div class="input_main">介紹此行程</div>
+                <textarea name="intro" id="intro" class="input" required></textarea>
+
+            </div>
+            <div class="place place0">
+
+                <div class="input_main">第 1 站</div></br>
+                <div class="place_">
+                    <div class="input_main">地名</div>
+                    <input type="text" class="input location" id="location0" autocomplete="off" required>
+                    <div class="input_main">地址</div>
+                    <input type="text" class="input address" id="address0" autocomplete="off" required>
+                    <div class="input_main">介紹</div>
+                    <textarea type="text" class="input contents" id="contents0" autocomplete="off" required></textarea>
+                    </br>
+                    <div class="input_main"></div>
+                    <div class="input_main">圖片</div>
+                    <label class="btn btn-info btn-info0">
+                        <input class="input-file" type="file" id="input-file0" name="0" accept="image/*" required />
+                        <span id="i0">
+                        <i class="fa fa-image i0"></i><span class="sptext">選擇圖片</span></span>
+                    </label>
+                </div>
+                <div class="place_">
+                    <div class="input_main">星期一</div>
+                    <div class="input"><select name="mon0" id="time00" required>
+                            <option value="">開放時間</option>
+                            <option value="24小時營業">24小時營業</option>
+                            <option value="公休">公休</option>
+                            <option value="自訂">自訂</option>
+                        </select>　<input type="text" name="datetimes" id="mon0" required autocomplete="off">
+                    </div>
+                    <div class="input_main">星期二</div>
+                    <div class="input"><select name="tue0" id="time01" required>
+                            <option value="">開放時間</option>
+                            <option value="24小時營業">24小時營業</option>
+                            <option value="公休">公休</option>
+                            <option value="自訂">自訂</option>
+                        </select>　<input type="text" name="datetimes" id="tue0" required autocomplete="off">
+                    </div>
+                    <div class="input_main">星期三</div>
+                    <div class="input"><select name="wed0" id="time02" required>
+                            <option value="">開放時間</option>
+                            <option value="24小時營業">24小時營業</option>
+                            <option value="公休">公休</option>
+                            <option value="自訂">自訂</option>
+                        </select>　<input type="text" name="datetimes" id="wed0" required autocomplete="off">
+                    </div>
+                    <div class="input_main">星期四</div>
+                    <div class="input"><select name="thu0" id="time03" required>
+                            <option value="">開放時間</option>
+                            <option value="24小時營業">24小時營業</option>
+                            <option value="公休">公休</option>
+                            <option value="自訂">自訂</option>
+                        </select>　<input type="text" name="datetimes" id="thu0" required autocomplete="off"></div>
+                    <div class="input_main">星期五</div>
+                    <div class="input"><select name="fri0" id="time04" required>
+                            <option value="">開放時間</option>
+                            <option value="24小時營業">24小時營業</option>
+                            <option value="公休">公休</option>
+                            <option value="自訂">自訂</option>
+                        </select>　<input type="text" name="datetimes" id="fri0" required autocomplete="off"></div>
+                    <div class="input_main">星期六</div>
+                    <div class="input"><select name="sat0" id="time05" required>
+                            <option value="">開放時間</option>
+                            <option value="24小時營業">24小時營業</option>
+                            <option value="公休">公休</option>
+                            <option value="自訂">自訂</option>
+                        </select>　<input type="text" name="datetimes" id="sat0" required autocomplete="off"></div>
+                    <div class="input_main">星期日</div>
+                    <div class="input"><select name="sun0" id="time06" required>
+                            <option value="">開放時間</option>
+                            <option value="24小時營業">24小時營業</option>
+                            <option value="公休">公休</option>
+                            <option value="自訂">自訂</option>
+                        </select>　<input type="text" name="datetimes" id="sun0" required autocomplete="off"></div>
+                </div>
+            </div>
+            <div id="showBlock"></div>
+            <div class="btnn">
+                <input type="button" class="btn" id="del" value="刪除一個地點">
+                <input type="button" class="btn" id="addItem" value="新增一個地點" />
+                <button type="submit" class="btn" id="submit">送出</button>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <div class="F_left">注意事項 > 隱私權政策<br>
+            關於我們 ‧ 服務條款/政策 ‧ 交易安全 ‧ 使用條款 ‧ 客戶中心 ‧ 聯絡我們<br>
+            Copyright © 2019 Dtrip. All Rights Reserved.
+        </div>
+        <div class="F_title"><img src="../im/LOGO-Dtrip.png" alt=""></div>
+    </footer>
+</body>
+
+</html>
