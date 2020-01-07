@@ -135,3 +135,65 @@ label
 input:checked + .choose:before
 	opacity: 1
 
+@media (max-width: 768px)
+  .container
+    width: 100%
+    display: grid
+    grid-template-columns: 1fr
+    grid-template-rows: 10% 90%
+
+  .container_right
+    width: 100%
+
+  .wrap_img
+    img
+      width: 95%
+
+    height: 120%
+
+  .wrap_text
+    width: 85%
+    padding-top: 10px
+
+  .wrap a
+    margin: 40px 0 0 0
+
+@media (max-width: 320px)
+  .H_title img
+    height: 5vw
+    top: 2vw
+
+  .site_title
+    text-align: center
+
+  .wrap a
+    height: 70vw
+    display: grid
+    grid-template-rows: 60% 20%
+    margin-top: 45vw
+
+  .wrap_title
+    width: 80vw
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
+
+  .wrap_route
+    width: 80vw
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
+    padding-top: 0
+
+  .wrap_text
+    padding: 0
+
+  .wrap_img
+    img
+      width: 80vw
+      height: 100%
+      object-fit: cover
+      right: 72%
+
+    height: 100%
+    overflow: visible

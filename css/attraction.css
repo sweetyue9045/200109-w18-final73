@@ -445,4 +445,81 @@ html, body {
 .attraction_hover:hover > .attraction_text {
   bottom: -10vw;
 }
+
+@media (max-width: 768px) {
+  .site_title {
+    font-size: 2.5vw;
+    margin-left: 6vw;
+  }
+  .attraction_site {
+    width: 85%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 48% 48%;
+        grid-template-columns: 48% 48%;
+    -webkit-column-gap: 5vw;
+            column-gap: 5vw;
+    row-gap: 5vw;
+  }
+  .attraction_intbox {
+    height: 25vw;
+  }
+  .attraction_hover img {
+    width: 100%;
+    height: 25vw;
+  }
+  .attraction_text {
+    bottom: 4px;
+  }
+  .intbox_title, .intbox_address {
+    font-size: 1.5vw;
+  }
+  .intbox_mask {
+    font-size: 1.5vw;
+    line-height: 3vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .H_title img {
+    height: 5vw;
+    top: 2vw;
+  }
+  .site_title {
+    font-size: 2.5vw;
+    text-align: center;
+  }
+  .attraction_site {
+    width: 90%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    row-gap: 10vw;
+  }
+  .attraction_intbox {
+    height: 50vw;
+  }
+  .attraction_hover img {
+    width: 100%;
+    height: 50vw;
+  }
+  .intbox_mask {
+    line-height: 6vw;
+  }
+  .attraction_text {
+    height: 10vw;
+    bottom: 5px;
+    line-height: 8vw;
+  }
+  footer {
+    background-color: #ECF4F7;
+  }
+  .F_left {
+    display: none;
+  }
+  .F_title {
+    left: 45%;
+  }
+}
 /*# sourceMappingURL=attraction.css.map */

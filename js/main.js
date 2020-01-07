@@ -902,3 +902,9 @@ Array.prototype.remove = function () {
 	return this;
 }
 
+
+// 漢堡
+$(function() {
+    $('nav#menu').mmenu();
+});
+// 漢堡結束
