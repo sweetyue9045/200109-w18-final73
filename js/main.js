@@ -315,7 +315,7 @@ function route(myroutefun) {
 								}
 							}
 						}
-						if (myroutefun == null) {
+						else {
 							$("#route_content").append('<div class="wrap" data-index="' + TData.title + ' ' + TData.county + '"><a class="name" id="' + TData.title + '" onclick="showin(this)"><div class="wrap_img"><img src="' + TData.place[0].img + '" alt=""></div><div class="wrap_text"><div class="wrap_title">' + TData.title + '</div><div class="wrap_route">' + TData.route + '</div></div></a></div>')
 							choosearea = []
 						}
