@@ -2,7 +2,7 @@
 var searchbar = 0;
 let loginuser = "";
 let likedata = []
-var homek=0
+var homek = 0
 
 $(function () {
 	//----------firebase----------
@@ -77,9 +77,9 @@ $(function () {
 	}).scroll();
 	$('#backtotop').click(function () { $('html,body').animate({ scrollTop: 0 }, 800); });
 	var slide = 0;
-	if (document.body.offsetWidth < 769){
-		homek=3
-	} else if (document.body.offsetWidth > 768) {homek=5}
+	if (document.body.offsetWidth < 769) {
+		homek = 3
+	} else if (document.body.offsetWidth > 768) { homek = 5 }
 	console.log(homek)
 	//----------景點----------
 
@@ -106,20 +106,20 @@ $(function () {
 				slide = 0;
 			}
 		}
-	});  
-	
+	});
+
 	//--搜尋點擊--
 	var wid
 	var rad
-	if (document.body.offsetWidth <321) {wid="70vw";rad="1vw"}
-	if (document.body.offsetWidth >320) {wid="40vw";rad="0.6vw"}
-	if (document.body.offsetWidth >768) {wid="16vw";rad="0.3vw"}
+	if (document.body.offsetWidth < 321) { wid = "70vw"; rad = "1vw" }
+	if (document.body.offsetWidth > 320) { wid = "40vw"; rad = "0.6vw" }
+	if (document.body.offsetWidth > 768) { wid = "16vw"; rad = "0.3vw" }
 
 	$("#searchitem").click(function () {
 		if (searchbar == 0) {
 			document.getElementById("dropdown-toggle").style.display = "block";
 			document.getElementById("form-control").style.display = "block";
-			$("#searchitem").attr("style", "border-radius: 0 "+rad+" " +rad+" 0 ;outline: none")
+			$("#searchitem").attr("style", "border-radius: 0 " + rad + " " + rad + " 0 ;outline: none")
 			$("#input-group").animate({ width: wid }, 200);
 			searchbar = 1;
 		}
@@ -145,13 +145,13 @@ $(function () {
 	});
 
 	//----------行程----------
-	if (document.body.offsetWidth < 769){
+	if (document.body.offsetWidth < 769) {
 		$('.northern').html(`北部`)
 		$('.central').html(`中部`)
 		$('.southern').html(`南部`)
 		$('.eastern').html(`東部`)
 		$('.islands').html(`離島`)
-	}else{
+	} else {
 		$('.northern').html(`北部▸基隆 宜蘭 台北 新北 桃園 新竹`)
 		$('.central').html(`中部▸苗栗 台中 彰化 南投 雲林`)
 		$('.southern').html(`南部▸嘉義 台南 高雄 屏東`)
@@ -940,29 +940,37 @@ Array.prototype.remove = function () {
 // 漢堡
 $(function () {
 	if (document.body.offsetWidth < 321) {
-		$('#menu').attr("style","display:inline-block")
+		$('#menu').attr("style", "display:none")
 		var $menu = $("#menu").mmenu({
-		 });
-		 var $icon = $("#amenu");
-		 var API = $menu.data( "mmenu" );
-		 
-		 $icon.on( "click", function() {
+		});
+		var $icon = $("#amenu");
+		var API = $menu.data("mmenu");
+
+		$icon.on("click", function () {
 			API.open();
-		 });
-		 
-		 API.bind( "open:start", function() {
-			$(".home_header").attr("style","background-color: var(--Dark)")
-			setTimeout(function() {
-			   $icon.addClass( "is-active" );
+		});
+
+		API.bind("open:start", function () {
+			$(".home_header").attr("style", "background-color: var(--Dark)")
+			$('#menu').attr("style", "display:inline-block")
+
+			setTimeout(function () {
+				$icon.addClass("is-active");
 			}, 100);
-		 });
-		 API.bind( "close:start", function() {
+		});
+		API.bind("close:start", function () {
 			$(".home_header").attr("style", "background-color: transparent ")
-			setTimeout(function() {
-			   $icon.removeClass( "is-active" );
+
+			setTimeout(function () {
+				$icon.removeClass("is-active");
 			}, 100);
-		 });
-	} else $('#menu').attr("style","display:none")
+		});
+		API.bind("close:finish", function () {
+			$('#menu').attr("style", "display:none")
+
+
+		});
+	} else $('#menu').attr("style", "display:none")
 }
 );
 
