@@ -590,6 +590,10 @@ function myroute() {
 		})
 	})
 }
+$(function () {
+	like()
+	myroute()
+})
 function showupdate(id) {
 	$(".placetop").empty()
 	$("#showBlock").empty()
@@ -788,7 +792,7 @@ function showupdate(id) {
 
 							}
 							$("#submit").click(function () {
-								$("#submit").html(`<span class= "spinner-border spinner-border-sm"></span>`)
+								$("#submit").html(`<span class= "spinner-border spinner-border-sl"></span>`)
 								if (confirm("確認送出嗎?")) {
 									place()
 									submit()

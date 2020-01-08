@@ -618,16 +618,16 @@ hr {
 
 @-webkit-keyframes spinner-border {
   to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
-  -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
 }
 
 @keyframes spinner-border {
   to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
-  -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
 }
 
 .spinner-border {

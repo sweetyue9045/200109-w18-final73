@@ -223,7 +223,7 @@ $(function () {
                     <label class="btn btn-info btn-info${txtId}">
                         <input class="input-file" type="file" id="input-file${txtId}" name="${txtId}" accept="image/*" required />
                         <span id="i${txtId}">
-                        <i class="fa fa-image"></i><span class="sptext">選擇圖片</span></span>
+                        <i class="fa fa-image i0"></i><span class="sptext">選擇圖片</span></span>
                     </label>
                 </div>
                 <div class="place_">
@@ -360,13 +360,13 @@ $(function () {
                 let fileRef = storageRef.child(`${$("#title").val().replace(/\//g, "\\")}/${filePath[imgname].name}`)
                 fileRef.put(filePath[imgname])
                     .then(function (snapshot) {
-                        $("#i" + imgname).html(`<i class="fa fa-image"></i><span class= "sptext">上傳成功</span>`)
+                        $("#i" + imgname).html(`<i class="fa fa-image i0"></i><span class= "sptext">上傳成功</span>`)
                         return snapshot.ref.getDownloadURL()
                     }).then(function (downloadURL) {
-                        $("#i" + imgname).html(`<i class="fa fa-image"></i><span class= "sptext">上傳成功</span>`)
+                        $("#i" + imgname).html(`<i class="fa fa-image i0"></i><span class= "sptext">上傳成功</span>`)
                         img[imgname] = downloadURL
                     }).catch(function (error) {
-                        $("#i" + imgname).html(`<i class="fa fa-image"></i><span class= "sptext">上傳失敗</span>`)
+                        $("#i" + imgname).html(`<i class="fa fa-image i0"></i><span class= "sptext">上傳失敗</span>`)
                     })
             })
         }
