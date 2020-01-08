@@ -389,28 +389,40 @@ function logout() {
 }
 // 漢堡
 $(function () {
+    var mheight= "calc(100vh - "+$('footer').outerHeight()+"px - "+$('header').outerHeight()+"px)"
+	$(".container").attr("style","min-height: "+mheight)
 	if (document.body.offsetWidth < 321) {
-		$('#menu').attr("style","display:inline-block")
+		$('#menu').attr("style", "display:none")
 		var $menu = $("#menu").mmenu({
-		 });
-		 var $icon = $("#amenu");
-		 var API = $menu.data( "mmenu" );
-		 
-		 $icon.on( "click", function() {
+		});
+		var $icon = $("#amenu");
+		var API = $menu.data("mmenu");
+
+		$icon.on("click", function () {
 			API.open();
-		 });
-		 
-		 API.bind( "open:start", function() {
-			setTimeout(function() {
-			   $icon.addClass( "is-active" );
+		});
+
+		API.bind("open:start", function () {
+			$(".home_header").attr("style", "background-color: var(--Dark)")
+			$('#menu').attr("style", "display:inline-block")
+
+			setTimeout(function () {
+				$icon.addClass("is-active");
 			}, 100);
-		 });
-		 API.bind( "close:start", function() {
-			setTimeout(function() {
-			   $icon.removeClass( "is-active" );
+		});
+		API.bind("close:start", function () {
+			$(".home_header").attr("style", "background-color: transparent ")
+
+			setTimeout(function () {
+				$icon.removeClass("is-active");
 			}, 100);
-		 });
-	} else $('#menu').attr("style","display:none")
+		});
+		API.bind("close:finish", function () {
+			$('#menu').attr("style", "display:none")
+
+
+		});
+	} else $('#menu').attr("style", "display:none")
 }
 );
 

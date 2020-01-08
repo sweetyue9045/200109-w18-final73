@@ -451,10 +451,9 @@ a {
 }
 
 .LOGIN {
-  position: relative;
-  width: 40vw;
-  height: 38vw;
-  border-radius: 2vw;
+  width: 36vw;
+  height: 34vw;
+  border-radius: 3vw;
   background-color: white;
   z-index: 55;
   margin: 3.5vw auto;
@@ -463,7 +462,15 @@ a {
   display: grid;
   justify-items: center;
   grid-gap: .5vw;
-  padding: 5vw 0;
+  padding: 2vw 0;
+  top: 40%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.logimg {
+  margin: 1vw 0 0 0;
+  width: 20%;
 }
 
 .login_or {
@@ -655,7 +662,6 @@ hr {
     font-size: 2.5vw;
     margin-left: 6vw;
   }
-  /* 漢堡 */
 }
 
 @media (max-width: 320px) {
@@ -891,6 +897,153 @@ hr {
     -webkit-transition-delay: 0.075s;
             transition-delay: 0.075s;
   }
-  /* 漢堡結束*/
+}
+
+@media (max-width: 768px) {
+  .LOGIN {
+    width: 60vw;
+    height: 58vw;
+  }
+  .logimg {
+    margin: 2vw 0 0 0;
+  }
+  .or {
+    font-size: 1.8vw;
+  }
+  .btnL {
+    width: 18.5vw;
+    height: 5vw;
+  }
+  .btnfa {
+    font-size: 2.5vw;
+  }
+  .login_btn {
+    -ms-grid-columns: 20vw 20vw;
+        grid-template-columns: 20vw 20vw;
+    width: 42vw;
+  }
+  .btnL > span {
+    font-size: 2vw;
+  }
+  .l {
+    height: .1vw;
+  }
+  .form-group {
+    margin: auto;
+  }
+  .login_input {
+    width: 32vw;
+    height: 5vw;
+    border: 0.2vw solid var(--Dark);
+    font-size: 2vw;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0;
+  }
+  .btni {
+    width: 7vw;
+    height: 5vw;
+    font-size: 2vw;
+    border: 0.2vw solid var(--Dark);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+  }
+  .forgot {
+    right: -4.5vw;
+    font-size: 1.5vw;
+  }
+  .button-row {
+    margin: 0 0 0;
+    width: 38vw;
+    -ms-grid-columns: 8vw;
+        grid-template-columns: 8vw;
+  }
+  .btnSignIn {
+    font-size: 1.8vw;
+    width: 8vw;
+    height: 4vw;
+  }
+  .login_or {
+    -ms-grid-columns: 20vw 8vw 20vw;
+        grid-template-columns: 20vw 8vw 20vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .LOGIN {
+    margin: 13.5vw auto;
+    width: 80vw;
+    height: 140vw;
+    padding: 2vw 0;
+    row-gap: 2vw;
+  }
+  .logimg {
+    margin: 7vw 0 0 0;
+  }
+  .login_or {
+    width: 62vw;
+    -ms-grid-columns: 22vw 18vw 22vw;
+        grid-template-columns: 22vw 18vw 22vw;
+    margin: 0;
+  }
+  .or {
+    font-size: 3vw;
+  }
+  .btnL {
+    width: 34vw;
+    height: 8vw;
+  }
+  .btnfa {
+    font-size: 4.5vw;
+  }
+  .login_btn {
+    -ms-grid-columns: 34vw 34vw;
+        grid-template-columns: 34vw 34vw;
+    width: 70vw;
+  }
+  .btnL > span {
+    font-size: 4vw;
+  }
+  .l {
+    height: .2vw;
+    margin: auto;
+  }
+  .login_input {
+    width: 50vw;
+    height: 10vw;
+    border: 0.5vw solid var(--Dark);
+    font-size: 4vw;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0;
+  }
+  .btni {
+    width: 12vw;
+    height: 10vw;
+    font-size: 4vw;
+    border: 0.5vw solid var(--Dark);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+  }
+  .forgot {
+    right: -15.5vw;
+    font-size: 3vw;
+  }
+  .button-row {
+    margin: 0 0 0;
+    width: 70vw;
+    -ms-grid-columns: 90%;
+        grid-template-columns: 90%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .btnSignIn {
+    font-size: 4vw;
+    width: 100%;
+    height: 10vw;
+  }
 }
 /*# sourceMappingURL=main.css.map */

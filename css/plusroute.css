@@ -213,11 +213,15 @@ input[disabled="disabled"] {
 .btnn {
   display: -webkit-box;
   -webkit-box-pack: end;
-  padding: 0 1vw;
+  margin: auto;
 }
 
-.btnn > .btn {
-  margin-left: 1vw;
+.btnn > .btn:nth-child(2) {
+  margin: 0 1.5vw;
+}
+
+.btnn > .btn:not(:last-child) {
+  background: #fff;
 }
 
 #submit {
@@ -230,5 +234,128 @@ input[disabled="disabled"] {
   border: 0.1vw solid #426d72;
   color: #fff;
   background-color: #4c777c;
+}
+
+@media (max-width: 768px) {
+  select, input {
+    height: 4.5vw;
+    font-size: 2.5vw;
+  }
+  textarea {
+    height: 15vw;
+    font-size: 2.5vw;
+  }
+  .input_main {
+    font-size: 2.5vw;
+    top: -17%;
+  }
+  .placetop {
+    margin: 2vw 0 0 0;
+    -ms-grid-rows: (11vw)[5];
+        grid-template-rows: repeat(5, 11vw);
+    -ms-grid-columns: 30% 68%;
+        grid-template-columns: 30% 68%;
+  }
+  .placetop {
+    -ms-grid-rows: (9vw)[5];
+        grid-template-rows: repeat(5, 9vw);
+    -ms-grid-columns: 25% 60%;
+        grid-template-columns: 25% 60%;
+  }
+  .place:not(:first-child) {
+    margin: 2vw 0 2vw 0;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .place_ {
+    height: 68vw;
+    -ms-grid-rows: (9vw)[7];
+        grid-template-rows: repeat(7, 9vw);
+    -ms-grid-columns: 20% 78%;
+        grid-template-columns: 20% 78%;
+  }
+  .place_:not(:nth-child(2n)) {
+    height: 50vw;
+  }
+  .sptext {
+    font-size: 2vw;
+    line-height: 2vw;
+    margin-left: .4rem;
+  }
+  .i0 {
+    font-size: 2vw;
+  }
+  .btn-info {
+    padding: 1vw 1vw;
+    top: -17%;
+  }
+  .btnn > .btn {
+    font-size: 2vw;
+    padding: 1vw 2vw;
+  }
+}
+
+@media (max-width: 320px) {
+  select, input {
+    height: 9vw;
+    font-size: 4vw;
+    padding: 0 2vw;
+  }
+  textarea {
+    resize: none;
+    height: 20vw;
+    font-size: 4vw;
+    padding: 2vw;
+  }
+  .input_main {
+    font-size: 4vw;
+  }
+  .place {
+    margin: 4vw 0 4vw 0;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .placetop {
+    margin: 4vw 0 0 0;
+    -ms-grid-rows: (11vw)[5];
+        grid-template-rows: repeat(5, 11vw);
+    -ms-grid-columns: 30% 68%;
+        grid-template-columns: 30% 68%;
+  }
+  .place_:not(:nth-child(2n)) {
+    height: 60vw;
+    -ms-grid-rows: (11vw)[7];
+        grid-template-rows: repeat(7, 11vw);
+    -ms-grid-columns: 20% 78%;
+        grid-template-columns: 20% 78%;
+  }
+  .place_:nth-child(2n) {
+    height: 140vw;
+    -ms-grid-rows: (20vw)[7];
+        grid-template-rows: repeat(7, 20vw);
+    -ms-grid-columns: 20% 78%;
+        grid-template-columns: 20% 78%;
+  }
+  .place_:nth-child(2n) > .input_main {
+    top: -27%;
+  }
+  .btnn > .btn {
+    font-size: 4vw;
+    padding: 2vw 4vw;
+  }
+  input[name="datetimes"] {
+    top: 1vw;
+  }
+  .sptext {
+    font-size: 4vw;
+    line-height: 4vw;
+    margin-left: .4rem;
+  }
+  .i0 {
+    font-size: 4vw;
+  }
+  .btn-info {
+    padding: 2vw 2vw;
+  }
 }
 /*# sourceMappingURL=plusroute.css.map */
