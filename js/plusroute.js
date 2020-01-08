@@ -25,7 +25,11 @@ $(function () {
 			$("#plusroute").attr("style", "display:block")
 			$("#btnSignOut").attr("style", "display:block")
 			$("#members").attr("style", "display:block")
-			$("#login").attr("style", "display:none")
+            $("#login").attr("style", "display:none")
+            $("#plusroute_h").attr("style", "display:block")
+			$("#btnSignOut_h").attr("style", "display:block")
+			$("#members_h").attr("style", "display:block")
+			$("#login_h").attr("style", "display:none")
 			$("#like_btn").attr("disabled", false)
 			loginuser = user.uid
 
@@ -35,7 +39,11 @@ $(function () {
 			$("#plusroute").attr("style", "display:none")
 			$("#btnSignOut").attr("style", "display:none")
 			$("#members").attr("style", "display:none")
-			$("#login").attr("style", "display:block")
+            $("#login").attr("style", "display:block")
+			$("#plusroute_h").attr("style", "display:none")
+			$("#btnSignOut_h").attr("style", "display:none")
+			$("#members_h").attr("style", "display:none")
+			$("#login_h").attr("style", "display:block")
 			$("#like_btn").attr("disabled", "disabled")
 			
 		}

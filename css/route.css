@@ -98,6 +98,10 @@ html, body {
   padding: 1vw 0 0 .5vw;
 }
 
+.site_title {
+  margin-left: 0vw;
+}
+
 .route_input_group {
   position: relative;
   display: -webkit-box;
