@@ -264,7 +264,7 @@ input:checked + .choose:before {
   }
   .choose_box {
     display: inline-block;
-    width: 13.2vw;
+    width: calc((100% - 2.7vw)/6);
     border-radius: 0.6vw;
   }
   label {
@@ -280,7 +280,7 @@ input:checked + .choose:before {
     font-family: "微軟正黑體";
     width: 100%;
     font-size: 1.5vw;
-    line-height: 5vw;
+    line-height: 4vw;
     border-radius: 0.6vw;
     color: #fff;
   }
@@ -347,7 +347,6 @@ input:checked + .choose:before {
   .route_input_group {
     width: 100%;
     margin: 0 0 1vw 0;
-    text-align: center;
   }
   .route_form_control {
     width: 100%;
@@ -367,7 +366,7 @@ input:checked + .choose:before {
     border-radius: 0 1vw 1vw 0;
   }
   .choose_box {
-    width: 12.5vw;
+    width: calc((100% - 6.3vw)/6);
   }
   label {
     font-size: 3.5vw;

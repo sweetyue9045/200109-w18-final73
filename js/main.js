@@ -265,7 +265,6 @@ function changecontent(mytab) {
 $(function () {
 	home("hot1");
 	home_route();
-
 })
 
 /*----------熱門頁面----------*/
@@ -952,11 +951,13 @@ $(function () {
 		 });
 		 
 		 API.bind( "open:start", function() {
+			$(".home_header").attr("style","background-color: var(--Dark)")
 			setTimeout(function() {
 			   $icon.addClass( "is-active" );
 			}, 100);
 		 });
 		 API.bind( "close:start", function() {
+			$(".home_header").attr("style", "background-color: transparent ")
 			setTimeout(function() {
 			   $icon.removeClass( "is-active" );
 			}, 100);

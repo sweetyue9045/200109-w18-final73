@@ -216,10 +216,9 @@ header
 	width: 96%
 .hot_top
 	min-height: 4vw
+	display: flex
 .hot_title
-	float: left
-	margin-top: .5vw
-	margin-right: 2vw
+	margin: 0
 	color: var(--Font)
 	font-size: 1.55vw
 
@@ -230,7 +229,8 @@ header
 	align-items: center
 	min-height: 3.9vw
 	width: 80%
-	float: left
+	margin: 0
+	margin-left: 1vw
 	padding: 0 .5vw
 	input
 		display: none
@@ -447,9 +447,7 @@ header
 	.hot_top
 		min-height: 4vw
 	.hot_title
-		float: left
-		margin-top: .5vw
-		margin-right: 2vw
+		margin: 0
 		color: var(--Font)
 		font-size: 1.55vw
 
@@ -460,7 +458,7 @@ header
 		align-items: center
 		min-height: 3.9vw
 		width: 80%
-		float: left
+		margin-left: 2vw
 		padding: 0 .5vw
 		label
 			text-align: center
@@ -509,46 +507,50 @@ header
 	.container
 		min-height: auto
 	.route_box
-			grid-template-columns: 48.8% 48.8%
-			grid-template-rows: 12vw 12vw
-			grid-column-gap: 2.4%
-			grid-row-gap: 2vw
+		overflow-x: auto
+		width: 100%
+		grid-template-columns: 32% 32% 32% 32%
+		grid-template-rows: 35vw
+		grid-column-gap: 4%
+		padding-bottom: 2vw
+	.route_box::-webkit-scrollbar 
+		display: none
 	.route_content
-		border-radius: .6vw
+		border-radius: 1vw
+	.route_content a
+		display: block
 	.route_left
-		width: 12vw
+		width: 18.5vw
 		padding: 0 1vw 0 1vw
 	.route_content img,.bus
-		height: 7vw
-		width: 7vw
-	.route_content img
-		top: 0.3vw
-	.fbus,.fplus
-		position: absolute
+		height: 17vw
+		width: 17vw
+		top: 0.8vw
+	.bus
+		top: 1.3vw
 	.fbus
-		font-size: 4vw
-		color: var(--Back)
-		top: 50%
-		left: 50%
-		transform: translate(-50%,-50%)
+		font-size: 10vw
 	.fplus
-		font-size: 1.7vw
-		height: 1.8vw
-		width: 1.8vw
-		border-radius: 50%
-		color: var(--Dark)
-		background: #fff
-		top: 85%
-		left: 85%
-		transform: translate(-50%,-50%)
+		font-size: 5vw
+		height: 5.4vw
+		width: 5.4vw
+	.fplus i
+		top: -0.9vw
+		left: 0.2vw
 	.route_right
-		width: calc(100% - 9vw)
-		padding: 2vw 0 2vw 1.5vw
-
+		width: 20vw
+		padding: 2vw 0 2vw 0vw
+	#route_plus>.route_right
+		width: 15vw
+		padding: 4vw 1vw 2vw 1vw
+		margin: auto
+	#route_plus>.route_right>.route_title
+		white-space: normal
+		font-size: 3vw
 	.route_title
-		font-size: 1.5vw
+		font-size: 2vw
 	.route_text
-		font-size: 1.2vw
+		font-size: 0.9vw
 		margin: 5% 0 0 0 
 
 	.hot
@@ -557,61 +559,75 @@ header
 		width: 96%
 	.hot_top
 		min-height: 4vw
+		display: block
 	.hot_title
-		float: left
-		margin-top: .5vw
-		margin-right: 2vw
-		color: var(--Font)
-		font-size: 1.55vw
+		font-size: 6vw
+		text-align: center
+		margin-left: 0
 
 	//----------hot CSS----------
 
 	.hot_nav
-		display: flex
-		align-items: center
-		min-height: 3.9vw
-		width: 80%
-		float: left
-		padding: 0 .5vw
+		// display: none
+		left: 0
+		flex-direction: column
+		width: 15vw
+		height: 60vw
+		margin: 0
+		margin-top: 3vw
 		label
 			text-align: center
-			width: 5vw
-			height: 5vw
-			top: -1vw
-			outline: .2vw solid var(--NAV_F)
+			width: 12vw
+			height: 12vw
+			left: -1vw
+			margin: 2vw 0 0 0
 		span
 			padding: 0.6vw 0
-			line-height: 1.9vw
-			font-size: 1.5vw
+			line-height: 5vw
+			font-size: 4.5vw
 
 	#hot1:checked + label span,
 	#hot2:checked + label span,
 	#hot3:checked + label span,
 	#hot4:checked + label span
-		padding: 0.9vw 0
-		line-height: 1.5vw
-		font-size: 1.2vw
+		padding: 1.3vw 0
+		line-height: 4.8vw
+		font-size: 4vw
 		transition: all .1s ease
-
 	.hot_content
+		position: absolute
+		width: calc(100% - 15vw)
+		height: 55vw
+		margin-top: -60vw
+		right: 0
+		display: block
+	.hot_content_left
+		margin: 0
 		width: 100%
-		height: 27vw
-		margin-top: 2vw
-		background-color: var(--UPBA)
-		color: #264D52
-		padding: 2vw 2vw
-		letter-spacing: .1vw
-		box-shadow: 0 .4vw .8vw 0 rgba(0,0,0,0.2)
-		display: flex
+		height: 45vw
+	.hot_content_left img
+		height: 100%
 	.hot_content_right 
-		margin: 2vw 0
+		margin: 0vw 0
+		width: 100%
+		left: 1vw
 	.hot_content_title
-		font-size: 1.7vw
-		line-height: 5vw
+		font-size: 4vw
+		line-height: 7vw
 
 	.hot_content_text
-		margin: .5vw 2.5vw
-		font-size: 1.5vw
-		line-height: 2.05vw
+		display: none
 	.hot_content_box 
-		right: 7%
+		display: none
+
+	.new_title
+		font-size: 6vw
+		text-align: center
+		margin-left: 0
+		float: none
+	.new_smalltitle
+		padding: 0.55vw 0 0 0
+		font-size: 3vw
+		text-align: center
+	#mm-blocker
+		z-index: 21

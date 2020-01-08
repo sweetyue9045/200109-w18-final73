@@ -116,6 +116,7 @@ html,body
 	height: 100%
 	background-color: #bcdce6
 	border-radius: .4vw
+	overflow: hidden
 .bigcloud
 	position: absolute
 	width: 20%
@@ -217,6 +218,7 @@ html,body
 	overflow: hidden
 .attraction_hover
 	position: relative
+	height: 100%
 .attraction_hover img
 	height: 18vw
 	filter: contrast(110%)
@@ -246,22 +248,19 @@ html,body
 	bottom: 0
 	background-color: rgba(0, 0, 0, 0.5)
 	transition: all .3s
-
+	display: flex
+	justify-content: space-between
+	align-items: center
+	padding: 0 1.5vw
 .intbox_title
 	font-size: 1.3vw
 	color: rgba(247, 255, 252, 0.9)
 	text-align: left
-	margin-left: 1.5vw
-	padding-top: 1.3vw
-	display: inline-block
-
+	margin: 0
 .intbox_address
-	position: absolute
 	font-size: 1.3vw
 	color: rgba(247, 255, 252, 0.9)
-	right: 1.5vw
-	padding-top: 1.3vw
-	display: inline-block
+	margin: 0
 .attraction_hover:hover>.intbox_mask
 	opacity: 1
 .attraction_hover:hover>.attraction_text
@@ -273,7 +272,7 @@ html,body
 		width: 85%
 		display: grid
 		grid-template-columns: 48% 48%
-		column-gap: 5vw
+		column-gap: 4%
 		row-gap: 5vw
 
 	.attraction_intbox
@@ -284,7 +283,7 @@ html,body
 		height: 25vw
 
 	.attraction_text
-		bottom: 4px
+		height: 6vw
 
 	.intbox_title, .intbox_address
 		font-size: 1.5vw
@@ -335,8 +334,7 @@ html,body
 @media (max-width: 320px)
 	.Carousel
 		overflow-y: visible
-	.topbox
-		overflow-x: hidden
+
 	.attraction_site
 		width: 90%
 		display: grid
@@ -354,9 +352,14 @@ html,body
 		line-height: 6vw
 
 	.attraction_text
-		height: 10vw
-		bottom: 5px
-		line-height: 8vw
+		height: 13vw
+		padding: 0 3vw
+	.intbox_title
+		font-size: 3.5vw
+	.intbox_address
+		font-size: 3.5vw
+
+
 	//----------Search CSS----------
 
 	.input-group 
