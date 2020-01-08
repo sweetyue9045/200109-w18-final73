@@ -745,10 +745,6 @@ hr {
 
 /* 漢堡結束*/
 /*# sourceMappingURL=main.css.map */
-.LOGIN {
-  height: 420px;
-  width: 450px;
-}
 @media (max-width: 768px) {
   .LOGIN {
     width: 530px;
