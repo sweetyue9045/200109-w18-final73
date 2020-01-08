@@ -82,7 +82,6 @@ $(function () {
 	} else if (document.body.offsetWidth > 768) { homek = 5 }
 	var mheight= "calc(100vh - "+$('footer').outerHeight()+"px - "+$('header').outerHeight()+"px)"
 	$(".container").attr("style","min-height: "+mheight)
-	console.log(mheight)
 	//----------景點----------
 
 	//--預設地點點擊--
@@ -430,7 +429,7 @@ function showlogin() {
 	$(".LOGIN").empty()
 	$(".LOGIN").append(
 		`
-		<h1>LOGO</h1>
+		<img class="logimg" src="https://firebasestorage.googleapis.com/v0/b/myhw-1e54b.appspot.com/o/LOGO-Dtrip-3.png?alt=media&token=12926883-a84b-4700-a237-f9ebec3e9e6b" alt="">
 		<div class="login_or">
 			<div class="l">
 				<hr>
