@@ -202,6 +202,7 @@ $(function () {
 	$('.UcloseBtn').click(function (event) {
 		$('.showupdate').fadeOut();
 	});
+	route()
 });
 
 /*----------首頁頁面----------*/
@@ -315,7 +316,7 @@ function route(myroutefun) {
 								}
 							}
 						}
-						else {
+						if (myroutefun == null) {
 							$("#route_content").append('<div class="wrap" data-index="' + TData.title + ' ' + TData.county + '"><a class="name" id="' + TData.title + '" onclick="showin(this)"><div class="wrap_img"><img src="' + TData.place[0].img + '" alt=""></div><div class="wrap_text"><div class="wrap_title">' + TData.title + '</div><div class="wrap_route">' + TData.route + '</div></div></a></div>')
 							choosearea = []
 						}
