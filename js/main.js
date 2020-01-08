@@ -365,7 +365,6 @@ function choose(mychoose) {
 }
 $(function () {
 	route(choosearea)
-	alert("A")
 })
 
 
