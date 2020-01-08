@@ -5,6 +5,7 @@ let likedata = []
 var homek = 0
 
 $(function () {
+	alert("test")
 	//----------firebase----------
 	var firebaseConfig = {
 		apiKey: "AIzaSyAScJw62d8pXsaIsKfOZCEgEulba3zEM4A",
@@ -308,16 +309,16 @@ function route(myroutefun) {
 				area.forEach(function (myroute) {
 					myroute.forEach(function (title) {
 						var TData = title.val();
+						if (myroutefun == null) {
+							$("#route_content").append('<div class="wrap" data-index="' + TData.title + ' ' + TData.county + '"><a class="name" id="' + TData.title + '" onclick="showin(this)"><div class="wrap_img"><img src="' + TData.place[0].img + '" alt=""></div><div class="wrap_text"><div class="wrap_title">' + TData.title + '</div><div class="wrap_route">' + TData.route + '</div></div></a></div>')
+							choosearea = []
+						}
 						if (myroutefun != null) {
 							for (k = 0; k < choosearea.length; k++) {
 								if (myroute.key == choosearea[k]) {
 									$("#route_content").append('<div class="wrap" data-index="' + TData.title + ' ' + TData.county + '"><a class="name" id="' + TData.title + '" onclick="showin(this)"><div class="wrap_img"><img src="' + TData.place[0].img + '" alt=""></div><div class="wrap_text"><div class="wrap_title">' + TData.title + '</div><div class="wrap_route">' + TData.route + '</div></div></a></div>')
 								}
 							}
-						}
-						if (myroutefun == null) {
-							$("#route_content").append('<div class="wrap" data-index="' + TData.title + ' ' + TData.county + '"><a class="name" id="' + TData.title + '" onclick="showin(this)"><div class="wrap_img"><img src="' + TData.place[0].img + '" alt=""></div><div class="wrap_text"><div class="wrap_title">' + TData.title + '</div><div class="wrap_route">' + TData.route + '</div></div></a></div>')
-							choosearea = []
 						}
 					})
 				})
