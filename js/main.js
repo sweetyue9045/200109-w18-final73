@@ -70,7 +70,7 @@ $(function () {
 		homek = 3
 	} else if (document.body.offsetWidth > 768) { homek = 5 }
 	var mheight = "calc(100vh - " + $('footer').outerHeight() + "px - " + $('header').outerHeight() + "px)"
-	var hheight = "calc(100vh - " + $('footer').outerHeight() + "px - " + $('header').outerHeight() + "px - " + $('.topCarousel').outerHeight() + "px)"
+	var hheight = "calc(100vh - " + $('footer').outerHeight() + "px - " + $('.topCarousel').outerHeight() + "px)"
 	$(".container").attr("style", "min-height: " + mheight)
 	$(".containert").attr("style", "min-height: " + hheight)
 
