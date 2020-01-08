@@ -40,7 +40,7 @@ header
 	top: 45%
 	transform: translateY(-50%)
 .bg
-	left: -50%
+	left: -48%
 	top: 50%
 	transform: translate(50%,-50%)
 	background-color: #e4e4e4ab
@@ -59,7 +59,7 @@ header
 
 .first_text img
 	width: calc( 15vw - 0.4vw )
-
+	position: absolute
 .second_text
 	position: absolute
 	width: 0
@@ -72,6 +72,7 @@ header
 
 .second_text img
 	width: calc( 18vw - 0.4vw )
+	position: absolute
 .route
 	min-height: 5vw
 	width: 96%
@@ -80,11 +81,11 @@ header
 			height: 0
 			width: .3vw
 		50%
-			height: 13vw
+			height: 100%
 			width: .3vw
 		100%
-			height: 13vw
-			width: 27vw
+			height: 100%
+			width: 100%
 
 @keyframes run2
 		0%
@@ -510,6 +511,73 @@ header
 		padding: 0.45vw 0 0 0
 		font-size: 1.5vw
 @media (max-width: 320px)
+	.topCarousel
+		width: 100%
+		height: 70vw
+	.TOP
+		height: 70vw
+		width: auto
+	.text
+		width: 50vw
+		height: 30vw
+		top: 50%
+		transform: translateY(-50%)
+	
+	.first_text
+		top: 10vw
+	.first_text img
+		width: calc( 30vw - 0.4vw )
+		position: absolute
+	.second_text
+		top: 19vw
+	.second_text img
+		width: calc( 33vw - 0.4vw )
+	@keyframes run2
+			0%
+				height: 0
+				width: .1vw
+				left: 27%
+				border-right: .1vw solid #464646
+			20%
+				height: 5vw
+				width: .1vw
+				left: 27%
+				border-right: .1vw solid #464646
+			90%
+				height: 5vw
+				width: 30vw
+				left: 50.5%
+				border-right: .1vw solid #464646
+
+			100%
+				height: 5vw
+				width: 30vw
+				left: 50.5%
+				border-right: .2vw solid none
+
+	@keyframes run3
+			0%
+				height: 4vw
+				width: .1vw
+				left: 20%
+				border-right: .1vw solid #464646
+			10%
+				height: 4vw
+				width: .1vw
+				left: 20%
+				border-right: .1vw solid #464646
+			90%
+				height: 4vw
+				width: 33vw
+				left: 50.5%
+				border-right: .1vw solid #464646
+
+			100%
+				height: 4vw
+				width: 33vw
+				left: 50.5%
+				border-right: .2vw solid none
+
 	.container
 		overflow: hidden
 	.route_box
@@ -659,10 +727,5 @@ header
 		display: block
     	z-index: 10
 		color: var(--Dark)
-	// #left
-	// 	margin-right: 2vw
-	// #right
-	// 	margin-left: 2vw
-
 	#mm-blocker
 		z-index: 21
