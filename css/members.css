@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.myroute {
+  margin: 6vw 0 0 0;
+}
+
 .like_box, .myroute_box {
   display: -ms-grid;
   display: grid;
@@ -8,7 +12,11 @@
       grid-template-rows: 9vw 9vw;
   grid-column-gap: 1.25%;
   grid-row-gap: 1.25vw;
-  margin: 0 auto;
+  margin: 2vw auto;
+}
+
+.site_title {
+  margin-left: 0vw;
 }
 
 .route_content {
@@ -174,7 +182,7 @@ input[type=file] {
 }
 
 .sptextimg {
-  margin-left: 0;
+  margin-left: 6.2vw;
   top: -1vw;
   width: 15vw;
 }
@@ -289,6 +297,195 @@ select[disabled="disabled"], input[disabled="disabled"] {
 }
 
 #submit {
-  border: .1vw solid #ccc;
+  border: 0.1vw solid #588288;
+  color: #fff;
+  background-color: #588288;
+}
+
+#submit:hover {
+  border: 0.1vw solid #426d72;
+  color: #fff;
+  background-color: #4c777c;
+}
+
+@media (max-width: 768px) {
+  .myroute_box, .like_box {
+    margin: 2vw 0 0 0;
+    -ms-grid-columns: 48.8% 48.8%;
+        grid-template-columns: 48.8% 48.8%;
+    -ms-grid-rows: 12vw 12vw;
+        grid-template-rows: 12vw 12vw;
+    grid-column-gap: 2.4%;
+    grid-row-gap: 2vw;
+  }
+  .route_content {
+    border-radius: .6vw;
+  }
+  .route_left {
+    width: 12vw;
+    padding: 0 1vw 0 1vw;
+  }
+  .route_content img {
+    height: 7vw;
+    width: 7vw;
+  }
+  .route_content img {
+    top: 0.3vw;
+  }
+  .route_right {
+    width: calc(100% - 9vw);
+    padding: 2vw 0 2vw 1.5vw;
+  }
+  .route_title {
+    font-size: 1.5vw;
+  }
+  .route_text {
+    font-size: 1.2vw;
+    margin: 5% 0 0 0;
+  }
+  .UPDATE {
+    width: 80%;
+  }
+  select, input {
+    height: 4.5vw;
+    font-size: 2.5vw;
+  }
+  textarea {
+    height: 15vw;
+    font-size: 2.5vw;
+  }
+  .input_main {
+    font-size: 2.5vw;
+    top: -17%;
+  }
+  .place {
+    margin: 2vw 0 2vw 0;
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+  }
+  .placetop {
+    margin: 2vw 0 0 0;
+    -ms-grid-rows: (9vw)[5];
+        grid-template-rows: repeat(5, 9vw);
+    -ms-grid-columns: 21% 77.5%;
+        grid-template-columns: 21% 77.5%;
+  }
+  .place_ {
+    height: 68vw;
+    -ms-grid-rows: (9vw)[7];
+        grid-template-rows: repeat(7, 9vw);
+    -ms-grid-columns: 20% 78%;
+        grid-template-columns: 20% 78%;
+  }
+  .place_:not(:nth-child(2n)) {
+    height: 50vw;
+  }
+  .btnn > .btn {
+    font-size: 2vw;
+    padding: 1vw 2vw;
+  }
+  .sptext {
+    font-size: 2vw;
+    line-height: 2vw;
+    margin: 2vw 0 0 0;
+  }
+  .sptextimg {
+    margin-left: 26vw;
+    top: -11vw;
+    width: 15vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .myroute_box, .like_box {
+    margin: 2vw 0 0 0;
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+    -ms-grid-rows: auto;
+        grid-template-rows: auto;
+    grid-row-gap: 4vw;
+  }
+  .route_left {
+    width: 20vw;
+  }
+  .route_content img {
+    height: 17vw;
+    width: 17vw;
+  }
+  .route_content img {
+    top: 0.3vw;
+  }
+  .route_right {
+    width: calc(100% - 20vw);
+  }
+  .route_title {
+    font-size: 4vw;
+  }
+  .route_text {
+    font-size: 3.5vw;
+  }
+  .UPDATE {
+    width: 90%;
+  }
+  select, input {
+    height: 9vw;
+    font-size: 4vw;
+    padding: 0 2vw;
+  }
+  textarea {
+    resize: none;
+    height: 20vw;
+    font-size: 4vw;
+    padding: 2vw;
+  }
+  .input_main {
+    font-size: 4vw;
+  }
+  .place {
+    margin: 4vw 0 4vw 0;
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+  }
+  .placetop {
+    margin: 4vw 0 0 0;
+    -ms-grid-rows: (11vw)[5];
+        grid-template-rows: repeat(5, 11vw);
+    -ms-grid-columns: 30% 68%;
+        grid-template-columns: 30% 68%;
+  }
+  .place_:not(:nth-child(2n)) {
+    height: 60vw;
+    -ms-grid-rows: (11vw)[7];
+        grid-template-rows: repeat(7, 11vw);
+    -ms-grid-columns: 20% 78%;
+        grid-template-columns: 20% 78%;
+  }
+  .place_:nth-child(2n) {
+    height: 150vw;
+    -ms-grid-rows: (20vw)[7];
+        grid-template-rows: repeat(7, 20vw);
+    -ms-grid-columns: 20% 78%;
+        grid-template-columns: 20% 78%;
+  }
+  .place_:nth-child(2n) > .input_main {
+    top: -27%;
+  }
+  .btnn > .btn {
+    font-size: 4vw;
+    padding: 2vw 4vw;
+  }
+  input[name="datetimes"] {
+    top: 1vw;
+  }
+  .sptext {
+    font-size: 4vw;
+    line-height: 4vw;
+    margin: 2vw 0 0 0;
+  }
+  .sptextimg {
+    margin-left: 36vw;
+    top: -11vw;
+    width: 15vw;
+  }
 }
 /*# sourceMappingURL=members.css.map */

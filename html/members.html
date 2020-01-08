@@ -35,6 +35,7 @@
     <article class="showintro">
         <div class="introback"></div>
         <div class="INTRO">
+            <button type="button" class="btn like_btn" onclick="getlike(this)" id="like_btn" name=""><i class="fas fa-heart" id="like_i"></i><span class="splike">收藏</span></button>
             <i class="fas fa-times closeBtn" aria-hidden="true"></i>
             <div class="intro_content" id="intro_content">
                 <div class="intro_intro"></div>
@@ -52,6 +53,7 @@
     <article class="showupdate">
         <div class="updateback"></div>
         <div class="UPDATE">
+            <i class="fas fa-times closeBtn UcloseBtn" aria-hidden="true"></i>
             <form>
                 <div class="place placetop">
                     <input type="text" id="none" required style="display: none;">
@@ -124,12 +126,16 @@
         </ul>
     </nav>
     <div class="container">
-        <div class="likey">like
+        <div class="likey">
+            <div class="site_title">我的收藏</div>
+            
             <div class="like_box" id="like_box">
 
             </div>
         </div>
-        <div class="myroute">myroute
+        <div class="myroute">
+            <div class="site_title">我的行程</div>
+            
             <div class="myroute_box" id="myroute_box">
 
             </div>
@@ -145,9 +151,6 @@
             <img src="../im/LOGO-Dtrip-3.png" />
         </picture></div>
     </footer>
-
-    <a class="backtotop" id="backtoroute"><i class="fas fa-chevron-circle-up"></i></a>
-
 </body>
 
 </html>

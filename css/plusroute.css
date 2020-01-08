@@ -251,21 +251,15 @@ input[disabled="disabled"] {
   }
   .placetop {
     margin: 2vw 0 0 0;
-    -ms-grid-rows: (11vw)[5];
-        grid-template-rows: repeat(5, 11vw);
-    -ms-grid-columns: 30% 68%;
-        grid-template-columns: 30% 68%;
-  }
-  .placetop {
     -ms-grid-rows: (9vw)[5];
         grid-template-rows: repeat(5, 9vw);
-    -ms-grid-columns: 25% 60%;
-        grid-template-columns: 25% 60%;
+    -ms-grid-columns: 21% 77.5%;
+        grid-template-columns: 21% 77.5%;
   }
-  .place:not(:first-child) {
+  .place {
     margin: 2vw 0 2vw 0;
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
   }
   .place_ {
     height: 68vw;
@@ -312,8 +306,8 @@ input[disabled="disabled"] {
   }
   .place {
     margin: 4vw 0 4vw 0;
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
   }
   .placetop {
     margin: 4vw 0 0 0;

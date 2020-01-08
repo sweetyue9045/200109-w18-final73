@@ -66,23 +66,16 @@ $(function () {
 			$(".home_header").attr("style", "background-color: transparent ")
 		}
 	}).scroll();
-	$(window).scroll(function () {
-		if ($(this).scrollTop() > 100) {
-			if ($(this).scrollTop() < down - 600) $('#backtotop').stop().animate({ bottom: "2vw" });
-			else $('#backtotop').stop().animate({ bottom: "-6.5vw" });
-		}
-		else {
-			$('#backtotop').stop().animate({ bottom: "-6.5vw" });
-		}
-	}).scroll();
-	$('#backtotop').click(function () { $('html,body').animate({ scrollTop: 0 }, 800); });
-	var slide = 0;
 	if (document.body.offsetWidth < 769) {
 		homek = 3
 	} else if (document.body.offsetWidth > 768) { homek = 5 }
 	var mheight= "calc(100vh - "+$('footer').outerHeight()+"px - "+$('header').outerHeight()+"px)"
+	var hheight= "calc(100vh - "+$('footer').outerHeight()+"px - "+$('header').outerHeight()+"px - "+$('.topCarousel').outerHeight()+"px)"
 	$(".container").attr("style","min-height: "+mheight)
+	$(".containert").attr("style","min-height: "+hheight)
+
 	//----------景點----------
+	var slide = 0;
 
 	//--預設地點點擊--
 	$("#dropdown-toggle").click(function () {
@@ -204,6 +197,10 @@ $(function () {
 	});
 	$('.closeBtn').click(function (event) {
 		$('.showintro').fadeOut();
+	});
+
+	$('.UcloseBtn').click(function (event) {
+		$('.showupdate').fadeOut();
 	});
 });
 
@@ -395,6 +392,7 @@ function showin(id) {
 									}
 								}
 							});
+							$("#like_i").attr("class","fas fa-heart "+likebtn)
 							auth.onAuthStateChanged(function (user) {
 								if (user) {
 									$("#like_btn").attr("disabled", false)
@@ -403,7 +401,7 @@ function showin(id) {
 								}
 							})
 							var b = TData.place.length
-							$(".intro_intro").append('<div class="tourline_title">' + TData.title + '<button type="button" class="btn like_btn" onclick="getlike(this)" id="like_btn" name=""><i class="fas fa-heart ' + likebtn + '" id="like_i"></i><span class="splike">收藏</span></button></div><div class="tourline_intro">' + TData.intro + '</div>')
+							$(".intro_intro").append('<div class="tourline_title">' + TData.title + '</div><div class="tourline_intro">' + TData.intro + '</div>')
 							for (x = 0; x < b; x++) {
 								$(".tourline").append('<div class="tourlineBox"><img src="' + TData.place[x].img + '"><div class="tourlineSpots_Right"><div class="tourlineSpots_title">' + TData.place[x].location + '</div>' + TData.place[x].contents + '</br>地址：' + TData.place[x].address + '<div id="tour_time' + x + '">開放時間：</br></div></div></div>')
 								for (i = 0; i < 7; i++) {
@@ -440,9 +438,9 @@ function showlogin() {
 			</div>
 		</div>
 		<div class="login_btn">
-			<button type="button" class="btn btnL btnF" id="facebookSingIn"><i class="fab fa-facebook btnfa"></i>
+			<button type="button" class="btn btnL btnF" id="facebookSingIn" disabled="disabled"><i class="fab fa-facebook btnfa"></i>
 				<span>Facebook登入</span></button>
-			<button type="button" class="btn btnL btnG" id="btnGoogleSingIn"><i class="fab fa-google-plus btnfa"></i>
+			<button type="button" class="btn btnL btnG" id="btnGoogleSingIn" disabled="disabled" onclick="google()"><i class="fab fa-google-plus btnfa"></i>
 				<span>Google+登入</span></button>
 		</div>
 		<div class="login_or">
@@ -490,26 +488,27 @@ function login() {
 					})
 			} else { window.location.href = "../index.html" }
 		})
+}
+function google(){
+	//google
+	const $btnGoogle = $("#btnGoogleSingIn")
 
-	// //google
-	// const $btnGoogle = $("#btnGoogleSingIn")
-
-	// var provider = new firebase.auth.GoogleAuthProvider()
+	var provider = new firebase.auth.GoogleAuthProvider()
 	// $btnGoogle.click(function () {
-	//		 $btnGoogle.html(`<span class= "spinner-border spinner-border-sm"></span>`)
-	//		 firebase.auth().signInWithPopup(provider).then(function (result) {
-	//				 var token = result.credential.accessToken;
-	//				 var user = result.user;			// 使用者資訊
-	//		 }).catch(function (error) {
-	//				 // 處理錯誤
-	//				 $btnGoogle.html(`google`)
-	//				 alert("error")
-	//				 var errorCode = error.code;
-	//				 var errorMessage = error.message;
-	//				 var email = error.email;			// 使用者所使用的 Email
-	//				 var credential = error.credential;
-	//				 console.log(error.message)
-	//		 });
+			 $btnGoogle.html(`<span class= "spinner-border spinner-border-sm"></span>`)
+			 firebase.auth().signInWithPopup(provider).then(function (result) {
+					 var token = result.credential.accessToken;
+					 var user = result.user;			// 使用者資訊
+			 }).catch(function (error) {
+					 // 處理錯誤
+					 $btnGoogle.html(`google`)
+					 alert("error")
+					 var errorCode = error.code;
+					 var errorMessage = error.message;
+					 var email = error.email;			// 使用者所使用的 Email
+					 var credential = error.credential;
+					 console.log(error.message)
+			 });
 	// })
 }
 function logout() {
@@ -670,7 +669,7 @@ function showupdate(id) {
 							console.log(txtId)
 							// var b = TData.place.length
 							for (x = 0; x < txtId; x++) {
-								$("#showBlock").append(`<div class="place place0">
+								$("#showBlock").append(`<div class="place place${x}">
 		
 								<div class="input_main">第 ${x + 1} 站</div></br>
 								<div class="place_">
@@ -683,7 +682,7 @@ function showupdate(id) {
 									</br>
 									<div class="input_main"></div>
 									<div class="input_main">圖片</div>
-									<span class="sptext">不可更改</span></br>
+									<span class="sptext">不可更改</span>
 									<img class="sptextimg" src="${TData.place[x].img}" alt="">
 								</div>
 								<div class="place_ place_1">
