@@ -2,6 +2,7 @@
 var searchbar = 0;
 let loginuser = "";
 let likedata = []
+var homek = 0
 
 $(function () {
 	//----------firebase----------
@@ -76,6 +77,10 @@ $(function () {
 	}).scroll();
 	$('#backtotop').click(function () { $('html,body').animate({ scrollTop: 0 }, 800); });
 	var slide = 0;
+	if (document.body.offsetWidth < 769) {
+		homek = 3
+	} else if (document.body.offsetWidth > 768) { homek = 5 }
+	console.log(homek)
 	//----------景點----------
 
 	//--預設地點點擊--
@@ -101,32 +106,20 @@ $(function () {
 				slide = 0;
 			}
 		}
-	});  
-	if (document.body.offsetWidth < 769){
-		$('.northern').html(`北部`)
-		$('.central').html(`中部`)
-		$('.southern').html(`南部`)
-		$('.eastern').html(`東部`)
-		$('.islands').html(`離島`)
-	}else{
-		$('.northern').html(`北部▸基隆 宜蘭 台北 新北 桃園 新竹`)
-		$('.central').html(`中部▸苗栗 台中 彰化 南投 雲林`)
-		$('.southern').html(`南部▸嘉義 台南 高雄 屏東`)
-		$('.eastern').html(`東部▸花蓮 台東`)
-		$('.islands').html(`離島▸澎湖 金門 馬祖`)
-	}
+	});
+
 	//--搜尋點擊--
 	var wid
 	var rad
-	if (document.body.offsetWidth <321) {wid="70vw";rad="1vw"}
-	if (document.body.offsetWidth >320) {wid="40vw";rad="0.6vw"}
-	if (document.body.offsetWidth >768) {wid="16vw";rad="0.3vw"}
+	if (document.body.offsetWidth < 321) { wid = "70vw"; rad = "1vw" }
+	if (document.body.offsetWidth > 320) { wid = "40vw"; rad = "0.6vw" }
+	if (document.body.offsetWidth > 768) { wid = "16vw"; rad = "0.3vw" }
 
 	$("#searchitem").click(function () {
 		if (searchbar == 0) {
 			document.getElementById("dropdown-toggle").style.display = "block";
 			document.getElementById("form-control").style.display = "block";
-			$("#searchitem").attr("style", "border-radius: 0 "+rad+" " +rad+" 0 ;outline: none")
+			$("#searchitem").attr("style", "border-radius: 0 " + rad + " " + rad + " 0 ;outline: none")
 			$("#input-group").animate({ width: wid }, 200);
 			searchbar = 1;
 		}
@@ -152,6 +145,19 @@ $(function () {
 	});
 
 	//----------行程----------
+	if (document.body.offsetWidth < 769) {
+		$('.northern').html(`北部`)
+		$('.central').html(`中部`)
+		$('.southern').html(`南部`)
+		$('.eastern').html(`東部`)
+		$('.islands').html(`離島`)
+	} else {
+		$('.northern').html(`北部▸基隆 宜蘭 台北 新北 桃園 新竹`)
+		$('.central').html(`中部▸苗栗 台中 彰化 南投 雲林`)
+		$('.southern').html(`南部▸嘉義 台南 高雄 屏東`)
+		$('.eastern').html(`東部▸花蓮 台東`)
+		$('.islands').html(`離島▸澎湖 金門 馬祖`)
+	}
 	$('.showintro').hide();
 	//--選擇--
 	$("#CheckAll").click(function () {
@@ -202,6 +208,8 @@ $(function () {
 
 /*----------首頁頁面----------*/
 //--抓資料庫 + 渲染行程--
+
+
 function home_route() {
 	$("#route_box").empty()
 	var route_box = []
@@ -213,7 +221,7 @@ function home_route() {
 					myroute.forEach(function (title) {
 						var TData = title.val();
 						route_box.push(TData.title)
-						for (k = 0; k < 5; k++) {
+						for (k = 0; k < homek; k++) {
 							if (TData.title == route_box[k]) {
 								$("#route_box").append('<div class="route_content"><a id="' + TData.title + '" " onclick="showin(this)"><div class="route_left"><img src="' + TData.place[0].img + '" alt=""></div><div class="route_right"><div class="route_title">' + TData.title + '</div><div class="route_text">' + TData.route + '</div></div></a></div>')
 							}
@@ -257,7 +265,6 @@ function changecontent(mytab) {
 $(function () {
 	home("hot1");
 	home_route();
-
 })
 
 /*----------熱門頁面----------*/
@@ -933,27 +940,37 @@ Array.prototype.remove = function () {
 // 漢堡
 $(function () {
 	if (document.body.offsetWidth < 321) {
-		$('#menu').attr("style","display:inline-block")
+		$('#menu').attr("style", "display:none")
 		var $menu = $("#menu").mmenu({
-		 });
-		 var $icon = $("#amenu");
-		 var API = $menu.data( "mmenu" );
-		 
-		 $icon.on( "click", function() {
+		});
+		var $icon = $("#amenu");
+		var API = $menu.data("mmenu");
+
+		$icon.on("click", function () {
 			API.open();
-		 });
-		 
-		 API.bind( "open:start", function() {
-			setTimeout(function() {
-			   $icon.addClass( "is-active" );
+		});
+
+		API.bind("open:start", function () {
+			$(".home_header").attr("style", "background-color: var(--Dark)")
+			$('#menu').attr("style", "display:inline-block")
+
+			setTimeout(function () {
+				$icon.addClass("is-active");
 			}, 100);
-		 });
-		 API.bind( "close:start", function() {
-			setTimeout(function() {
-			   $icon.removeClass( "is-active" );
+		});
+		API.bind("close:start", function () {
+			$(".home_header").attr("style", "background-color: transparent ")
+
+			setTimeout(function () {
+				$icon.removeClass("is-active");
 			}, 100);
-		 });
-	} else $('#menu').attr("style","display:none")
+		});
+		API.bind("close:finish", function () {
+			$('#menu').attr("style", "display:none")
+
+
+		});
+	} else $('#menu').attr("style", "display:none")
 }
 );
 

@@ -147,6 +147,7 @@ html, body {
   height: 100%;
   background-color: #bcdce6;
   border-radius: .4vw;
+  overflow: hidden;
 }
 
 .bigcloud {
@@ -369,6 +370,7 @@ html, body {
 
 .attraction_hover {
   position: relative;
+  height: 100%;
 }
 
 .attraction_hover img {
@@ -410,24 +412,29 @@ html, body {
   background-color: rgba(0, 0, 0, 0.5);
   -webkit-transition: all .3s;
   transition: all .3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 1.5vw;
 }
 
 .intbox_title {
   font-size: 1.3vw;
   color: rgba(247, 255, 252, 0.9);
   text-align: left;
-  margin-left: 1.5vw;
-  padding-top: 1.3vw;
-  display: inline-block;
+  margin: 0;
 }
 
 .intbox_address {
-  position: absolute;
   font-size: 1.3vw;
   color: rgba(247, 255, 252, 0.9);
-  right: 1.5vw;
-  padding-top: 1.3vw;
-  display: inline-block;
+  margin: 0;
 }
 
 .attraction_hover:hover > .intbox_mask {
@@ -445,8 +452,8 @@ html, body {
     display: grid;
     -ms-grid-columns: 48% 48%;
         grid-template-columns: 48% 48%;
-    -webkit-column-gap: 5vw;
-            column-gap: 5vw;
+    -webkit-column-gap: 4%;
+            column-gap: 4%;
     row-gap: 5vw;
   }
   .attraction_intbox {
@@ -457,7 +464,7 @@ html, body {
     height: 25vw;
   }
   .attraction_text {
-    bottom: 4px;
+    height: 6vw;
   }
   .intbox_title, .intbox_address {
     font-size: 1.5vw;
@@ -512,9 +519,6 @@ html, body {
   .Carousel {
     overflow-y: visible;
   }
-  .topbox {
-    overflow-x: hidden;
-  }
   .attraction_site {
     width: 90%;
     display: -ms-grid;
@@ -534,9 +538,14 @@ html, body {
     line-height: 6vw;
   }
   .attraction_text {
-    height: 10vw;
-    bottom: 5px;
-    line-height: 8vw;
+    height: 13vw;
+    padding: 0 3vw;
+  }
+  .intbox_title {
+    font-size: 3.5vw;
+  }
+  .intbox_address {
+    font-size: 3.5vw;
   }
   .input-group {
     top: 5vw;
