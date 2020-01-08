@@ -662,9 +662,6 @@ header {
 }
 
 @media (max-width: 768px) {
-  .container {
-    min-height: auto;
-  }
   .route_box {
     -ms-grid-columns: 48.8% 48.8%;
         grid-template-columns: 48.8% 48.8%;
@@ -741,30 +738,31 @@ header {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    min-height: 3.9vw;
+    min-height: 5vw;
     width: 80%;
     margin-left: 2vw;
     padding: 0 .5vw;
   }
   .hot_nav label {
     text-align: center;
-    width: 5vw;
-    height: 5vw;
+    width: 7vw;
+    height: 7vw;
     top: -1vw;
     outline: 0.2vw solid var(--NAV_F);
+    opacity: 0.7;
   }
   .hot_nav span {
     padding: 0.6vw 0;
-    line-height: 1.9vw;
-    font-size: 1.5vw;
+    line-height: 2.8vw;
+    font-size: 2.5vw;
   }
   #hot1:checked + label span,
   #hot2:checked + label span,
   #hot3:checked + label span,
   #hot4:checked + label span {
     padding: 0.9vw 0;
-    line-height: 1.5vw;
-    font-size: 1.2vw;
+    line-height: 2.6vw;
+    font-size: 2.1vw;
     -webkit-transition: all .1s ease;
     transition: all .1s ease;
   }
@@ -800,9 +798,6 @@ header {
 }
 
 @media (max-width: 320px) {
-  .container {
-    min-height: auto;
-  }
   .route_box {
     overflow-x: auto;
     width: 100%;

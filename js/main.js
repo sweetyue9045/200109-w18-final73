@@ -80,7 +80,9 @@ $(function () {
 	if (document.body.offsetWidth < 769) {
 		homek = 3
 	} else if (document.body.offsetWidth > 768) { homek = 5 }
-	console.log(homek)
+	var mheight= "calc(100vh - "+$('footer').outerHeight()+"px - "+$('header').outerHeight()+"px)"
+	$(".container").attr("style","min-height: "+mheight)
+	console.log(mheight)
 	//----------景點----------
 
 	//--預設地點點擊--

@@ -110,7 +110,6 @@ nav {
   height: auto;
   background-color: var(--Back);
   padding: 4vw 8vw;
-  min-height: calc(100vh - 12.35vw);
   font-family: "微軟正黑體";
 }
 
