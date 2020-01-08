@@ -5,7 +5,6 @@ let likedata = []
 var homek = 0
 
 $(function () {
-	alert("test")
 	//----------firebase----------
 	var firebaseConfig = {
 		apiKey: "AIzaSyAScJw62d8pXsaIsKfOZCEgEulba3zEM4A",
@@ -301,6 +300,8 @@ function area(area) {
 /*----------行程頁面----------*/
 //--抓資料庫+渲染行程--
 function route(myroutefun) {
+	alert("test2")
+
 	$("#route_content").empty()
 	var route = firebase.database().ref().orderByKey();
 	route.once("value", function (only) {
@@ -1040,4 +1041,5 @@ $(document).ready(function () {
 			}, 100, function () { });
 		}
 	});
+	window.onload=route(null)
 });
