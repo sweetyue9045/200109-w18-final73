@@ -1004,3 +1004,39 @@ function flip(f) {
 	}
 	else btnVal.value = "MORE ＋"
 }
+
+
+//----------圖片展開----------
+
+$(document).ready(function () {
+	var docw = 200;
+	var scroll = 0;
+	$("#right").click(function () {
+		scroll = scroll + docw;
+		if (scroll >= 1400) {
+			$("#new_photo").animate({
+				scrollLeft: $("#new_photo").scrollLeft() - 1400
+			}, 700, function () { });
+			scroll = 0;
+		}
+		else {
+			$("#new_photo").animate({
+				scrollLeft: $("#new_photo").scrollLeft() + docw
+			},100, function () { });
+		}
+	});
+	$("#left").click(function () {
+		scroll = scroll - docw;
+		if (scroll <= 0) {
+			$("#new_photo").animate({
+				scrollLeft: $("#new_photo").scrollLeft() + 1400
+			}, 700, function () { });
+			scroll = 1400;
+		}
+		else {
+			$("#new_photo").animate({
+				scrollLeft: $("#new_photo").scrollLeft() - docw
+			}, 100, function () { });
+		}
+	});
+});

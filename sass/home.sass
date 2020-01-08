@@ -358,6 +358,8 @@ header
 	padding: 0.55vw 0 0 0 
 	font-size: 0.95vw
 	text-decoration: underline
+.content_btn
+	display: none
 .new_box
 	width: 100%
 	margin-top: 3vw
@@ -391,8 +393,8 @@ header
 	overflow: visible
 
 .new_img img:hover 
-		filter: contrast(130%)
-		transform: scale(1.3)
+	filter: contrast(130%)
+	transform: scale(1.3)
 
 @media (max-width: 768px)
 	.route_box
@@ -447,7 +449,7 @@ header
 	.hot_title
 		margin: 0
 		color: var(--Font)
-		font-size: 1.55vw
+		font-size: 2vw
 
 	//----------hot CSS----------
 
@@ -502,8 +504,14 @@ header
 		line-height: 2.05vw
 	.hot_content_box 
 		right: 7%
-		
+	.new_title
+		font-size: 2vw
+	.new_smalltitle
+		padding: 0.45vw 0 0 0
+		font-size: 1.5vw
 @media (max-width: 320px)
+	.container
+		overflow: hidden
 	.route_box
 		overflow-x: auto
 		width: 100%
@@ -627,5 +635,34 @@ header
 		padding: 0.55vw 0 0 0
 		font-size: 3vw
 		text-align: center
+	.new_new
+		display: flex
+		overflow: hidden
+		width: 100%
+		margin: 4vw 0 0 0
+	.new_photo
+		overflow: hidden
+		width: 62.5vw
+	.new_box
+		width: 62.5vw
+		margin: 0
+		display: -webkit-box
+	.new_img
+		width: 62.5vw
+	.new_img img
+		width: 100%
+		height: auto
+	.new_img img:hover 
+		filter: contrast(100%)
+		transform: scale(1)
+	.content_btn
+		display: block
+    	z-index: 10
+		color: var(--Dark)
+	// #left
+	// 	margin-right: 2vw
+	// #right
+	// 	margin-left: 2vw
+
 	#mm-blocker
 		z-index: 21
