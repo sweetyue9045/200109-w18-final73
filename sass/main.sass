@@ -197,10 +197,16 @@ footer
 	color: rgba(121, 121, 121, 0.6)
 .intro_intro
 	text-align: center
+	margin: 3vw 0 0 0
 .tourline_title
 	font-size: 1.55vw
 .like_btn
+	position: absolute
 	background-color: var(--Dark)
+	right: 3.5vw
+	top: 1vw
+	z-index: 100
+
 .like
 	color: red
 .dislike
@@ -451,18 +457,45 @@ hr
 	width: 0.6rem
 	border-width: .15em
 	margin-left: .4rem
+
 @media (max-width: 768px)
+	header
+		padding: 1vw 7.5vw 0.8vw
+		a
+			height: 4vw
+	.H_title img
+		margin: 1vw 0 0 0 
+		height: 4vw
+	.nav_bar li
+		margin: 0 1.55vw
+		font-size: 2vw
+	//
 	.site_title
 		font-size: 2.5vw
 		margin-left: 6vw
+	//
+	footer
+		padding: 2.7vw	7.5vw
+	.F_left
+		font-size: 1.5vw
+	.F_title img
+		height: 6vw
+
 
 //漢堡
 @media (max-width: 320px)
-	.site_title
-		font-size: 6vw
+	header
+		padding: 0 7.5vw
+	.H_title
+		width: 100%
 		text-align: center
-		margin-left: 0
-
+		padding: 0 7.5vw
+	.H_title a
+		left: 1.5vw
+		top: 1vw
+	.H_title img
+		height: 5vw
+	//
 	html.mm-opening .mm-menu~.mm-slideout
 		transform: translate3d(100%,0,0)
 	#mm-blocker 
@@ -476,17 +509,7 @@ hr
 		transform: translateX(-50%)
 	a.hamburger
 		text-align: center
-	.H_title
-		width: 100%
-		text-align: center
-		padding: 0 7.5vw
-	header
-		padding: 0 7.5vw
-	.H_title a
-		left: 1.5vw
-		top: 1vw
-	.H_title img
-		height: 5vw
+	
 
 	h1, h2, h3, h4, h5, h6
 		line-height: 1
@@ -560,6 +583,12 @@ hr
 
 	.hamburger
 		color: white !important
+	//
+	.site_title
+		font-size: 6vw
+		text-align: center
+		margin-left: 0
+	//
 	footer
 		background-color: var(--Back)
 
@@ -568,9 +597,7 @@ hr
 
 	.F_title
 		left: 45%
-
-
-
+	//
 	.hamburger
 		padding: 10px
 		display: inline-block
@@ -709,7 +736,7 @@ hr
 		height: 4vw
 	.login_or
 		grid-template-columns: 20vw 8vw 20vw
-
+	
 @media (max-width: 320px)
 	.LOGIN
 		margin: 13.5vw auto
@@ -770,22 +797,82 @@ hr
 		width: 100%
 		height: 10vw
 
+//介紹
+@media (max-width: 768px)
+	.INTRO
+		width: 80%
+		height: auto
+	.intro_top
+		height: 5vw
+	.closeBtn
+		font-size: 2.5vw
+		right: 1.5vw
+		top: 1.5vw
+	.tourline_title
+		font-size: 2vw
+	.tourline_intro
+		margin: 1vw auto 2vw
+		width: 70%
+		font-size: 1.4vw
+	.tourtitle>span
+		font-size: 1.5vw
+		margin-left: 0vw
+	.showintro img
+		width: 50%
+		height: 100%		
+		
+	.tourlineSpots_Right
+		width: 50%
+		padding: 0 0 0 2.5vw
+		font-size: 1.5vw
+		
+	.tourlineSpots_title
+		font-size: 2vw
+		margin: 1vw 0 
+	.distancebtn
+		font-size: 1.5vw
+	.like_btn
+		right: 4.5vw
+		top: 1.4vw
+	.intro_intro
+		margin: 4vw 0 0 0
 
-	// .login_input
-	// 	width: 53vw
-	// 	height: 7vw
-	// 	top: 2vw
-
-	// .btni
-	// 	width: 10vw
-	// 	height: 7vw
-	// 	top: 2vw
-
-	// .forgot
-	// 	width: 35vw
-	// 	right: -12vw
-
-	// .btnSignIn
-	// 	width: 15vw
-	// 	height: 8vw
-	// 	right: -8vw
+@media (max-width: 320px)
+	.INTRO
+		width: 90%
+	.intro_top
+		height: 5vw
+	.closeBtn
+		font-size: 4vw
+		right: 1.5vw
+		top: 1.5vw
+	.tourlineBox
+		display: block
+		border: 0.3vw solid var(--Dark)
+	.tourlineBox:before
+		height: 0.3vw
+	.tourline_title
+		font-size: 3.6vw
+	.tourline_intro
+		width: 90%
+	.tourtitle>span
+		font-size: 3vw
+		top: -1vw
+	.showintro img
+		width: 100%
+		height: 100%
+		
+	.tourlineSpots_Right
+		width: 100%
+		padding: 0 0 0 0vw
+		font-size: 3vw
+		
+	.tourlineSpots_title
+		font-size: 3.6vw
+		margin: 1vw 0 
+	.distancebtn
+		font-size: 3vw
+	.like_btn
+		right: 6vw
+	.intro_intro
+		margin: 6vw 0 0 0

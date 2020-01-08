@@ -66,17 +66,6 @@ $(function () {
 			$(".home_header").attr("style", "background-color: transparent ")
 		}
 	}).scroll();
-	$(window).scroll(function () {
-		if ($(this).scrollTop() > 100) {
-			if ($(this).scrollTop() < down - 600) $('#backtotop').stop().animate({ bottom: "2vw" });
-			else $('#backtotop').stop().animate({ bottom: "-6.5vw" });
-		}
-		else {
-			$('#backtotop').stop().animate({ bottom: "-6.5vw" });
-		}
-	}).scroll();
-	$('#backtotop').click(function () { $('html,body').animate({ scrollTop: 0 }, 800); });
-	var slide = 0;
 	if (document.body.offsetWidth < 769) {
 		homek = 3
 	} else if (document.body.offsetWidth > 768) { homek = 5 }
@@ -86,6 +75,7 @@ $(function () {
 	$(".containert").attr("style","min-height: "+hheight)
 
 	//----------景點----------
+	var slide = 0;
 
 	//--預設地點點擊--
 	$("#dropdown-toggle").click(function () {
@@ -402,6 +392,7 @@ function showin(id) {
 									}
 								}
 							});
+							$("#like_i").attr("class","fas fa-heart "+likebtn)
 							auth.onAuthStateChanged(function (user) {
 								if (user) {
 									$("#like_btn").attr("disabled", false)
@@ -410,7 +401,7 @@ function showin(id) {
 								}
 							})
 							var b = TData.place.length
-							$(".intro_intro").append('<div class="tourline_title">' + TData.title + '<button type="button" class="btn like_btn" onclick="getlike(this)" id="like_btn" name=""><i class="fas fa-heart ' + likebtn + '" id="like_i"></i><span class="splike">收藏</span></button></div><div class="tourline_intro">' + TData.intro + '</div>')
+							$(".intro_intro").append('<div class="tourline_title">' + TData.title + '</div><div class="tourline_intro">' + TData.intro + '</div>')
 							for (x = 0; x < b; x++) {
 								$(".tourline").append('<div class="tourlineBox"><img src="' + TData.place[x].img + '"><div class="tourlineSpots_Right"><div class="tourlineSpots_title">' + TData.place[x].location + '</div>' + TData.place[x].contents + '</br>地址：' + TData.place[x].address + '<div id="tour_time' + x + '">開放時間：</br></div></div></div>')
 								for (i = 0; i < 7; i++) {
