@@ -300,8 +300,6 @@ function area(area) {
 /*----------行程頁面----------*/
 //--抓資料庫+渲染行程--
 function route(myroutefun) {
-	alert("test2")
-
 	$("#route_content").empty()
 	var route = firebase.database().ref().orderByKey();
 	route.once("value", function (only) {
@@ -339,7 +337,7 @@ function change() {
 	$('#route_content').fadeIn();
 
 }
-var choosearea = [];
+var choosearea = null;
 function choose(mychoose) {
 	Array.prototype.remove = function () {
 		var what, a = arguments, L = a.length, ax;
@@ -365,6 +363,11 @@ function choose(mychoose) {
 	document.getElementById("route_content").style.display = "none";
 	route(choosearea)
 }
+$(function () {
+	route(choosearea)
+	alert("A")
+})
+
 
 
 /*----------介紹頁面----------*/
@@ -1041,5 +1044,4 @@ $(document).ready(function () {
 			}, 100, function () { });
 		}
 	});
-	window.onload=route(null)
 });
