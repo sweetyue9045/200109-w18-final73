@@ -69,10 +69,10 @@ $(function () {
 	if (document.body.offsetWidth < 769) {
 		homek = 3
 	} else if (document.body.offsetWidth > 768) { homek = 5 }
-	var mheight= "calc(100vh - "+$('footer').outerHeight()+"px - "+$('header').outerHeight()+"px)"
-	var hheight= "calc(100vh - "+$('footer').outerHeight()+"px - "+$('header').outerHeight()+"px - "+$('.topCarousel').outerHeight()+"px)"
-	$(".container").attr("style","min-height: "+mheight)
-	$(".containert").attr("style","min-height: "+hheight)
+	var mheight = "calc(100vh - " + $('footer').outerHeight() + "px - " + $('header').outerHeight() + "px)"
+	var hheight = "calc(100vh - " + $('footer').outerHeight() + "px - " + $('header').outerHeight() + "px - " + $('.topCarousel').outerHeight() + "px)"
+	$(".container").attr("style", "min-height: " + mheight)
+	$(".containert").attr("style", "min-height: " + hheight)
 
 	//----------景點----------
 	var slide = 0;
@@ -392,7 +392,7 @@ function showin(id) {
 									}
 								}
 							});
-							$("#like_i").attr("class","fas fa-heart "+likebtn)
+							$("#like_i").attr("class", "fas fa-heart " + likebtn)
 							auth.onAuthStateChanged(function (user) {
 								if (user) {
 									$("#like_btn").attr("disabled", false)
@@ -403,7 +403,25 @@ function showin(id) {
 							var b = TData.place.length
 							$(".intro_intro").append('<div class="tourline_title">' + TData.title + '</div><div class="tourline_intro">' + TData.intro + '</div>')
 							for (x = 0; x < b; x++) {
-								$(".tourline").append('<div class="tourlineBox"><img src="' + TData.place[x].img + '"><div class="tourlineSpots_Right"><div class="tourlineSpots_title">' + TData.place[x].location + '</div>' + TData.place[x].contents + '</br>地址：' + TData.place[x].address + '<div id="tour_time' + x + '">開放時間：</br></div></div></div>')
+								$(".tourline").append(
+									`<div class="tourlineBox">
+										<img src="${TData.place[x].img}">
+										<div class="tourlineSpots_Right">
+											<div class="tourlineSpots_title">${TData.place[x].location}</div>
+											${TData.place[x].contents}
+											<div class="photo_title" id="flip">
+												<input class="title_btn" name="pane${x}" type="button" value="MORE ＋" id="title_btn" onclick="flip(this)"/>
+											</div>
+											<div class="photo_content" id="pane${x}">
+												</br>
+												地址：${TData.place[x].address}
+												<div id="tour_time${x}">
+												開放時間：</br>
+												</div>
+					 						</div>
+										</div>
+									</div>`
+								)
 								for (i = 0; i < 7; i++) {
 									var week = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"]
 									$("#tour_time" + x).append(
@@ -489,26 +507,26 @@ function login() {
 			} else { window.location.href = "../index.html" }
 		})
 }
-function google(){
+function google() {
 	//google
 	const $btnGoogle = $("#btnGoogleSingIn")
 
 	var provider = new firebase.auth.GoogleAuthProvider()
 	// $btnGoogle.click(function () {
-			 $btnGoogle.html(`<span class= "spinner-border spinner-border-sm"></span>`)
-			 firebase.auth().signInWithPopup(provider).then(function (result) {
-					 var token = result.credential.accessToken;
-					 var user = result.user;			// 使用者資訊
-			 }).catch(function (error) {
-					 // 處理錯誤
-					 $btnGoogle.html(`google`)
-					 alert("error")
-					 var errorCode = error.code;
-					 var errorMessage = error.message;
-					 var email = error.email;			// 使用者所使用的 Email
-					 var credential = error.credential;
-					 console.log(error.message)
-			 });
+	$btnGoogle.html(`<span class= "spinner-border spinner-border-sm"></span>`)
+	firebase.auth().signInWithPopup(provider).then(function (result) {
+		var token = result.credential.accessToken;
+		var user = result.user;			// 使用者資訊
+	}).catch(function (error) {
+		// 處理錯誤
+		$btnGoogle.html(`google`)
+		alert("error")
+		var errorCode = error.code;
+		var errorMessage = error.message;
+		var email = error.email;			// 使用者所使用的 Email
+		var credential = error.credential;
+		console.log(error.message)
+	});
 	// })
 }
 function logout() {
@@ -542,10 +560,11 @@ function like() {
 		only.forEach(function (area) {
 			if (area.key == "like") {
 				area.forEach(function (myroute) {
+					if(myroute.key==loginuser){
 					myroute.forEach(function (title) {
 						var TData = title.val();
 						$("#like_box").append('<div class="route_content"><a id="' + TData.title + '" " onclick="showin(this)"><div class="route_left"><img src="' + TData.place[0].img + '" alt=""></div><div class="route_right"><div class="route_title">' + TData.title + '</div><div class="route_text">' + TData.route + '</div></div></a></div>')
-					})
+					})}
 				})
 			}
 		})
@@ -975,3 +994,13 @@ $(function () {
 );
 
 // 漢堡結束
+
+function flip(f) {
+	var pane=f.name
+	$("#"+pane).slideToggle("");
+	var btnVal = f;
+	if (btnVal.value == "MORE ＋") {
+		btnVal.value = "MORE －"
+	}
+	else btnVal.value = "MORE ＋"
+}

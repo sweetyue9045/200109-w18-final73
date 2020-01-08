@@ -1177,4 +1177,28 @@ hr {
     margin: 6vw 0 0 0;
   }
 }
+
+.photo_title {
+  margin: 0px;
+  text-align: right;
+}
+
+.title_btn {
+  background-color: transparent;
+  color: #575757;
+  font-size: 10px;
+  padding: 2px 5px;
+  border: 0px;
+  outline: none;
+  z-index: 20;
+}
+
+.photo_content {
+  padding: 5px;
+  text-align: center;
+  min-height: 0px;
+  display: none;
+  border-top: solid 1px #c3c3c3;
+  border-bottom: solid 1px #c3c3c3;
+}
 /*# sourceMappingURL=main.css.map */
