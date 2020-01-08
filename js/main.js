@@ -202,7 +202,6 @@ $(function () {
 	$('.UcloseBtn').click(function (event) {
 		$('.showupdate').fadeOut();
 	});
-	route()
 });
 
 /*----------首頁頁面----------*/
