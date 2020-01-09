@@ -579,7 +579,7 @@ header
 		overflow-x: auto
 		width: 100%
 		grid-template-columns: 32% 32% 32% 32%
-		grid-template-rows: 35vw
+		grid-template-rows: auto
 		grid-column-gap: 4%
 		padding-bottom: 2vw
 	.route_box::-webkit-scrollbar 
@@ -610,9 +610,11 @@ header
 		width: 20vw
 		padding: 2vw 0 2vw 0vw
 	#route_plus>.route_right
-		width: 15vw
+		// width: 15vw
 		padding: 4vw 1vw 2vw 1vw
 		margin: auto
+		text-align: center
+
 	#route_plus>.route_right>.route_title
 		white-space: normal
 		font-size: 3vw
@@ -720,7 +722,7 @@ header
 		transform: scale(1)
 	.content_btn
 		display: block
-    	z-index: 10
+		z-index: 10
 		color: var(--Dark)
 	#mm-blocker
 		z-index: 21

@@ -229,7 +229,10 @@ function home_route() {
 			}
 		})
 	})
+	if (document.body.offsetWidth > 320) {
 	$("#route_box").append('<div class="route_content route_plus_content"><a id="route_plus" onclick="routeplus(this)"><div class="route_left"><div class="bus"><div class="fbus"><i class="fas fa-bus"></i></div><div class="fplus"><i class="fas fa-plus-circle"></i></div></div></div><div class="route_right"><div class="route_title">創建我的景點路線</div></div></a></div>')
+	}else{	$("#route_box").append('<div class="route_content route_plus_content"><a id="route_plus" onclick="routeplus(this)"><div class="route_left"><div class="bus"><div class="fbus"><i class="fas fa-bus"></i></div><div class="fplus"><i class="fas fa-plus-circle"></i></div></div></div><div class="route_right"><div class="route_title">創建我的</br>景點路線</div></div></a></div>')
+}
 }
 function routeplus() {
 	if (loginuser == "") {
