@@ -758,7 +758,7 @@ header {
     opacity: 0.7;
   }
   .hot_nav span {
-    padding: 0.6vw 0;
+    padding: 0.9vw 0;
     line-height: 2.8vw;
     font-size: 2.5vw;
   }
@@ -766,7 +766,7 @@ header {
   #hot2:checked + label span,
   #hot3:checked + label span,
   #hot4:checked + label span {
-    padding: 0.9vw 0;
+    padding: 1vw 0;
     line-height: 2.6vw;
     font-size: 2.1vw;
     -webkit-transition: all .1s ease;
@@ -951,8 +951,8 @@ header {
     width: 100%;
     -ms-grid-columns: 32% 32% 32% 32%;
         grid-template-columns: 32% 32% 32% 32%;
-    -ms-grid-rows: 35vw;
-        grid-template-rows: 35vw;
+    -ms-grid-rows: auto;
+        grid-template-rows: auto;
     grid-column-gap: 4%;
     padding-bottom: 2vw;
   }
@@ -994,9 +994,10 @@ header {
     padding: 2vw 0 2vw 0vw;
   }
   #route_plus > .route_right {
-    width: 15vw;
+    width: 100%;
     padding: 4vw 1vw 2vw 1vw;
     margin: auto;
+    text-align: center;
   }
   #route_plus > .route_right > .route_title {
     white-space: normal;
@@ -1042,7 +1043,7 @@ header {
     margin: 2vw 0 0 0;
   }
   .hot_nav span {
-    padding: 0.6vw 0;
+    padding: 1vw 0;
     line-height: 5vw;
     font-size: 4.5vw;
   }
@@ -1130,7 +1131,7 @@ header {
   }
   .content_btn {
     display: block;
-    display-z-index: 10;
+    z-index: 10;
     color: var(--Dark);
   }
   #mm-blocker {
