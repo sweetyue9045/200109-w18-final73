@@ -418,10 +418,11 @@ function showin(id) {
 											</div>
 											<div class="photo_content" id="pane${x}">
 												</br>
-												地址：${TData.place[x].address}
+												地址：</br>${TData.place[x].address}
+												</br></br>
 												<div id="tour_time${x}">
 												開放時間：</br>
-												</div>
+												</div></br>
 					 						</div>
 										</div>
 									</div>`
