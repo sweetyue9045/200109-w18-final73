@@ -230,9 +230,10 @@ function home_route() {
 		})
 	})
 	if (document.body.offsetWidth > 320) {
-	$("#route_box").append('<div class="route_content route_plus_content"><a id="route_plus" onclick="routeplus(this)"><div class="route_left"><div class="bus"><div class="fbus"><i class="fas fa-bus"></i></div><div class="fplus"><i class="fas fa-plus-circle"></i></div></div></div><div class="route_right"><div class="route_title">創建我的景點路線</div></div></a></div>')
-	}else{	$("#route_box").append('<div class="route_content route_plus_content"><a id="route_plus" onclick="routeplus(this)"><div class="route_left"><div class="bus"><div class="fbus"><i class="fas fa-bus"></i></div><div class="fplus"><i class="fas fa-plus-circle"></i></div></div></div><div class="route_right"><div class="route_title">創建我的</br>景點路線</div></div></a></div>')
-}
+		$("#route_box").append('<div class="route_content route_plus_content"><a id="route_plus" onclick="routeplus(this)"><div class="route_left"><div class="bus"><div class="fbus"><i class="fas fa-bus"></i></div><div class="fplus"><i class="fas fa-plus-circle"></i></div></div></div><div class="route_right"><div class="route_title">創建我的景點路線</div></div></a></div>')
+	} else {
+		$("#route_box").append('<div class="route_content route_plus_content"><a id="route_plus" onclick="routeplus(this)"><div class="route_left"><div class="bus"><div class="fbus"><i class="fas fa-bus"></i></div><div class="fplus"><i class="fas fa-plus-circle"></i></div></div></div><div class="route_right"><div class="route_title">創建我的</br>景點路線</div></div></a></div>')
+	}
 }
 function routeplus() {
 	if (loginuser == "") {
@@ -511,6 +512,7 @@ function login() {
 						message.innerHTML = 'User created successfully';
 					}).catch(function (e) {
 						$("#sign-info").html(e.message)
+						window.location.reload()
 					})
 			} else { window.location.href = "../index.html" }
 		})
@@ -543,7 +545,10 @@ function logout() {
 	$("#email").val('')
 	$("#password").val('')
 	$("#sign-info").html("No one login...")
-	window.location.href = "../index.html"
+	if(window.location.pathname=="/index.html") window.location.href = "index.html"
+	else window.location.href = "../index.html"	
+	
+	
 	loginuser = ""
 }
 function getlike(name) {
@@ -568,11 +573,12 @@ function like() {
 		only.forEach(function (area) {
 			if (area.key == "like") {
 				area.forEach(function (myroute) {
-					if(myroute.key==loginuser){
-					myroute.forEach(function (title) {
-						var TData = title.val();
-						$("#like_box").append('<div class="route_content"><a id="' + TData.title + '" " onclick="showin(this)"><div class="route_left"><img src="' + TData.place[0].img + '" alt=""></div><div class="route_right"><div class="route_title">' + TData.title + '</div><div class="route_text">' + TData.route + '</div></div></a></div>')
-					})}
+					if (myroute.key == loginuser) {
+						myroute.forEach(function (title) {
+							var TData = title.val();
+							$("#like_box").append('<div class="route_content"><a id="' + TData.title + '" " onclick="showin(this)"><div class="route_left"><img src="' + TData.place[0].img + '" alt=""></div><div class="route_right"><div class="route_title">' + TData.title + '</div><div class="route_text">' + TData.route + '</div></div></a></div>')
+						})
+					}
 				})
 			}
 		})
@@ -1008,8 +1014,8 @@ $(function () {
 // 漢堡結束
 
 function flip(f) {
-	var pane=f.name
-	$("#"+pane).slideToggle("");
+	var pane = f.name
+	$("#" + pane).slideToggle("");
 	var btnVal = f;
 	if (btnVal.value == "MORE ＋") {
 		btnVal.value = "MORE －"
@@ -1034,7 +1040,7 @@ $(document).ready(function () {
 		else {
 			$("#new_photo").animate({
 				scrollLeft: $("#new_photo").scrollLeft() + docw
-			},100, function () { });
+			}, 100, function () { });
 		}
 	});
 	$("#left").click(function () {
