@@ -56,6 +56,10 @@ header a {
   height: 2vw;
 }
 
+.show-open {
+  overflow: hidden;
+}
+
 .H_title {
   width: 10%;
   padding: 0;
@@ -239,7 +243,7 @@ footer {
 }
 
 .showintro::-webkit-scrollbar {
-  display: none;
+  background-color: #fff;
 }
 
 .introback {
@@ -443,7 +447,7 @@ a {
   display: none;
 }
 
-.showintro::-webkit-scrollbar {
+.showlogin::-webkit-scrollbar {
   display: none;
 }
 
@@ -993,8 +997,8 @@ hr {
     height: 4vw;
   }
   .login_or {
-    -ms-grid-columns: 20vw 8vw 20vw;
-        grid-template-columns: 20vw 8vw 20vw;
+    -ms-grid-columns: 18vw 12vw 18vw;
+        grid-template-columns: 18vw 12vw 18vw;
   }
 }
 

@@ -51,6 +51,8 @@ $(function () {
 	})
 	$('.loginback').click(function (event) {
 		$('.showlogin').fadeOut();
+		$(document.body).removeClass("show-open");
+
 	});
 
 
@@ -194,9 +196,11 @@ $(function () {
 	//--行程消失--
 	$('.introback').click(function (event) {
 		$('.showintro').fadeOut();
+		$(document.body).removeClass("show-open");
 	});
 	$('.closeBtn').click(function (event) {
 		$('.showintro').fadeOut();
+		$(document.body).removeClass("show-open");
 	});
 
 	$('.UcloseBtn').click(function (event) {
@@ -449,6 +453,8 @@ function showin(id) {
 		})
 	})
 	$('.showintro').fadeIn();
+	$(document.body).addClass("show-open");
+
 };
 function showlogin() {
 	$(".LOGIN").empty()
@@ -493,6 +499,7 @@ function showlogin() {
 		</div>`
 	)
 	$('.showlogin').fadeIn();
+	$(document.body).addClass("show-open");
 }
 
 function login() {
